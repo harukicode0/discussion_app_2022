@@ -1,0 +1,31 @@
+:root{
+  --footer-height:20px;
+}
+
+footer{
+  width: 100vw;
+  height: var(--footer-height);
+  background-color: rgb(198, 189, 189);
+}
+
+.footer-contents{
+  margin: 0 auto;
+}
+
+.footer-list{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.footer-link{
+  display: block;
+  line-height: var(--footer-height);
+  text-decoration: none;
+  color: black;
+  width: 150px;
+  padding: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 15px;
+}

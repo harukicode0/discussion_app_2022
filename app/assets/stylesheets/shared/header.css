@@ -1,0 +1,57 @@
+:root{
+  --top-height:70px;
+}
+
+.top-page-header{
+  height: var(--top-height);
+  width: 100vw;
+  background-color: rgb(198, 189, 189);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar-contents{
+  display: flex;
+  align-items: center;
+}
+
+.top-title{
+  font-size: 40px;
+  padding:0 30px 0 20px;
+  line-height: var(--top-height);
+  text-decoration: none;
+  letter-spacing: 5px;
+  color: black;
+  display: block;
+}
+
+.nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lists-left{
+  text-decoration: none;
+  list-style: none;
+}
+
+.lists-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+}
+
+.buttom{
+  line-height: var(--top-height);
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  border: 1px solid black;
+  text-align: center;
+  color: black;
+  width: 120px;
+}
