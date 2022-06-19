@@ -1,3 +1,8 @@
 class ApplicationController < ActionController::Base
-  test
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  private
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:user, keys: [:nickname, :sex_id, :birthday_id])
+  end
 end
