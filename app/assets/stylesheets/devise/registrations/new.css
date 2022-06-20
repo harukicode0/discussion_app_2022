@@ -1,0 +1,63 @@
+.sign-up-contents{
+  width: 100vw;
+  height: calc(100vh - var(--footer-height));
+  background-color: blanchedalmond;
+  position: absolute;
+}
+
+.sign-up-content{
+  width: 500px;
+  background-color: rgb(81, 145, 124);
+  margin: 0 auto;
+  position: relative;
+  top: 15%;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.sign-up-title{
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: brown;
+}
+
+.field{
+  width: 100%;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-size: 20px;
+  height: 60px;
+}
+
+.necessary{
+  width: 50px;
+  background-color: rgb(227, 57, 57);
+  color: rgb(244, 242, 183);
+  padding:2px 5px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.input-name{
+  width: 80%;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  margin: 10px 0 ;
+}
+
+.actions{
+  margin: 40px 0 20px;
+}
+
+.input-tab{
+  font-size: 20px;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  margin: 10px 0;
+}
+
+.birthday-select{
+  margin:10px 5px;
+}
