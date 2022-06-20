@@ -11,5 +11,5 @@ class User < ApplicationRecord
   has_many :rooms ,through: :user_room
   has_many :comments
   #validates
-  validates :sex_id, numericality: true
+  validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
 end
