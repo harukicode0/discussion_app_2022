@@ -8,7 +8,7 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   #association
   belongs_to :sex
-  has_many :rooms ,throught: :user_rooms
+  has_many :rooms ,through: :user_room
   #validates
   validates :sex_id, numericality: true
 end
