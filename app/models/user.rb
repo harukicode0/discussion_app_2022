@@ -9,6 +9,7 @@ class User < ApplicationRecord
   #association
   belongs_to :sex
   has_many :rooms ,through: :user_room
+  has_many :comments
   #validates
   validates :sex_id, numericality: true
 end
