@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   #アクティブハッシュの読み込みのための記述
   extend ActiveHash::Associations::ActiveRecordExtensions
+  #association
   belongs_to :sex
+  has_many :rooms ,throught: :user_rooms
+  #validates
   validates :sex_id, numericality: true
 end
