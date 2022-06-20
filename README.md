@@ -39,10 +39,11 @@ belongs_to:following,class_name:"User"
 
 ## Rooms
 
-|column             |type    |Options                       |
-|-------------------|--------|------------------------------|
-|id                 |integer |null: false                   |
-|name               |string  |null: false                   |
+|column             |type      |Options                       |
+|-------------------|----------|------------------------------|
+|id                 |integer   |null: false                   |
+|name               |string    |null: false                   |
+|maker_user         |integer   |null: false                   |
 
 ### Association
 has_many:Users

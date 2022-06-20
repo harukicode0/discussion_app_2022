@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_091053) do
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_comments_on_room_id"
@@ -24,13 +24,14 @@ ActiveRecord::Schema.define(version: 2022_06_20_091053) do
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "maker_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_rooms", charset: "utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.integer "position_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,4 +54,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_091053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "rooms"
+  add_foreign_key "comments", "users"
+  add_foreign_key "user_rooms", "rooms"
+  add_foreign_key "user_rooms", "users"
 end

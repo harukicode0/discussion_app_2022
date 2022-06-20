@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
+    comment = Comment.new(comment_params)
     @room = Room.find(params[:room_id])
-    if @comment.save
+    if comment.save
       redirect_to room_path(@room)
     else
-      render room_path
+      @comment = Comment.new
+      render 'rooms/show'
     end
   end
   
