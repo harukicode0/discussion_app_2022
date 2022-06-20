@@ -54,12 +54,12 @@ has_many:Room_genres
 
 ## User_rooms
 
-|column             |type    |Options                       |
-|-------------------|--------|------------------------------|
-|id                 |integer |null: false                   |
-|user               |integer |null: false,foreign_key: true |
-|room               |integer |null: false,foreign_key: true |
-|position_id        |integer |                              |active_hash
+|column             |type      |Options                       |
+|-------------------|----------|------------------------------|
+|id                 |integer   |null: false                   |
+|user               |references|null: false,foreign_key: true |
+|room               |references|null: false,foreign_key: true |
+|position_id        |integer   |                              |active_hash
 
 ### Association
 belongs_to:User
