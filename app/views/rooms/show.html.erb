@@ -11,10 +11,10 @@
         <div class="disagree-text"></div>
       </div>
       
-      <%= form_with(model: [@room, @comment], local: true) do |form|%>
+      <%= form_with(model: [@room, @comment], local: true) do |f|%>
         <div class="room-input-box">
-            <div><%= form.text_area :comment, placeholder:"投稿する" ,class:"comment_box"%></div>
-            <div><%= form.submit '投稿', class:"comment_bottom_r"%></div>
+            <div><%= f.text_area :text, placeholder:"投稿する" ,class:"comment_box"%></div>
+            <div><%= f.submit '投稿', class:"comment_bottom_r"%></div>
         </div>
       <%end%>
       </div>
