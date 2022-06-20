@@ -1,1 +1,23 @@
-<h1>ルーム内部</h1>
+<%= render 'shared/header' %>
+<div class="room-wrapper">
+  <div class="room-platform">
+    <div class="room-title">
+      <div class="agree-room">
+        <div class="agree-btn"></div>
+        <div class="agree-text"></div>
+      </div>
+      <div class="disagree-room">
+        <div class="disagree-btn"></div>
+        <div class="disagree-text"></div>
+      </div>
+      
+      <%= form_with(model: [@room, @comment], local: true) do |form|%>
+        <div class="room-input-box">
+            <div><%= form.text_area :comment, placeholder:"投稿する" ,class:"comment_box"%></div>
+            <div><%= form.submit '投稿', class:"comment_bottom_r"%></div>
+        </div>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
