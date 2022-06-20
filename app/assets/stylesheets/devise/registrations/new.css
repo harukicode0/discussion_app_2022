@@ -12,13 +12,21 @@
   position: relative;
   top: 10%;
   text-align: center;
-  padding: 40px 20px;
 }
 
 .sign-up-title{
+  width: 100%;
   font-size: 52px;
   margin-bottom: 40px;
   color: brown;
+  padding-bottom: 10px;
+  background-color: beige;
+  letter-spacing: 10px;
+}
+
+.sign-up-bottom{
+  width: 100%;
+  padding: 0px 0px 40px;
 }
 
 .field{

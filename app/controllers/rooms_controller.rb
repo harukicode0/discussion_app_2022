@@ -1,9 +1,10 @@
 class RoomsController < ApplicationController
   def index
-    @room = Room.all
+    @rooms = Room.all
   end
 
   def show
+    @room = Room.find(params[:id])
   end
 
   def new
@@ -11,13 +12,19 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @object = Object.new(params[:object])
-    if @object.save
-      flash[:success] = 'Object successfully created'
-      redirect_to @object
+    @room = Room.new(room_params)
+    if @room.save
+      flash[:success] = 'room successfully created'
+      #新規作成したルームへリダイレクトしたい
+      redirect_to root_path
     else
       flash[:error] = 'Something went wrong'
       render 'new'
     end
+  end
+
+  private
+  def room_params
+    params.require(:room).permit(:name)
   end
 end
