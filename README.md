@@ -65,6 +65,17 @@ has_many:Room_genres
 ### Association
 belongs_to:User
 belongs_to:Room
+has_one:position
+
+## Positions
+
+|column             |type      |Options                       |
+|-------------------|----------|------------------------------|
+|id                 |integer   |null: false                   |
+|user_room          |references|null: false,foreign_key: true |
+
+### Association
+belongs_to:user_room
 
 ## Comments
 
