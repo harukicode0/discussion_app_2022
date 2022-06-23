@@ -25,6 +25,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def standing_position
+    redirect_to action: :show
+  end
+
   private
   def room_params
     params.require(:room).permit(:name).merge(maker_user: current_user.nickname, user_ids: [current_user.id])

@@ -5,7 +5,12 @@
   </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
-        <div class="agree-btn opinion-btn">賛成</div>
+        <div class="agree-btn opinion-btn">
+          <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
+            <%= f.hidden_field :standing_position, value:1%>
+            <%= f.submit '賛成'%>
+          <%end%>
+        </div>
         <div class="agree-text opinion-text">
           <% @comments.each do |comment| %>
             <div class="comment">

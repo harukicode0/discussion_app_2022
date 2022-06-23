@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root to: "rooms#index"
   resources :rooms do
     resources :comments,only:[:create, :destory]
+    member do
+      post :standing_position
+    end
   end
 end
