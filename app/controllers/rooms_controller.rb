@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     if @room.save
       flash[:success] = 'room successfully created'
       #新規作成したルームへリダイレクトしたい
-      redirect_to root_path
+      redirect_to room_path(@room)
     else
       flash[:error] = 'Something went wrong'
       render 'new'
@@ -27,6 +27,6 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:name).merge(maker_user: current_user.nickname)
+    params.require(:room).permit(:name).merge(maker_user: current_user.nickname, user_ids: [current_user.id])
   end
 end
