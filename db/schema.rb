@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_091053) do
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "maker_user", null: false
+    t.string "maker_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

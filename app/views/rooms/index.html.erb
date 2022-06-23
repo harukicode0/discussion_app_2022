@@ -11,50 +11,31 @@
     </div>
   <%# コンテンツ表示 %>
     <div class="contents-wrapper">
+      
+      <% @rooms.each do |room| %>
+        <div class="content">
+        <a href="<%= room_path(room)%>" >
+          <div class="content-top">
+            <div class="contents-title">
+              <%= room.name%>
+            </div>
+          </div>
+        </a>
+          <div class="content-percentage">
+            <div class="agree">賛成00%</div>
+            <div class="disagree">反対00%</div>
+          </div>
 
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            企業は値上げを消費者へ価格転化するべきか？
+          <div class="content-bottom">
+            <div class="content-time">
+              残り時間-72:00:00,参加人数
+            </div>
+            <div class="content-maker">
+                <a href="#">作成者：<%= room.maker_user%></a>
+            </div>
           </div>
         </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00,参加人数
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            企業は値上げを消費者へ価格転化するべき
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
+      <% end %>
 
       <div class="content">
         <div class="content-top">
