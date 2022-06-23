@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.preload(:user).order(id: "DESC").pluck
   end
 
   def show

@@ -17,7 +17,7 @@
         <a href="<%= room_path(room)%>" >
           <div class="content-top">
             <div class="contents-title">
-              <%= room.name%>
+              <%= room[1]%>
             </div>
           </div>
         </a>
@@ -31,7 +31,7 @@
               残り時間-72:00:00,参加人数
             </div>
             <div class="content-maker">
-                <a href="#">作成者：<%= room.maker_user%></a>
+                <a href="#">作成者：<%= room[2]%></a>
             </div>
           </div>
         </div>
