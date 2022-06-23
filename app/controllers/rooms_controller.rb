@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @comments = @room.comments.includes(:user)
     @comment = Comment.new
   end
 

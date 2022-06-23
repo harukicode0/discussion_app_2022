@@ -1,23 +1,28 @@
 <%= render 'shared/header' %>
 <div class="room-wrapper">
-  <div class="room-platform">
-    <div class="room-title">
-      <div class="agree-room">
-        <div class="agree-btn"></div>
-        <div class="agree-text"></div>
-      </div>
-      <div class="disagree-room">
-        <div class="disagree-btn"></div>
-        <div class="disagree-text"></div>
-      </div>
-      
-      <%= form_with(model: [@room, @comment], local: true) do |f|%>
-        <div class="room-input-box">
-            <div><%= f.text_area :text, placeholder:"投稿する" ,class:"comment_box"%></div>
-            <div><%= f.submit '投稿', class:"comment_bottom_r"%></div>
-        </div>
-      <%end%>
-      </div>
-    </div>
+  <div class="room-title">
   </div>
+  <div class= "comments-room">
+      <div class="agree-room opinion-room">
+        <div class="agree-btn opinion-btn">賛成</div>
+        <div class="agree-text opinion-text">
+          <% @comments.each do |comment| %>
+            <div class="comment">
+            <%= comment.text%>
+            <%= comment.user.nickname%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="disagree-room opinion-room">
+        <div class="disagree-btn opinion-btn">反対</div>
+        <div class="disagree-text opinion-text"></div>
+      </div>
+  </div>
+    <%= form_with(model: [@room, @comment], local: true) do |f|%>
+        <div class="room-input-box">
+            <%= f.text_area :text, placeholder:"入力してください" ,class:"comment_box"%>
+            <%= f.submit '投稿', class:"comment_bottom_r"%>
+        </div>
+    <%end%>
 </div>
