@@ -12,6 +12,10 @@
   width: 100%;
   background-color: aqua;
   height: 70px;
+  line-height: 70px;
+  font-size: 42px;
+  color: blueviolet;
+  text-align: center;
 }
 
 .comments-room{
