@@ -17,26 +17,28 @@
  ********************************************/
 
 .search-box{
-  width: 500px;
-  margin: 0 auto 50px;
+  margin: 0 auto;
+  width: 80%;
   padding: 50px 0;
+  background-color: beige;
 }
 
 .search-form{
-  
+  text-align: center;
 }
 
 .input-box{
-  width: 400px;
+  width: 50%;
   height: 50px;
   font-size: 20px;
   border-radius: 20px;
   border: none;
-  margin-right: 20px;
+  margin: 20px;
+  padding-left: 20px;
 }
 
 .search-button{
- width: 60px;
+ width: 50px;
  height: 50px;
 }
 
