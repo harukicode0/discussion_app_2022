@@ -2,6 +2,9 @@
 <div class="room-wrapper">
   <div class="room-title">
   <%= @room.name%>
+  <%if @position%>
+  <%=@position.standing_position_id%>
+  <%end%>
   </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
