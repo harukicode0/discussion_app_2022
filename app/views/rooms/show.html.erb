@@ -2,23 +2,17 @@
 <div class="room-wrapper">
   <div class="room-title">
   <%= @room.name%>
-  <%# #賛成反対の表示。参加していない場合も表示。 %>
-  <%if @position%>
-    <%=@position.standing_position.name%>
-  <%else%>
-    <%="あなたはこの議論に参加していません"%>
-  <%end%>
   </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
-        <div class="agree-btn opinion-btn">
+        
           <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
             <%# #1は賛成を示す %>
             <%= f.hidden_field :standing_position, value:1%>
             <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'この意見に賛成！'%>
+            <%= f.submit 'この意見に賛成！', class:"agree-btn opinion-btn"%>
           <%end%>
-        </div>
+
         <div class="agree-text opinion-text">
           <% @comments.each do |comment| %>
             <div class="comment">
@@ -29,19 +23,29 @@
         </div>
       </div>
       <div class="disagree-room opinion-room">
-        <div class="disagree-btn opinion-btn">
+
          <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
             <%# #2は反対を示す %>
             <%= f.hidden_field :standing_position, value:2%>
             <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'この意見に反対！'%>
+            <%= f.submit 'この意見に反対！',class:"disagree-btn opinion-btn"%>
           <%end%>
-        </div>
+
         <div class="disagree-text opinion-text"></div>
       </div>
   </div>
+    
     <%= form_with(model: [@room, @comment], local: true) do |f|%>
         <div class="room-input-box">
+            <div class="position-open">
+              <%# #賛成反対の表示。参加していない場合も表示。 %>
+              <%if @position%>
+                立ち位置:
+                <%=@position.standing_position.name%>
+              <%else%>
+                <%="あなたはこの議論に参加していません"%>
+              <%end%>
+            </div>
             <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
             <%= f.submit '表明', class:"comment_bottom_r"%>
         </div>

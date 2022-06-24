@@ -44,6 +44,7 @@
   color: white;
   line-height: 70px;
   letter-spacing: 20px;
+  border: none;
 }
 
 .agree-btn{
@@ -77,7 +78,7 @@
 }
 
 .comment_box{
-  width: 90%;
+  width: 80%;
   border: none;
   margin: 20px;
   padding: 5px 0  0 10px;
@@ -91,4 +92,13 @@
   border-radius: 5px;
   border: none;
   background-color: aquamarine;
+}
+
+.position-open{
+  width: 10%;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  background-color: red;
+  font-size: 14px;
 }
