@@ -7,4 +7,12 @@ class Room < ApplicationRecord
     validates :name
     validates :maker_user
   end
+
+  def self.search(search)
+    if search != ""
+      Room.where('name LIKE(?)', "%#{search}%")
+    else
+      Room.all
+    end
+  end
 end

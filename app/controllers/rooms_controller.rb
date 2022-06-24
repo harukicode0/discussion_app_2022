@@ -3,6 +3,12 @@ class RoomsController < ApplicationController
     @rooms = Room.preload(:user).order(id: "DESC").pluck
   end
 
+  def search
+    @rooms = Room.search(params[:keyword])
+    @rooms = @rooms.preload(:user).order(id: "DESC").pluck    
+    render 'index'
+  end
+
   def show
     @room = Room.find(params[:id])
     @comments = @room.comments.includes(:user)

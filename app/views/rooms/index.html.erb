@@ -3,11 +3,15 @@
   <div class="parts">
   <%# 検索ボックス %>
     <div class = "search-box">
-      <form class="search-form" action="#">
+      <%# <form class="search-form" action="#">
         <input class='input-box' placeholder='キーワードから探す'>
         <button class="search-button">検索画像
-        </button>
-      </form>
+        </button> %>
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "検索する", class: "input-box" %>
+          <%= form.submit "検索", class: "search-button" %>
+        <% end %>
+      <%# </form> %>
     </div>
   <%# コンテンツ表示 %>
     <div class="contents-wrapper">
@@ -36,117 +40,6 @@
           </div>
         </div>
       <% end %>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            Twitter上でのヘイトスピーチは規制されるべき
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            ベーシックインカムを導入すべき
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            映画は家で見るほうがいい
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            ペットを溺愛していると結婚できない
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="content-top">
-          <div class="contents-title">
-            IT業界は今後飽和状態になる
-          </div>
-        </div>
-
-        <div class="content-percentage">
-          <div class="agree">賛成00%</div>
-          <div class="disagree">反対00%</div>
-        </div>
-
-        <div class="content-bottom">
-          <div class="content-time">
-            残り時間-72:00:00
-          </div>
-          <div class="content-maker">
-              <a href="#">作者:abcdefghijk</a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
