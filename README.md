@@ -22,6 +22,7 @@ has_many:User_rooms
 has_many:Comments
 has_many:Likes
 has_many:replys
+has_many:owners
 
 
 ## Relationships
@@ -43,7 +44,6 @@ belongs_to:following,class_name:"User"
 |-------------------|----------|------------------------------|
 |id                 |integer   |null: false                   |
 |name               |string    |null: false                   |
-|maker_user         |integer   |null: false                   |
 
 ### Association
 has_many:Users
@@ -66,6 +66,19 @@ has_many:Room_genres
 belongs_to:User
 belongs_to:Room
 has_one:position
+has_one:owner
+
+## Owners
+
+|column             |type      |Options                       |
+|-------------------|----------|------------------------------|
+|id                 |integer   |null: false                   |
+|user               |references|null: false,foreign_key: true |
+|room               |references|null: false,foreign_key: true |
+
+### Association
+belongs_to:User
+belongs_to:Room
 
 ## Positions
 

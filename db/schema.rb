@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_23_154349) do
+ActiveRecord::Schema.define(version: 2022_06_24_091045) do
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2022_06_23_154349) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_comments_on_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "owners", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "owner_id"
+    t.bigint "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_owners_on_owner_id"
+    t.index ["room_id"], name: "index_owners_on_room_id"
   end
 
   create_table "positions", charset: "utf8", force: :cascade do |t|
@@ -32,7 +42,6 @@ ActiveRecord::Schema.define(version: 2022_06_23_154349) do
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "maker_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -64,6 +73,8 @@ ActiveRecord::Schema.define(version: 2022_06_23_154349) do
 
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
+  add_foreign_key "owners", "rooms"
+  add_foreign_key "owners", "users", column: "owner_id"
   add_foreign_key "positions", "user_rooms"
   add_foreign_key "user_rooms", "rooms"
   add_foreign_key "user_rooms", "users"

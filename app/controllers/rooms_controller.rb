@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.preload(:user).order(id: "DESC").pluck
+    @rooms = Room.all.order(id: "DESC")
   end
 
   def search
@@ -23,11 +23,9 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      flash[:success] = 'room successfully created'
-      #新規作成したルームへリダイレクトしたい
+      Owner.create(name:current_user.nickname, owner_id: current_user.id,room_id:@room.id)
       redirect_to room_path(@room)
     else
-      flash[:error] = 'Something went wrong'
       render 'new'
     end
   end
@@ -56,7 +54,7 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:name).merge(maker_user: current_user.nickname, user_ids: [current_user.id])
+    params.require(:room).permit(:name).merge(user_ids: [current_user.id])
   end
 
   def find_your_positioin
