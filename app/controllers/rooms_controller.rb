@@ -38,12 +38,12 @@ class RoomsController < ApplicationController
         redirect_to action: :show
       else
         #ポジションがない場合
-        @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
+        create_new_position
         redirect_to action: :show
       end
     else
       @user_room = UserRoom.create(room_id: @room.id, user_id: current_user.id) #中間テーブルを作成
-      @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])  #ポジションを作成
+      create_new_position  #ポジションを作成
       redirect_to action: :show
     end
   end
@@ -57,5 +57,9 @@ class RoomsController < ApplicationController
     if @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
       @position = @user_room.position
     end
+  end
+
+  def create_new_position
+    @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
   end
 end
