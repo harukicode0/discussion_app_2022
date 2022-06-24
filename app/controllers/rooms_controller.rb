@@ -7,6 +7,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @comments = @room.comments.includes(:user)
     @comment = Comment.new
+    find_your_positioin
   end
 
   def new
@@ -50,5 +51,11 @@ class RoomsController < ApplicationController
   private
   def room_params
     params.require(:room).permit(:name).merge(maker_user: current_user.nickname, user_ids: [current_user.id])
+  end
+
+  def find_your_positioin
+    if @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
+      @position = @user_room.position
+    end
   end
 end
