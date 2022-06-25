@@ -1,0 +1,11 @@
+.mypage{
+  width: 100vh;
+  background-color: gray;
+}
+
+.mypage-wrapper{
+  width: 70%;
+  background-color: rgb(203, 203, 203);
+  display: flex;
+  justify-content: center;
+}
