@@ -45,21 +45,27 @@
         </div>
       </div>
   </div>
-    
-    <%= form_with(model: [@room, @comment], local: true) do |f|%>
-        <div class="room-input-box">
-            <div class="position-open">
-              <%# #賛成反対の表示。参加していない場合も表示。 %>
-              <%if @position%>
-                立ち位置:
-                <%=@position.standing_position.name%>
-              <%else%>
-                <%="あなたはこの議論に参加していません"%>
-              <%end%>
-            </div>
-            <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
-            <%# <%= f.hidden_field :standing_position, value:@position.standing_position_id%> 
-            <%= f.submit '表明', class:"comment_bottom_r"%>
-        </div>
+    <% if user_signed_in? %>
+      <%= form_with(model: [@room, @comment], local: true) do |f|%>
+          <div class="room-input-box">
+              <div class="position-open">
+                <%# #賛成反対の表示。参加していない場合も表示。 %>
+                <%if @position%>
+                  立ち位置:
+                  <%= @position.standing_position.name%>
+                <%else%>
+                  <%="あなたはこの議論に参加していません"%>
+                <%end%>
+              </div>
+              <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+              <%# <%= f.hidden_field :standing_position, value:@position.standing_position_id%> 
+              <%= f.submit '表明', class:"comment_bottom_r"%>
+          </div>
+      <%end%>
+    <%else%>
+     <div class="room-input-box">
+      ログインするとコメントできます
+      </div>
     <%end%>
+
 </div>

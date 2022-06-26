@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :search]
+  before_action :authenticate_user!, except:[:index, :show, :search]
 
   def index
     @rooms = Room.includes(:owner).order(id: "DESC")
@@ -60,7 +60,8 @@ class RoomsController < ApplicationController
   end
 
   def find_user_positioin
-    if @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
+    if user_signed_in?
+      @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
       @position = @user_room.position
     end
   end

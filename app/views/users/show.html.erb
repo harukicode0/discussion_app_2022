@@ -4,7 +4,7 @@
 
     <div class="mypage-left">
       <div class="mypage-icon">
-      <%if current_user.id == @user.id %>
+      <%if user_signed_in? && current_user.id == @user.id %>
         自身のマイページ
       <% else %>
         <%= @user.nickname%>さんのページ
@@ -39,7 +39,7 @@
                   <div class="content-percentage">
                     <div class="agree">YES: 00%</div>
                     <div class="disagree">NO: 00%</div>
-                  </div>
+                  </div
 
                   <div class="content-bottom">
                     <div class="content-time content-bottom-list">
