@@ -47,6 +47,7 @@
               <%end%>
             </div>
             <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+            <%# <%= f.hidden_field :position_id, value:@position.standing_position_id%> 
             <%= f.submit '表明', class:"comment_bottom_r"%>
         </div>
     <%end%>
