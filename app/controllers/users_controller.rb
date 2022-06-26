@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @rooms = Room.all.order(id: "DESC")
+    @rooms = Room.includes(:owner).order(created_at: "DESC")
   end
 
   def set_user

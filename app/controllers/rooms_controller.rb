@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   def search
     @rooms = Room.search(params[:keyword])
-    @rooms = @rooms.preload(:user).order(id: "DESC").pluck    
+    @rooms = @rooms.preload(:user).order(created_at: "DESC").pluck    
     render 'index'
   end
 
