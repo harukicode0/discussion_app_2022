@@ -1,11 +1,71 @@
 .mypage{
-  width: 100vh;
-  background-color: gray;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(209, 81, 81);
 }
 
 .mypage-wrapper{
-  width: 70%;
+  margin: auto;
+  width: 80%;
   background-color: rgb(203, 203, 203);
   display: flex;
   justify-content: center;
+}
+
+/*****************************************
+左側 
+******************************************/
+
+.mypage-left{
+  width: 20%;
+  background-color: aqua;
+  margin:50px;
+  color: black;
+  font-size: 40px;
+  height: 400px;
+}
+
+.mypage-icon{
+  padding:40px;
+}
+
+.mypage-info{
+  padding: 40px;
+}
+
+/*****************************************
+右側 
+******************************************/
+
+.mypage-right{
+  width: 80%;
+  margin:50px 50px 50px 0;
+  background-color: azure;
+}
+
+.maypage-top{
+  list-style: none;
+  display: flex;
+  padding: 20px;
+}
+
+.maypage-top a{
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.my-disscasion{
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.my-content{
+    display: block;
+    width: 30%;
+    height: 300px;
+    background-color: aquamarine;
+    margin-bottom: 40px;
 }

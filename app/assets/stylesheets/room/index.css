@@ -1,5 +1,6 @@
 :root{
-  --content-width:90%;
+  --content-height:500px;
+
 }
 
 .main-wrapper{
@@ -46,7 +47,7 @@
 コンテンツの表示
  ********************************************/
 .contents-wrapper{
-  width: var(--content-width);
+  width: 90%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -58,7 +59,7 @@
  .content{
   display: block;
   width: 30%;
-  height: 500px;
+  height: var(--content-height);
   background-color: aquamarine;
   margin-bottom: 40px;
  }
