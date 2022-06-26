@@ -13,5 +13,5 @@ class User < ApplicationRecord
   has_many :comments
   has_many :owners
   #validates
-  validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
+  # validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
 end

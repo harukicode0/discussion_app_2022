@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :show, :search]
+
   def index
-    @rooms = Room.all.order(id: "DESC")
+    @rooms = Room.includes(:owner).order(id: "DESC")
   end
 
   def search
-    @rooms = Room.search(params[:keyword])
-    @rooms = @rooms.preload(:user).order(created_at: "DESC").pluck    
+    @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
     render 'index'
   end
 
@@ -13,7 +14,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @comments = @room.comments.includes(:user)
     @comment = Comment.new
-    find_your_positioin
+    find_user_positioin
   end
 
   def new
@@ -53,12 +54,14 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
     params.require(:room).permit(:name).merge(user_ids: [current_user.id])
   end
 
-  def find_your_positioin
-    if @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
+  def find_user_positioin
+    if user_signed_in?
+      @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
       @position = @user_room.position
     end
   end

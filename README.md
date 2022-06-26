@@ -60,7 +60,6 @@ has_many:Room_genres
 |id                 |integer   |null: false                   |
 |user               |references|null: false,foreign_key: true |
 |room               |references|null: false,foreign_key: true |
-|position_id        |integer   |                              |active_hash
 
 ### Association
 belongs_to:User
@@ -86,24 +85,28 @@ belongs_to:Room
 |-------------------|----------|------------------------------|
 |id                 |integer   |null: false                   |
 |user_room          |references|null: false,foreign_key: true |
+|position_id        |integer   |                              |active_hash
 
 ### Association
 belongs_to:user_room
+has_many:comment
 
 ## Comments
 
-|column             |type    |Options                       |
-|-------------------|--------|------------------------------|
-|id                 |integer |null: false                   |
-|text               |text    |null: false                   |
-|user               |integer |null: false,foreign_key: true |
-|room               |integer |null: false,foreign_key: true |
+|column             |type      |Options                       |
+|-------------------|----------|------------------------------|
+|id                 |integer   |null: false                   |
+|text               |text      |null: false                   |
+|user               |integer   |null: false,foreign_key: true |
+|room               |integer   |null: false,foreign_key: true |
+|position           |references|null: false,foreign_key: true |
 
 ### Association
 belongs_to:User
 belongs_to:Room
 has_many:likes
 has_many: replys
+belongs_to:position
 
 
 ## Genres

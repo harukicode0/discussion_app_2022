@@ -1,0 +1,25 @@
+<div class="content">
+        <a href="<%= room_path(room)%>" >
+          <div class="content-top">
+            <div class="contents-title">
+              <%= room.name%>
+            </div>
+          </div>
+        </a>
+          <div class="content-percentage">
+            <div class="agree">YES: 00%</div>
+            <div class="disagree">NO: 00%</div>
+          </div>
+
+          <div class="content-bottom">
+            <div class="content-time content-bottom-list">
+              残り時間-72:00:00
+            </div>
+            <div class="content-participant content-bottom-list">
+              ０人参加
+            </div>
+            <div class=" content-bottom-list">
+              <%= link_to "作成者：#{room.owner.name}", user_path(room.owner.owner_id),class:"content-owner" %>
+            </div>
+          </div>
+        </div>
