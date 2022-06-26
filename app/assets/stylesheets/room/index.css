@@ -1,5 +1,5 @@
 :root{
-  --content-height:500px;
+  --content-height:400px;
 
 }
 
@@ -47,24 +47,24 @@
 コンテンツの表示
  ********************************************/
 .contents-wrapper{
-  width: 90%;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
-  padding-bottom: 80px;
+  padding-bottom:80px;
   margin: 0 auto;
+  background-color: bisque;
 }
 
- .content{
-  display: block;
-  width: 30%;
+ .content,.my-content{
+  width: 24%;
   height: var(--content-height);
   background-color: aquamarine;
-  margin-bottom: 40px;
+  margin: 5px 0;
  }
 
- .content a{
+ .content a,.my-content a{
   text-decoration: none;
  }
 
@@ -72,7 +72,7 @@
   box-sizing: border-box;
    width: 100%;
    height: 70%;
-   padding:30px ;
+   padding:20px ;
    background-color: rgb(149, 74, 142);
    color: aliceblue;
    font-size: 30px;
