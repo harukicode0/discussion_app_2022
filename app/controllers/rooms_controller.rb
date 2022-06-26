@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :search]
+
   def index
-    @rooms = Room.all.order(id: "DESC")
+    @rooms = Room.includes(:owner).order(id: "DESC")
   end
 
   def search
-    @rooms = Room.search(params[:keyword])
-    @rooms = @rooms.preload(:user).order(created_at: "DESC").pluck    
+    @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
     render 'index'
   end
 
@@ -53,6 +54,7 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
     params.require(:room).permit(:name).merge(user_ids: [current_user.id])
   end

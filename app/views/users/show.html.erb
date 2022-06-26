@@ -4,10 +4,14 @@
 
     <div class="mypage-left">
       <div class="mypage-icon">
-        nickname: <%= current_user.nickname%>
+      <%if current_user.id == @user.id %>
+        自身のマイページ
+      <% else %>
+        <%= @user.nickname%>さんのページ
+      <% end %>
       </div>
       <div class="mypage-info">
-        id: <%= current_user.id%>
+        id: <%= @user.id%>
       </div>
     </div>
 
@@ -23,7 +27,7 @@
           <div class="my-disscasion">
           <%# そのユーザーが￥作成したものだけを表示する %>
             <% @rooms.each do |room| %>
-              <%if room.owner.owner_id == current_user.id%>
+              <%if room.owner.owner_id == @user.id%>
                 <div class="my-content">
                 <a href="<%= room_path(room)%>" >
                   <div class="content-top">

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @room = Room.find(params[:room_id])
     if find_user_positioin
