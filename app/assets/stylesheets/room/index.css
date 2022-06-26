@@ -1,5 +1,6 @@
 :root{
-  --content-width:90%;
+  --content-height:400px;
+
 }
 
 .main-wrapper{
@@ -46,31 +47,31 @@
 コンテンツの表示
  ********************************************/
 .contents-wrapper{
-  width: var(--content-width);
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
-  padding-bottom: 80px;
+  padding-bottom:80px;
   margin: 0 auto;
+  background-color: bisque;
 }
 
- .content{
-  display: block;
-  width: 30%;
-  height: 400px;
+ .content,.my-content{
+  width: 24%;
+  height: var(--content-height);
   background-color: aquamarine;
-  margin-bottom: 40px;
+  margin: 5px 0;
  }
 
- .content a{
+ .content a,.my-content a{
   text-decoration: none;
  }
 
  .content-top{
   box-sizing: border-box;
    width: 100%;
-   height: 80%;
+   height: 70%;
    padding:20px ;
    background-color: rgb(149, 74, 142);
    color: aliceblue;
@@ -83,7 +84,7 @@
  .content-percentage{
   display: flex;
   width: 100%;
-  height: 13%;
+  height: 10%;
  }
 
  .agree{
@@ -107,21 +108,26 @@
   padding: 5px;
 }
 
+/*******************************************
+コンテンツ下部の表示
+ ********************************************/
+
 .content-bottom{
-  height: calc(100% - 13% - 80%);
+  box-sizing: border-box;
+  height: calc(100% - 10% - 70%);
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding:10px 30px;
   background-color: rgb(139, 148, 45);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.content-time{
-  padding-left: 5px;
+.content-bottom-list{
+  color: white;
 }
 
-.content-maker a{
+.content-owner{
+  color: aliceblue;
   text-decoration: none;
-  line-height: 100%;
-  padding-right: 5px;
 }

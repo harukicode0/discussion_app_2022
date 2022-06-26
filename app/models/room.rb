@@ -2,10 +2,10 @@ class Room < ApplicationRecord
   has_many :user_rooms
   has_many :users, through: :user_rooms
   has_many :comments
+  has_one :owner
 
   with_options presence: true do
     validates :name
-    validates :maker_user
   end
 
   def self.search(search)

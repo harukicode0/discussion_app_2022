@@ -10,7 +10,7 @@
             <%# #1は賛成を示す %>
             <%= f.hidden_field :standing_position, value:1%>
             <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'この意見に賛成！', class:"agree-btn opinion-btn"%>
+            <%= f.submit 'YES！', class:"agree-btn opinion-btn"%>
           <%end%>
 
         <div class="agree-text opinion-text">
@@ -28,7 +28,7 @@
             <%# #2は反対を示す %>
             <%= f.hidden_field :standing_position, value:2%>
             <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'この意見に反対！',class:"disagree-btn opinion-btn"%>
+            <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>
           <%end%>
 
         <div class="disagree-text opinion-text"></div>
