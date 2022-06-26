@@ -14,11 +14,13 @@
           <%end%>
 
         <div class="agree-text opinion-text">
-          <% @comments.each do |comment| %>
-            <div class="comment">
-            <%= comment.text%>
-            <%= comment.user.nickname%>
-            </div>
+        <% @comments.each do |comment| %>
+            <%if comment.standing_position_id ==1%>
+              <div class="comment">
+              <%= comment.text%>
+              <%= comment.user.nickname%>
+              </div>
+            <%end%>
           <% end %>
         </div>
       </div>
@@ -31,7 +33,16 @@
             <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>
           <%end%>
 
-        <div class="disagree-text opinion-text"></div>
+        <div class="disagree-text opinion-text">
+        <% @comments.each do |comment| %>
+            <%if comment.standing_position_id ==2%>
+              <div class="comment">
+              <%= comment.text%>
+              <%= comment.user.nickname%>
+              </div>
+            <%end%>
+          <% end %>
+        </div>
       </div>
   </div>
     
@@ -47,7 +58,7 @@
               <%end%>
             </div>
             <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
-            <%# <%= f.hidden_field :position_id, value:@position.standing_position_id%> 
+            <%# <%= f.hidden_field :standing_position, value:@position.standing_position_id%> 
             <%= f.submit '表明', class:"comment_bottom_r"%>
         </div>
     <%end%>
