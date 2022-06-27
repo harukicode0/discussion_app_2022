@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.includes(:owner).order(id: "DESC")
     @participants_number_hash = UserRoom.group(:room_id).count
+    @userrooms = UserRoom.includes(:position)
   end
 
   def search

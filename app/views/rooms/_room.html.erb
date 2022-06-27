@@ -1,4 +1,16 @@
-<div class="content">
+            <% @yes = 0 %>
+            <% @no = 0 %>
+            <% @userrooms.where(room_id:room.id).each do |userroom| %>
+              <%if userroom.position != nil%>
+                <%if userroom.position.standing_position_id == 1%>
+                  <%@yes+=1%>
+                <%elsif userroom.position.standing_position_id == 2%>
+                  <%@no+=1%>
+                <%end%>
+              <%end%>
+            <%end%>
+            <% @y_percent = 100*@yes/(@yes + @no)%>
+      <div class="content">
         <a href="<%= room_path(room)%>" >
           <div class="content-top">
             <div class="contents-title">
@@ -7,13 +19,17 @@
           </div>
         </a>
           <div class="content-percentage">
-            <div class="agree">YES: 00%</div>
-            <div class="disagree">NO: 00%</div>
+            <div class="agree">YES:
+              <%if @yes != 0%><%=@y_percent%>%<%else%>0<%end%>
+            </div>
+            <div class="disagree">NO:
+              <%if @no != 0%><%=100 - @y_percent%>%<%else%>0<%end%>
+            </div>
           </div>
 
           <div class="content-bottom">
             <div class="content-time content-bottom-list">
-              残り時間-72:00:00
+              残り時間 - 72:00:00
             </div>
             <div class="content-participant content-bottom-list">
               <%= @participants_number_hash[room.id]%>名参加
