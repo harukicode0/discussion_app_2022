@@ -8,6 +8,8 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 require("../time")
+require("../timeup")
+
 
 Rails.start()
 // Turbolinks.start()
