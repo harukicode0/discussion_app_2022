@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.includes(:owner).order(id: "DESC")
+    @participants_number_hash = UserRoom.group(:room_id).count
   end
 
   def search
@@ -71,7 +72,6 @@ class RoomsController < ApplicationController
   end
 
   def count_participants
-    query = "SELECT * FROM `user_rooms` WHERE room_id = #{@room.id}"
-    @participants_number = UserRoom.find_by_sql(query).count
+    @participants_number = UserRoom.where(room_id:@room.id).count
   end
 end
