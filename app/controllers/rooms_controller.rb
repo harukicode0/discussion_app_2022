@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
     @comments = @room.comments.includes(:user)
     @comment = Comment.new
     find_user_positioin
-    count_participants
+    @count_participants = count_participants(@room.id)
   end
 
   def new
@@ -71,7 +71,7 @@ class RoomsController < ApplicationController
     @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
   end
 
-  def count_participants
-    @participants_number = UserRoom.where(room_id:@room.id).count
+  def count_participants(id)
+    UserRoom.where(room_id:id).count
   end
 end
