@@ -1,7 +1,6 @@
 function countdown(){
   const now = new Date();//今の時間
   const deadlines = document.getElementsByClassName("deadline");//deadlineを取得
-  // console.log(deadlines[0].getAttribute("id"))
   for(let i = 0; i < deadlines.length; i++){
     const differ = (new Date(deadlines[i].textContent) - now);//3日後まであと何ミリ秒か
     const differ_id = deadlines[i].getAttribute("id")
