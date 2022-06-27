@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :search
+      get :sort
     end
   end
   resources :users, only: [:show]
