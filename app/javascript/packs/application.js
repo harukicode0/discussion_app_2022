@@ -10,5 +10,5 @@ import "channels"
 require("../time")
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
