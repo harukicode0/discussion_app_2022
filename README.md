@@ -44,6 +44,7 @@ belongs_to:following,class_name:"User"
 |-------------------|----------|------------------------------|
 |id                 |integer   |null: false                   |
 |name               |string    |null: false                   |
+|deadline           |datetime  |                              |
 
 ### Association
 has_many:Users

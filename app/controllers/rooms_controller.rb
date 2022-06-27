@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.includes(:owner).order(id: "DESC")
     @participants_number_hash = UserRoom.group(:room_id).count
+    @userrooms = UserRoom.includes(:position)
   end
 
   def search
@@ -58,7 +59,7 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name).merge(user_ids: [current_user.id])
+    params.require(:room).permit(:name).merge(user_ids: [current_user.id],deadline:Time.now+3.days)
   end
 
   def find_user_positioin
