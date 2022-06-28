@@ -26,7 +26,11 @@
           <div class="mypage-title"></div>
           <div class="my-discussion">
           <%# そのユーザーが作成したものだけを表示する %>
-            <%= render partial: "./rooms/room", collection: @rooms %>
+          <% @rooms.each do |room| %>
+            <%if room.owner.owner_id == @user.id%>
+              <%= render partial: "./rooms/room", locals: {room: room} %>
+            <% end %>
+          <% end %>
           </div>
         </div>
       </div>
