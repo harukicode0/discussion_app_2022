@@ -13,4 +13,8 @@ class Comment < ApplicationRecord
   def like?(user, comment)
     Like.where(user_id: user.id, comment_id:comment.id).exists?
   end
+
+  def count_like(comment)
+    Like.where(comment_id:comment.id).count
+  end
 end
