@@ -41,6 +41,15 @@
               <%= comment.text%>
               <%= comment.user.nickname%>
               </div>
+                <% if comment.like?(current_user) %>
+                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :delete do %>
+                    <span style="color:red;">❤︎</span>
+                  <% end %>
+                <% else %>
+                  <%= link_to room_comment_likes_index_path(@room.id, comment.id), method: :post do %>
+                    <span>❤︎</span>
+                  <% end %>
+                <% end %>
             <%end%>
           <% end %>
         </div>
