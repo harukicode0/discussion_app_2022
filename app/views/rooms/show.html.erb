@@ -21,6 +21,15 @@
               <%= comment.text%>
               <%= comment.user.nickname%>
               </div>
+              <% if comment.like?(current_user,comment) %>
+                  <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
+                    <span style="color:red;">❤︎</span>
+                  <% end %>
+                <% else %>
+                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
+                    <span style="color:gray;">❤︎</span>
+                  <% end %>
+                <% end %>
             <%end%>
           <% end %>
         </div>
@@ -41,13 +50,13 @@
               <%= comment.text%>
               <%= comment.user.nickname%>
               </div>
-                <% if comment.like?(current_user) %>
-                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :delete do %>
+                <% if comment.like?(current_user,comment) %>
+                  <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
                     <span style="color:red;">❤︎</span>
                   <% end %>
                 <% else %>
-                  <%= link_to room_comment_likes_index_path(@room.id, comment.id), method: :post do %>
-                    <span>❤︎</span>
+                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
+                    <span style="color:gray;">❤︎</span>
                   <% end %>
                 <% end %>
             <%end%>

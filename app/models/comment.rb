@@ -10,7 +10,7 @@ class Comment < ApplicationRecord
   end
   validates :standing_position_id, numericality: true
 
-  def like?(user)
-    Like.where(user_id: user.id).exists?
+  def like?(user, comment)
+    Like.where(user_id: user.id, comment_id:comment.id).exists?
   end
 end

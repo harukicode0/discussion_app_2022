@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     resources :comments,only:[:show, :create, :destroy] do
       resources :likes,only:[:create, :destroy]
     end
+    
     member do
       post :standing_position
     end
+
     collection do
       get :search
       get :sort
