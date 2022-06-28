@@ -3,12 +3,14 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.includes(:owner).order(id: "DESC")
-    @participants_number_hash = UserRoom.group(:room_id).count
-    @userrooms = UserRoom.includes(:position)
+    get_participant_number
+    get_user_rooms
   end
 
   def search
     @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
+    get_participant_number
+    get_user_rooms
     render 'index'
   end
 
@@ -74,5 +76,13 @@ class RoomsController < ApplicationController
 
   def count_participants(id)
     UserRoom.where(room_id:id).count
+  end
+
+  def get_user_rooms
+    @userrooms = UserRoom.includes(:position)
+  end
+
+  def get_participant_number
+    @participants_number_hash = UserRoom.group(:room_id).count
   end
 end
