@@ -69,4 +69,12 @@ class RoomsController < ApplicationController
       @position = @user_room.position
     end
   end
+
+  def create_new_position
+    @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
+  end
+  
+  def count_participants(id)
+    UserRoom.where(room_id:id).count
+  end
 end

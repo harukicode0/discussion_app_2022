@@ -82,14 +82,14 @@ sort部分
   background-color: bisque;
 }
 
- .content,.my-content{
+ .content{
   width: 24%;
   height: var(--content-height);
   background-color: aquamarine;
   margin: 5px 0;
  }
 
- .content a,.my-content a{
+ .content a{
   text-decoration: none;
  }
 
