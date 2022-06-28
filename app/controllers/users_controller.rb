@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :get_rooms, only: [:show]
 
   def show
-    
-    # binding.pry
-    @user = User.find(params[:id])
-    @rooms = Room.includes(:owner).order(created_at: "DESC")
+    get_user_rooms
+    get_participant_number
   end
 
   private

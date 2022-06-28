@@ -43,19 +43,19 @@
   background-color: azure;
 }
 
-.maypage-top{
+.mypage-top{
   list-style: none;
   display: flex;
   padding: 20px;
 }
 
-.maypage-top a{
+.mypage-top a{
   text-decoration: none;
   margin-right: 20px;
   font-size: 20px;
 }
 
-.my-disscasion{
+.my-discussion{
   padding: 20px;
   display: flex;
   justify-content: space-around;
