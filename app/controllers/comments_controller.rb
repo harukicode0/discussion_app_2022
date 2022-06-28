@@ -5,17 +5,14 @@ class CommentsController < ApplicationController
     @room = Room.find(params[:room_id])
     if find_user_positioin
       comment = Comment.new(comment_params)
-      
       if comment.save
         redirect_to room_path(@room)
       else
-        @comment = Comment.new
-        @comments = @room.comments.includes(:user)
+        create_comments
         render 'rooms/show'
       end
     else
-      @comment = Comment.new
-      @comments = @room.comments.includes(:user)
+      create_comments
       render 'rooms/show'
     end
   end

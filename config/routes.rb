@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "rooms#index"
   resources :rooms do
-    resources :comments,only:[:create, :destory]
+    resources :comments,only:[:show, :create, :destroy] do
+      resources :likes,only:[:create, :destroy]
+    end
+    
     member do
       post :standing_position
     end
+
     collection do
       get :search
       get :sort

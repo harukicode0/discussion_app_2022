@@ -10,8 +10,9 @@ class User < ApplicationRecord
   belongs_to :sex
   has_many :user_rooms
   has_many :rooms ,through: :user_rooms
-  has_many :comments
+  has_many :comments,dependent: :destroy
   has_many :owners
+  has_many :likes,dependent: :destroy
   #validates
   # validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
 end

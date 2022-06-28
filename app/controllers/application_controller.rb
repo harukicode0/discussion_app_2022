@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
   def get_rooms
     @rooms = Room.includes(:owner).order(created_at: "DESC")
   end
+
+  def create_comments
+    @comments = @room.comments.includes(:user)
+  end
 end
