@@ -5,7 +5,7 @@
     <div class = "search-box">
         <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
           <%= form.text_field :keyword, placeholder: "検索する", class: "input-box" %>
-          <%= form.submit "検索", class: "search-button" %>
+          <%= image_submit_tag("search.png", class: 'search-button') %>
         <% end %>
         <div class="sort">
         <%# ソート機能を実装する %>
