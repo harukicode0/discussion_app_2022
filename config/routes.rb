@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
     collection do
       get :search
-      get :sort
+      get :sort_participants
+      get :sort_likes
     end
   end
   resources :users, only: [:show]

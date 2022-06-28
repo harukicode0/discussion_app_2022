@@ -68,6 +68,11 @@ sort部分
    padding: 7px 3px;
    font-weight: bold;
  }
+
+ .sort-btn a{
+  text-decoration: none;
+  color: black;
+ }
 /*******************************************
 コンテンツの表示
  ********************************************/

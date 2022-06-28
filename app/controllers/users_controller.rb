@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     get_user_rooms
-    get_participant_number
   end
 
   private

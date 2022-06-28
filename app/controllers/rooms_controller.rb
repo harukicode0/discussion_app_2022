@@ -3,13 +3,11 @@ class RoomsController < ApplicationController
 
   def index
     get_rooms
-    get_participant_number
     get_user_rooms
   end
 
   def search
     @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
-    get_participant_number
     get_user_rooms
     render 'index'
   end
@@ -56,6 +54,20 @@ class RoomsController < ApplicationController
       create_new_position  #ポジションを作成
       redirect_to action: :show
     end
+  end
+
+  def sort_participants
+    get_rooms
+    get_user_rooms
+    # sort = @participants_number_hash.sort{|(k1, v1), (k2, v2)| v2 <=> v1 }.to_h
+    # s_room = Room.joins(:user_rooms)
+    binding.pry
+    
+    redirect_to root_path
+  end
+
+  def sort_likes
+    redirect_to root_path
   end
 
   private
