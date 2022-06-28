@@ -5,7 +5,7 @@
     <div class="mypage-left">
       <div class="mypage-icon">
       <%if user_signed_in? && current_user.id == @user.id %>
-        自身のマイページ
+        あなたのマイページ
       <% else %>
         <%= @user.nickname%>さんのページ
       <% end %>
@@ -17,41 +17,16 @@
 
     <div class="mypage-right">
       <div class="mypage-contents">
-          <ul class="maypage-top">
+          <ul class="mypage-top">
             <li><%= link_to "作成した議論", url:"#"%></li>
             <li><%= link_to "参加している議論", url:"#"%></li>
           </ul>
 
         <div class="mypage-content">
           <div class="mypage-title"></div>
-          <div class="my-disscasion">
-          <%# そのユーザーが￥作成したものだけを表示する %>
-            <% @rooms.each do |room| %>
-              <%if room.owner.owner_id == @user.id%>
-                <div class="my-content">
-                <a href="<%= room_path(room)%>" >
-                  <div class="content-top">
-                    <div class="contents-title">
-                      <%= room.name%>
-                    </div>
-                  </div>
-                </a>
-                  <div class="content-percentage">
-                    <div class="agree">YES: 00%</div>
-                    <div class="disagree">NO: 00%</div>
-                  </div
-
-                  <div class="content-bottom">
-                    <div class="content-time content-bottom-list">
-                      残り時間-72:00:00
-                    </div>
-                    <div class="content-participant content-bottom-list">
-                      ０人参加
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+          <div class="my-discussion">
+          <%# そのユーザーが作成したものだけを表示する %>
+            <%= render partial: "./rooms/room", collection: @rooms %>
           </div>
         </div>
       </div>

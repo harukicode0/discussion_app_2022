@@ -2,13 +2,15 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show, :search]
 
   def index
-    @rooms = Room.includes(:owner).order(id: "DESC")
-    @participants_number_hash = UserRoom.group(:room_id).count
-    @userrooms = UserRoom.includes(:position)
+    get_rooms
+    get_participant_number
+    get_user_rooms
   end
 
   def search
     @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
+    get_participant_number
+    get_user_rooms
     render 'index'
   end
 
@@ -66,13 +68,5 @@ class RoomsController < ApplicationController
     if user_signed_in? && @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
       @position = @user_room.position
     end
-  end
-
-  def create_new_position
-    @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
-  end
-
-  def count_participants(id)
-    UserRoom.where(room_id:id).count
   end
 end
