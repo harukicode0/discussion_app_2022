@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_24_091053) do
+ActiveRecord::Schema.define(version: 2022_06_28_071732) do
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2022_06_24_091053) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_comments_on_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "owners", charset: "utf8", force: :cascade do |t|
@@ -75,6 +84,8 @@ ActiveRecord::Schema.define(version: 2022_06_24_091053) do
 
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "users"
   add_foreign_key "owners", "rooms"
   add_foreign_key "owners", "users", column: "owner_id"
   add_foreign_key "positions", "user_rooms"
