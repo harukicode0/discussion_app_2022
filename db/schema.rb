@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_071732) do
+ActiveRecord::Schema.define(version: 2022_06_29_091501) do
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 2022_06_28_071732) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_room_id"], name: "index_positions_on_user_room_id"
+  end
+
+  create_table "relationships", charset: "utf8", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
