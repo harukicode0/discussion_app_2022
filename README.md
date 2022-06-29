@@ -30,8 +30,8 @@ has_many:owners
 |column             |type    |Options                      |
 |-------------------|--------|-----------------------------|
 |id                 |integer |null: false                  |
-|follower           |integer |null: false,foreign_key: true|←フォローする人
-|following          |integer |null: false,foreign_key: true|←フォローされる人
+|follower_id        |integer |null: false                  |←フォロワーの数
+|followed_id        |integer |null: false                  |←フォローしている人の数
 
 ### Association
 belongs_to:follower,class_name:"User"

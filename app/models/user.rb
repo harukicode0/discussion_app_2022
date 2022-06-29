@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :comments,dependent: :destroy
   has_many :owners
   has_many :likes,dependent: :destroy
+  # has_many :relationships, foregin_key: :follower_id
   #validates
   # validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
 end
