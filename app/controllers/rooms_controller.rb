@@ -1,14 +1,13 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show, :search]
+  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_likes]
 
   def index
     get_rooms
-    get_user_rooms
   end
 
   def search
     @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
-    get_user_rooms
     render 'index'
   end
 
@@ -57,17 +56,13 @@ class RoomsController < ApplicationController
   end
 
   def sort_participants
-    get_rooms
-    get_user_rooms
-    # sort = @participants_number_hash.sort{|(k1, v1), (k2, v2)| v2 <=> v1 }.to_h
-    # s_room = Room.joins(:user_rooms)
-    binding.pry
-    
-    redirect_to root_path
+    #ルームへの参加者が多い順
+    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc')
+    render 'index'
   end
 
   def sort_likes
-    redirect_to root_path
+    render 'index'
   end
 
   private
