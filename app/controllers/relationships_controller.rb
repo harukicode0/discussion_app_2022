@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
   def create
+    before_action :authenticate_user!
     following = current_user.relationships.build(follower_id: params[:user_id])
     following.save
     redirect_to request.referrer || room_path(current_user.id)
