@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :owners
   has_many :likes,dependent: :destroy
   #フォロ機能のアソシエーション 
- 
-  #validates 
   has_many :relationships, foreign_key: :following_id
   has_many :followings, through: :relationships, source: :follower
 
