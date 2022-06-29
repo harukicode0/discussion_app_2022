@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2022_06_29_091501) do
   end
 
   create_table "relationships", charset: "utf8", force: :cascade do |t|
+    t.integer "following_id", null: false
     t.integer "follower_id", null: false
-    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|

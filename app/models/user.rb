@@ -13,7 +13,13 @@ class User < ApplicationRecord
   has_many :comments,dependent: :destroy
   has_many :owners
   has_many :likes,dependent: :destroy
-  # has_many :relationships, foregin_key: :follower_id
-  #validates
+  #フォロ機能のアソシエーション 
+ 
+  #validates 
+  has_many :relationships, foreign_key: :following_id
+  has_many :followings, through: :relationships, source: :follower
+
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id
+  has_many :followers, through: :reverse_of_relationships, source: :following
   # validates :sex_id, numericality: { other_than: 0,message: "can't be blank" }
 end
