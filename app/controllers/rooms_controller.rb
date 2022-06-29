@@ -1,16 +1,13 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show, :search]
+  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments]
 
   def index
     get_rooms
-    get_participant_number
-    get_user_rooms
   end
 
   def search
     @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
-    get_participant_number
-    get_user_rooms
     render 'index'
   end
 
@@ -56,6 +53,17 @@ class RoomsController < ApplicationController
       create_new_position  #ポジションを作成
       redirect_to action: :show
     end
+  end
+
+  def sort_participants
+    #ルームへの参加者が多い順
+    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc')
+    render 'index'
+  end
+
+  def sort_comments
+    @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc')
+    render 'index'
   end
 
   private
