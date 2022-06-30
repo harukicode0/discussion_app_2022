@@ -86,12 +86,6 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name).merge(user_ids: [current_user.id],deadline:Time.now+3.days)
   end
 
-  def find_user_positioin
-    if user_signed_in? && @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
-      @position = @user_room.position
-    end
-  end
-
   def create_new_position
     @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
   end
