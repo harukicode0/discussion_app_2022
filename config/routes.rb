@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get :sort_comments
     end
   end
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
