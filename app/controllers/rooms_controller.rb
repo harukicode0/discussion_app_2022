@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search, :sort_participants, :sort_comments]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following]
   before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
 
   def index
@@ -70,13 +70,8 @@ class RoomsController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followings
     if @users.exists?
-      @rooms = []
-      @user.each do |user|
-        @rooms << user.rooms
-      end
-      binding.pry
-      
-      @rooms = @users.rooms
+      #ふぉろわーのIDを条件に、ルームを取得
+      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids})
       render 'index'
     else
       get_rooms
