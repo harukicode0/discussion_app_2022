@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     
     member do
       post :standing_position
+      get :sort_following
     end
 
     collection do

@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search]
-  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_participants, :sort_comments]
+  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
 
   def index
     get_rooms
@@ -64,6 +64,25 @@ class RoomsController < ApplicationController
   def sort_comments
     @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc')
     render 'index'
+  end
+
+  def sort_following
+    @user = User.find(params[:id])
+    @users = @user.followings
+    if @users.exists?
+      @rooms = []
+      @user.each do |user|
+        @rooms << user.rooms
+      end
+      binding.pry
+      
+      @rooms = @users.rooms
+      render 'index'
+    else
+      get_rooms
+      render 'index'
+    end
+    
   end
 
   private

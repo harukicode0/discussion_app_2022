@@ -15,4 +15,8 @@ class Room < ApplicationRecord
       Room.all
     end
   end
+
+  def is_followed_by?(user)
+    Relationship.find_by(following_id: user.id).present?
+  end
 end
