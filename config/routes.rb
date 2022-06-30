@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     
     member do
       post :standing_position
+      get :sort_following
     end
 
     collection do
@@ -17,5 +18,9 @@ Rails.application.routes.draw do
       get :sort_comments
     end
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resource :relationships, only: [:create, :destroy]
+    get :followings, on: :member
+    get :followers, on: :member
+  end
 end

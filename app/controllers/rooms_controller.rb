@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search]
-  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following]
+  before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
 
   def index
     get_rooms
@@ -66,16 +66,24 @@ class RoomsController < ApplicationController
     render 'index'
   end
 
+  def sort_following
+    @user = User.find(params[:id])
+    @users = @user.followings
+    if @users.exists?
+      #ふぉろわーのIDを条件に、ルームを取得
+      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids})
+      render 'index'
+    else
+      get_rooms
+      render 'index'
+    end
+    
+  end
+
   private
 
   def room_params
     params.require(:room).permit(:name).merge(user_ids: [current_user.id],deadline:Time.now+3.days)
-  end
-
-  def find_user_positioin
-    if user_signed_in? && @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
-      @position = @user_room.position
-    end
   end
 
   def create_new_position

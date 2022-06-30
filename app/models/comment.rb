@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   with_options presence: true do
     validates :text
   end
-  validates :standing_position_id, numericality: true
+  # validates :standing_position_id, numericality: true
 
   def like?(user, comment)
     Like.where(user_id: user.id, comment_id:comment.id).exists?
