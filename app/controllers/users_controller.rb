@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :followers, :followings, :your_joined_discussions]
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
+  
   def show
     get_owners
     @rooms = Room.where(id:@owners.pluck(:room_id))
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
 
   def followers
     @users = @user.followers
-  end
+
 
   def your_joined_discussions
     user_rooms = UserRoom.where(user_id: @user.id)
