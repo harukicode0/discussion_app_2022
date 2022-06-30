@@ -32,19 +32,15 @@
     <div class="mypage-right">
       <div class="mypage-contents">
           <ul class="mypage-top">
-            <li><%= link_to "作成した議論", url:"#"%></li>
-            <li><%= link_to "参加している議論", url:"#"%></li>
+          <%# 色分けして、どちらを表示しているか分かるようにする %>
+            <li><%= link_to "作成した議論一覧", user_path(@user)%></li>
+            <li><%= link_to "参加している議論一覧", your_joined_discussions_user_path(@user)%></li>
           </ul>
 
         <div class="mypage-content">
           <div class="mypage-title"></div>
           <div class="my-discussion">
-          <%# そのユーザーが作成したものだけを表示する %>
-          <% @rooms.each do |room| %>
-            <%if room.owner.owner_id == @user.id%>
-              <%= render partial: "./rooms/room", locals: {room: room} %>
-            <% end %>
-          <% end %>
+              <%= render partial: "rooms/room", collection: @rooms %>
           </div>
         </div>
       </div>

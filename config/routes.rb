@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
+    get :your_joined_discussions, on: :member
   end
 end
