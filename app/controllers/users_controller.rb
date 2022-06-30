@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @users = User.where.not(id: current_user.id)
   end
 
+  def update
+    binding.pry
+    redirect_to user_path(current_user)
+  end
+
   def followings
     @users = @user.followings
   end
