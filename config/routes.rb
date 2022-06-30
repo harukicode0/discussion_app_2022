@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/show'
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations',sessions: 'users/sessions'}
   root to: "rooms#index"
   resources :rooms do
     resources :comments,only:[:show, :create, :destroy] do
@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
+    get :your_joined_discussions, on: :member
   end
 end

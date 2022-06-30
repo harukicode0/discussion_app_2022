@@ -11,19 +11,7 @@
           <%= f.label :nickname, "ニックネーム",class:"label-name" %><span class="necessary">必須</span><br>
           <%= f.text_field :nickname, autofocus: true, autocomplete: "ニックネーム",class:"input-name"%>
         </div>
-        
-        <%# もし顧客の参入障壁が低いようだったら他データの取得も検討する %>
 
-        <%# <div class="field"> %>
-          <%# <%= f.label :sex_id, "性別" %>
-          <%# <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"input-tab sex-select"}) %> 
-        <%# </div> %>
-
-        <%# <div class="field"> %>
-          <%# <%= f.label :birthday, "生年月日" %>
-          <%# <%= f.date_select :birthday, {start_year: 1950, end_year: 2016,include_blank: true, use_two_digit_numbers: true},{class: "input-tab birthday-select"}%> 
-        <%# </div> %>
-  
         <div class="field">
           <%= f.label :email, "メールアドレス" %><span class="necessary">必須</span><br>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"input-name" %>

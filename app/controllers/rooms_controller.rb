@@ -77,7 +77,6 @@ class RoomsController < ApplicationController
       get_rooms
       render 'index'
     end
-    
   end
 
   private

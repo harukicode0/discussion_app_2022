@@ -4,7 +4,7 @@
 
     <div class="mypage-left">
       <div class="mypage-icon">
-      <%if user_signed_in? && current_user.id == @user.id %>
+      <%if current_user == @user %>
         あなたのマイページ
       <% else %>
         <%= @user.nickname%>さんのページ
@@ -12,9 +12,7 @@
       </div>
       <div class="mypage-info">
         <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>
-        <% if @user == current_user %>
-          <p class="lead text-muted">You're currently signed in as</p>
-        <% else %>
+        <% if @user != current_user %>
           <% if @user.is_followed_by?(current_user) %>
             <%=link_to user_relationships_path(@user), method: :delete do %>
               <button type="button" class="btn btn btn-danger">フォロー解除</button>
@@ -26,24 +24,23 @@
           <% end %>
         <% end %>
       </div>
+      <% if @user == current_user %>
+          <%= link_to "編集", edit_user_registration_path%>
+      <% end %>
     </div>
 
     <div class="mypage-right">
       <div class="mypage-contents">
           <ul class="mypage-top">
-            <li><%= link_to "作成した議論", url:"#"%></li>
-            <li><%= link_to "参加している議論", url:"#"%></li>
+          <%# 色分けして、どちらを表示しているか分かるようにする %>
+            <li><%= link_to "作成した議論一覧", user_path(@user)%></li>
+            <li><%= link_to "参加している議論一覧", your_joined_discussions_user_path(@user)%></li>
           </ul>
 
         <div class="mypage-content">
           <div class="mypage-title"></div>
           <div class="my-discussion">
-          <%# そのユーザーが作成したものだけを表示する %>
-          <% @rooms.each do |room| %>
-            <%if room.owner.owner_id == @user.id%>
-              <%= render partial: "./rooms/room", locals: {room: room} %>
-            <% end %>
-          <% end %>
+              <%= render partial: "rooms/room", collection: @rooms %>
           </div>
         </div>
       </div>
