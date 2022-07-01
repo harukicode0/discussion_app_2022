@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations',sessions: 'users/sessions'}
   root to: "rooms#index"
   resources :rooms do
-    resources :comments,only:[:show, :create, :destroy] do
+    resources :comments,only:[:show, :create,:edit,:update, :destroy] do
       resources :likes,only:[:create, :destroy]
     end
     

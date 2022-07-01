@@ -1,4 +1,4 @@
-<%if comment.standing_position_id ==value%>
+<%if comment.standing_position_id == value%>
   <div class="comment">
     <%= comment.text%>
     <%= comment.user.nickname%>
@@ -12,4 +12,8 @@
         <span style="color:gray;">❤︎<%=comment.count_like(comment)%>個</span>
       <% end %>
   <% end %>
+  <%if current_user == comment.user%>
+    <%= link_to "編集", edit_room_comment_path(@room,comment)%>
+    <%= link_to "削除", edit_room_comment_path(@room,comment)%>
+  <%end%>
 <%end%>
