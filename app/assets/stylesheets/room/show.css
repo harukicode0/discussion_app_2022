@@ -1,14 +1,14 @@
-:root{
+:root {
   --agree-color: brown;
   --disagree-color: blue;
   --btn-height: 70px;
 }
 
-.room-wrapper{
+.room-wrapper {
   width: 100vw;
 }
 
-.room-title{
+.room-title {
   width: 100%;
   background-color: aqua;
   height: 70px;
@@ -18,25 +18,25 @@
   text-align: center;
 }
 
-.comments-room{
+.comments-room {
   width: 100%;
   display: flex;
   justify-content: space-between;
   height: calc(100vh - 210px);
 }
 
-.opinion-room{
+.opinion-room {
   width: 50%;
   height: 100%;
 }
 
-.agree-room{
+.agree-room {
 }
 
-.disagree-room{
+.disagree-room {
 }
 
-.opinion-btn{
+.opinion-btn {
   width: 100%;
   height: var(--btn-height);
   text-align: center;
@@ -47,28 +47,30 @@
   border: none;
 }
 
-.agree-btn{
+.agree-btn {
   background-color: var(--agree-color);
 }
 
-.disagree-btn{
+.disagree-btn {
   background-color: var(--disagree-color);
 }
 
-.opinion-text{
+.opinion-text {
   width: 100%;
   height: calc(100% - var(--btn-height));
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
-.agree-text{
+.agree-text {
   border: 2px solid var(--agree-color);
 }
 
-.disagree-text{
+.disagree-text {
   border: 2px solid var(--disagree-color);
 }
 
-.room-input-box{
+.room-input-box {
   width: 100%;
   height: 70px;
   background-color: bisque;
@@ -77,15 +79,15 @@
   align-items: center;
 }
 
-.comment_box{
+.comment_box {
   width: 80%;
   border: none;
   margin: 20px;
-  padding: 5px 0  0 10px;
+  padding: 5px 0 0 10px;
   border-radius: 5px;
 }
 
-.comment_bottom_r{
+.comment_bottom_r {
   margin: 10px;
   width: 10%;
   font-size: 30px;
@@ -94,7 +96,7 @@
   background-color: aquamarine;
 }
 
-.position-open{
+.position-open {
   width: 10%;
   height: 70px;
   line-height: 70px;
