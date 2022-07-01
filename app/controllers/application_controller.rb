@@ -31,8 +31,13 @@ class ApplicationController < ActionController::Base
   end
 
   def find_user_positioin
-    if user_signed_in? && @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
+    @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@room.id)
+    if user_signed_in? && @user_room.present?
       @position = @user_room.position
     end
+  end
+
+  def count_participants(id)
+    UserRoom.where(room_id:id).count
   end
 end
