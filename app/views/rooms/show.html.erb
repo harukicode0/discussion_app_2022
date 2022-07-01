@@ -1,4 +1,6 @@
 <%= render 'shared/header' %>
+<%@agree=1%>
+<%@disagree=2%>
 <div class="room-wrapper">
   <div class="room-title">
   <%= @room.name%>
@@ -6,65 +8,32 @@
   </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
-        
           <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
-            <%# #1は賛成を示す %>
-            <%= f.hidden_field :standing_position, value:1%>
+            <%= f.hidden_field :standing_position, value:1%><%# #1は賛成を示す %>
             <%= f.hidden_field :room_id, value:@room.id%>
             <%= f.submit 'YES！', class:"agree-btn opinion-btn"%>
           <%end%>
-
         <div class="agree-text opinion-text">
-        <% @comments.each do |comment| %>
-            <%if comment.standing_position_id ==1%>
-              <div class="comment">
-              <%= comment.text%>
-              <%= comment.user.nickname%>
-              </div>
-              <% if comment.like?(current_user,comment) %>
-                  <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
-                    <span style="color:red;">❤︎<%=comment.count_like(comment)%>個</span>
-                  <% end %>
-                <% else %>
-                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
-                    <span style="color:gray;">❤︎<%=comment.count_like(comment)%>個</span>
-                  <% end %>
-                <% end %>
-            <%end%>
-          <% end %>
+          <% @comments.each do |comment| %>
+            <%= render 'shared/comment',{comment:comment,value:1} %>
+          <%end%>
         </div>
       </div>
-      <div class="disagree-room opinion-room">
 
+
+      <div class="disagree-room opinion-room">
          <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
-            <%# #2は反対を示す %>
-            <%= f.hidden_field :standing_position, value:2%>
+            <%= f.hidden_field :standing_position, value:2%><%# #2は反対を示す %>
             <%= f.hidden_field :room_id, value:@room.id%>
             <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>
           <%end%>
-
         <div class="disagree-text opinion-text">
-        <% @comments.each do |comment| %>
-            <%if comment.standing_position_id ==2%>
-              <div class="comment">
-              <%= comment.text%>
-              <%= comment.user.nickname%>
-              </div>
-                <% if comment.like?(current_user,comment) %>
-                  <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
-                    <span style="color:red;">❤︎<%=comment.count_like(comment)%>個</span>
-                  <% end %>
-                <% else %>
-                  <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
-                    <span style="color:gray;">❤︎<%=comment.count_like(comment)%>個</span>
-                  <% end %>
-                <% end %>
-            <%end%>
-          <% end %>
+          <% @comments.each do |comment| %>
+            <%= render 'shared/comment',{comment:comment,value:2} %>
+          <%end%>
         </div>
       </div>
   </div>
-  <%# <%binding.pry%> %>
     <% if user_signed_in? %>
       <%= form_with(model:[@room, @comment], local: true) do |f|%>
           <div class="room-input-box">
@@ -75,10 +44,8 @@
                   <div class="room-input-box">
                   ポジションを取って、この議論に参加しよう！
                   </div>
-                   
                 <%end%>
               </div>
-              
               <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
               <%= f.submit '表明', class:"comment_bottom_r"%>
           </div>
