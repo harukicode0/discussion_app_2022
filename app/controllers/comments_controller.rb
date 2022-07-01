@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @comment = Comment.new
     @room = Room.find(params[:room_id])
@@ -17,6 +17,22 @@ class CommentsController < ApplicationController
     end
   end
   
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.user == current_user && comment.room_id == params[:room_id].to_i
+      comment.destroy
+    end
+    @room = Room.find(params[:room_id])
+    redirect_to room_path(@room)
+  end
 
   private
   def comment_params
