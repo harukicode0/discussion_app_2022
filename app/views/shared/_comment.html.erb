@@ -1,0 +1,15 @@
+<%if comment.standing_position_id ==value%>
+  <div class="comment">
+    <%= comment.text%>
+    <%= comment.user.nickname%>
+  </div>
+  <% if comment.like?(current_user,comment) %>
+      <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
+        <span style="color:red;">❤︎<%=comment.count_like(comment)%>個</span>
+      <% end %>
+  <% else %>
+      <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
+        <span style="color:gray;">❤︎<%=comment.count_like(comment)%>個</span>
+      <% end %>
+  <% end %>
+<%end%>
