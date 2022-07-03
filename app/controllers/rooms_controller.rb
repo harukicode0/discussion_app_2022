@@ -20,14 +20,15 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room_tag_user = RoomTagUserForm.new
+    @room_tag_user_form = RoomTagUserForm.new
   end
 
   def create
-    @room_tag_user = RoomTagUserForm.new(room_other_params)
-    if @room_tag_user.valid?
-      @room_tag_user.save
-      redirect_to room_path(@room_tag_user.room_id)
+    @room_tag_user_form = RoomTagUserForm.new(room_other_params)
+    if @room_tag_user_form.valid?
+      binding.pry
+      @room_tag_user_form.save
+      redirect_to room_path(@room_tag_user_form.room_id)
     else
       render 'new'
     end

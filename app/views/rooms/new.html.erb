@@ -7,6 +7,8 @@
     <div class="sign-up-bottom">
       <%= form_with model: @room_tag_user_form, url:rooms_path, method: :post, local: true do |f| %>
 
+      <%= render 'shared/error_messages', model: @room_tag_user_form%>
+
         <div class="field">
           <%= f.label :name, "タイトル",class:"label-name" %><br>
           <%= f.text_field :name, placeholder: "ディスカッションのテーマを入力してください",class:"input-name"%>
@@ -21,6 +23,7 @@
           <%= f.submit "作成", class:"input-name submit-bottom"%>
         </div>
       <% end %>
+      <%= link_to "topへ", root_path, class:"links-propaty"%>
     </div>
   </div>
 </div>
