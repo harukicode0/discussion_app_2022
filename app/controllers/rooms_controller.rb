@@ -11,6 +11,12 @@ class RoomsController < ApplicationController
     render 'index'
   end
 
+  def tag_search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
+  end
+
   def show
     @room = Room.find(params[:id])
     @comments = @room.comments.includes(:user)
