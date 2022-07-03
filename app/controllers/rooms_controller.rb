@@ -81,7 +81,7 @@ class RoomsController < ApplicationController
       @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids})
       render 'index'
     else
-      flash[:following] = "あなたは誰もフォローしていません"
+      flash[:following] = "あなたは誰もフォローしていません。ルーム一覧ページに戻りました"
       get_rooms
       render 'index'
     end
