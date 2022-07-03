@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
   end
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "deadline"
+    t.string "title", null: false
+    t.datetime "deadline", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
+    t.string "profile"
     t.integer "sex_id"
     t.date "birthday"
     t.string "reset_password_token"

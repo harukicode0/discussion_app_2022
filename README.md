@@ -42,7 +42,7 @@ belongs_to:following,class_name:"User"
 | column   | type     | Options     |
 | -------- | -------- | ----------- |
 | id       | integer  | null: false |
-| name     | string   | null: false |
+| title    | string   | null: false |
 | deadline | datetime |             |
 
 ### Association
