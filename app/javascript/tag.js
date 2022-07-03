@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (XHR.response) {
           const tagName = XHR.response.keyword;
           tagName.forEach((tag) => {
-            const childElement = document.createElement("div");
+            const childElement = document.createElement("span");
             childElement.setAttribute("class", "child");
             childElement.setAttribute("id", tag.id);
             childElement.innerHTML = tag.tag_name;
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
               searchResult.style.overflow = scroll;
             }
 
+            // 目的のタグをクリックしたとき、他のタグ候補を消す
             const clickElement = document.getElementById(tag.id);
             clickElement.addEventListener("click", () => {
               document.getElementById("tag_name").value =

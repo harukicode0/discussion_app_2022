@@ -8,7 +8,7 @@
   margin: 0 auto;
   text-align: left;
   overflow-wrap: break-word;
-  /* word-break: break-all; */
+  overflow-y: scroll;
 }
 
 .child {
@@ -16,8 +16,9 @@
   border: 1px solid blue;
   background-color: #f4f4f4;
   padding: 5px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 3px;
+  line-height: 40px;
 }
 
 .child:hover {
