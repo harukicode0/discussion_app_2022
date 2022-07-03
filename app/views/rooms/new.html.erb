@@ -11,12 +11,13 @@
 
         <div class="field">
           <%= f.label :title, "タイトル",class:"label-name" %><br>
-          <%= f.text_field :title, placeholder: "ディスカッションのテーマを入力してください",class:"input-name"%>
+          <%= f.text_field :title, placeholder: "ディスカッションのテーマを入力してください",autocomplete: 'off', class:"input-name"%>
         </div>
 
         <div class="field">
-          <%= f.label :tag_name, "タグ",class:"label-name" %><br>
-          <%= f.text_field :tag_name, placeholder: "タグを紐付けしてください(任意)",class:"input-name"%>
+          <%= f.label :tag_name, "タグ",class:"label-name"%><br>
+          <%= f.text_field :tag_name, placeholder: "タグを紐付けしてください(任意)",autocomplete: 'off',class:"input-name",id:"tag_name"%>
+          <div id="search-result"></div>
         </div>
 
         <div class="actions">

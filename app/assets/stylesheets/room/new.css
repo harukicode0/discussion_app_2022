@@ -1,0 +1,25 @@
+/***************************
+ インクリメントで表示する要素のcss 
+ ***************************/
+#search-result {
+  width: var(--name-input-box-size);
+  background-color: rebeccapurple;
+  padding: 2px;
+  margin: 0 auto;
+  text-align: left;
+  overflow-wrap: break-word;
+  /* word-break: break-all; */
+}
+
+.child {
+  margin: 0 5px 10px 0;
+  border: 1px solid blue;
+  background-color: #f4f4f4;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.child:hover {
+  background-color: blue;
+}

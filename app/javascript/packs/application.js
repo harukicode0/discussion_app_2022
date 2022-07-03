@@ -10,6 +10,7 @@ import "channels";
 require("../time");
 require("../timeup");
 require("../delete_alert");
+require("../tag");
 
 Rails.start();
 // Turbolinks.start()

@@ -58,8 +58,8 @@
 .opinion-text {
   width: 100%;
   height: calc(100% - var(--btn-height));
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
 }
 
 .agree-text {

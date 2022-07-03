@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+  --content-height: 400px;
+  --name-input-box-size: 80%;
+}

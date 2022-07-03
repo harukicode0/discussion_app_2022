@@ -15,7 +15,7 @@ class RoomTagUserForm
   def save
     room = Room.create(title: title, user_ids: [user_id], deadline:deadline)
     Owner.create(name: user_name, owner_id: user_id,room_id: room.id)
-    Tag.create(tag_name: tag_name, room_ids: [room.id])
+    Tag.create(tag_name: tag_name, room_ids: [room.id]) if tag_name != ""
     @room_id = room.id
   end
 end
