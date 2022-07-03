@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
   
   def show
-    get_owners
-    @rooms = Room.where(id:@owners.pluck(:room_id))
+    @rooms = Room.where(owner_id:@user.id)
   end
 
   def followings
@@ -25,9 +24,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def get_owners
-    @owners = Owner.where(owner_id: @user.id)
   end
 end
