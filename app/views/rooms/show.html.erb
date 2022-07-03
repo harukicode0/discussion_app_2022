@@ -15,7 +15,7 @@
           <%end%>
         <div class="agree-text opinion-text">
           <% @comments.each do |comment| %>
-            <%= render 'shared/comment',{comment:comment,value:1} %>
+            <%= render 'shared/comment',{comment:comment,value:@agree} %>
           <%end%>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <%end%>
         <div class="disagree-text opinion-text">
           <% @comments.each do |comment| %>
-            <%= render 'shared/comment',{comment:comment,value:2} %>
+            <%= render 'shared/comment',{comment:comment,value:@disagree} %>
           <%end%>
         </div>
       </div>
