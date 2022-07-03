@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to :sex
   has_many :user_rooms
   has_many :rooms ,through: :user_rooms
+  has_many :owner_rooms, class_name: "room"
   has_many :comments,dependent: :destroy
   has_many :owners
   has_many :likes,dependent: :destroy

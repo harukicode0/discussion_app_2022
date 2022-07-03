@@ -17,4 +17,7 @@
 :root {
   --content-height: 400px;
   --name-input-box-size: 80%;
+  --agree-color: brown;
+  --disagree-color: blue;
+  --btn-height: 70px;
 }

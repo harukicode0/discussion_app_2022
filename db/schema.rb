@@ -69,9 +69,11 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
+    t.bigint "owner_id"
     t.datetime "deadline", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_rooms_on_owner_id"
   end
 
   create_table "tags", charset: "utf8", force: :cascade do |t|

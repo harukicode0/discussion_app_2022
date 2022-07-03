@@ -40,12 +40,12 @@
               <%= room.users.count%>名参加 
             </div>
             <div class=" content-bottom-list">
-            <% unless room&.owner&.owner == nil%>
-              <% if room.owner.owner == current_user%>
-                <%= link_to "作成者：自分自身", user_path(current_user.id),class:"content-owner" %>
+            <% unless room.owner.nickname == nil%>
+              <% if room.owner == current_user%>
+                <%= link_to "作成者：自分自身", user_path(current_user),class:"content-owner" %>
               <%else%>
-                <%= link_to "作成者：#{room.owner.name}", user_path(room.owner.owner_id),class:"content-owner" %>
-                <%if user_signed_in? && room.owner.owner.is_followed_by?(current_user)%>
+                <%= link_to "作成者：#{room.owner.nickname}", user_path(room.owner.id),class:"content-owner" %>
+                <%if user_signed_in? && room.owner.is_followed_by?(current_user)%>
                   (followed)
                 <%end%>
               <%end%>
