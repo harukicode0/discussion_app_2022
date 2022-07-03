@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
               while (searchResult.lastChild) {
                 searchResult.removeChild(searchResult.lastChild);
                 searchResult.style.height = "";
+
+                // 今後、検索結果数の表示を実装する
               }
             });
           });
