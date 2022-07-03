@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def followers
     @users = @user.followers
-
+  end
 
   def your_joined_discussions
     user_rooms = UserRoom.where(user_id: @user.id)

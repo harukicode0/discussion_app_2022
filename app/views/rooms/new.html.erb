@@ -5,17 +5,26 @@
       ルーム作成
     </div>
     <div class="sign-up-bottom">
-      <%= form_with(model: @room, local: true) do |f| %>
+      <%= form_with model: @room_tag_user_form, url:rooms_path, method: :post, local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: @room_tag_user_form%>
 
         <div class="field">
-          <%= f.label :name, "タイトル",class:"label-name" %><br>
-          <%= f.text_field :name, placeholder: "ディスカッションのテーマを入力してください",class:"input-name"%>
+          <%= f.label :title, "タイトル",class:"label-name" %><br>
+          <%= f.text_field :title, placeholder: "ディスカッションのテーマを入力してください",autocomplete: 'off', class:"input-name"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :tag_name, "タグ",class:"label-name"%><br>
+          <%= f.text_field :tag_name, placeholder: "タグを紐付けしてください(任意)",autocomplete: 'off',class:"input-name",id:"tag_name"%>
+          <div id="search-result"></div>
         </div>
 
         <div class="actions">
           <%= f.submit "作成", class:"input-name submit-bottom"%>
         </div>
       <% end %>
+      <%= link_to "topへ", root_path, class:"links-propaty"%>
     </div>
   </div>
 </div>

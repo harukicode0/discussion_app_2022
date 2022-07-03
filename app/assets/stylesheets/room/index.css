@@ -1,13 +1,11 @@
-:root{
-  --content-height:400px;
-
+:root {
 }
 
-.main-wrapper{
+.main-wrapper {
   width: 100%;
 }
 
-.parts{
+.parts {
   margin: 0 auto;
   width: var(--content-width);
   background-color: rgba(170, 42, 42, 0.5);
@@ -17,18 +15,18 @@
  検索ボックス 
  ********************************************/
 
-.search-box{
+.search-box {
   margin: 0 auto;
   width: 80%;
   padding: 50px 0;
   background-color: beige;
 }
 
-.search-form{
+.search-form {
   text-align: center;
 }
 
-.input-box{
+.input-box {
   width: 50%;
   height: 50px;
   font-size: 20px;
@@ -38,96 +36,96 @@
   padding-left: 20px;
 }
 
-.search-button{
- width: 30px;
- height: 30px;
+.search-button {
+  width: 30px;
+  height: 30px;
 }
 
 /*******************************************
 sort部分
  ********************************************/
- .sort{
-   background-color: white;
- }
+.sort {
+  background-color: white;
+}
 
- .sort-lists{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   list-style: none;
-   font-size: 14px;
- }
+.sort-lists {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  font-size: 14px;
+}
 
- .sort-btn{
-   width: 150px;
-   margin-right: 15px;
-   border: 1px solid rgb(50, 71, 255);
-   background-color: rgba(167, 187, 240, 0.5);
-   border-radius: 20px;
-   text-align: center;
-   padding: 7px 3px;
-   font-weight: bold;
- }
+.sort-btn {
+  width: 150px;
+  margin-right: 15px;
+  border: 1px solid rgb(50, 71, 255);
+  background-color: rgba(167, 187, 240, 0.5);
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px 3px;
+  font-weight: bold;
+}
 
- .sort-btn a{
+.sort-btn a {
   text-decoration: none;
   color: black;
- }
+}
 /*******************************************
 コンテンツの表示
  ********************************************/
-.contents-wrapper{
+.contents-wrapper {
   width: 80%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
-  padding-bottom:80px;
+  padding-bottom: 80px;
   margin: 0 auto;
   background-color: bisque;
 }
 
- .content{
+.content {
   width: 24%;
   height: var(--content-height);
   background-color: aquamarine;
   margin: 5px 0;
- }
+}
 
- .content a{
+.content a {
   text-decoration: none;
- }
+}
 
- .content-top{
+.content-top {
   box-sizing: border-box;
-   width: 100%;
-   height: 70%;
-   padding:20px ;
-   background-color: rgb(149, 74, 142);
-   color: aliceblue;
-   font-size: 30px;
-   text-align: center;
-   display: flex;
-   align-items: center;
- }
+  width: 100%;
+  height: 70%;
+  padding: 20px;
+  background-color: rgb(149, 74, 142);
+  color: aliceblue;
+  font-size: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
 
- .content-percentage{
+.content-percentage {
   display: flex;
   width: 100%;
   height: 10%;
- }
+}
 
- .agree{
-   background-color: brown;
-   color: azure;
-   font-size: 20px;
-   width: 50%;
-   display: flex;
-   align-items: center;
-   padding: 5px;
- }
+.agree {
+  background-color: brown;
+  color: azure;
+  font-size: 20px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
 
- .disagree{
+.disagree {
   background-color: rgb(26, 26, 105);
   color: azure;
   font-size: 20px;
@@ -142,22 +140,22 @@ sort部分
 コンテンツ下部の表示
  ********************************************/
 
-.content-bottom{
+.content-bottom {
   box-sizing: border-box;
   height: calc(100% - 10% - 70%);
   width: 100%;
-  padding:10px 30px;
+  padding: 10px 30px;
   background-color: rgb(139, 148, 45);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.content-bottom-list{
+.content-bottom-list {
   color: white;
 }
 
-.content-owner{
+.content-owner {
   color: aliceblue;
   text-decoration: none;
 }
