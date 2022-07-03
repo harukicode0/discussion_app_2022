@@ -37,17 +37,20 @@
               <span id="sec<%=room.id%>"></span>秒
             </div>
             <div class="content-participant content-bottom-list">
-              <%# <%= @participants_number_hash[room.id]%>
               <%= room.users.count%>名参加 
             </div>
             <div class=" content-bottom-list">
-            <% if room.owner.owner == current_user%>
-              <%= link_to "作成者：自分自身", user_path(current_user.id),class:"content-owner" %>
-            <%else%>
-              <%= link_to "作成者：#{room.owner.name}", user_path(room.owner.owner_id),class:"content-owner" %>
-              <%if user_signed_in? && room.owner.owner.is_followed_by?(current_user)%>
-                (followed)
+            <% unless room&.owner&.owner == nil%>
+              <% if room.owner.owner == current_user%>
+                <%= link_to "作成者：自分自身", user_path(current_user.id),class:"content-owner" %>
+              <%else%>
+                <%= link_to "作成者：#{room.owner.name}", user_path(room.owner.owner_id),class:"content-owner" %>
+                <%if user_signed_in? && room.owner.owner.is_followed_by?(current_user)%>
+                  (followed)
+                <%end%>
               <%end%>
+            <%else%>
+              作成者失踪
             <%end%>
             </div>
           </div>

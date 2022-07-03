@@ -20,14 +20,14 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room = Room.new
+    @room_tag_user = RoomTagUserForm.new
   end
 
   def create
-    @room = Room.new(room_params)
-    if @room.save
-      Owner.create(name:current_user.nickname, owner_id: current_user.id,room_id:@room.id)
-      redirect_to room_path(@room)
+    @room_tag_user = RoomTagUserForm.new(room_other_params)
+    if @room_tag_user.valid?
+      @room_tag_user.save
+      redirect_to room_path(@room_tag_user.room_id)
     else
       render 'new'
     end
@@ -81,8 +81,8 @@ class RoomsController < ApplicationController
 
   private
 
-  def room_params
-    params.require(:room).permit(:name).merge(user_ids: [current_user.id],deadline:Time.now+3.days)
+  def room_other_params
+    params.permit(:name,:tag_name).merge(deadline: Time.now + 3.days, user_id: current_user.id, user_name: current_user.nickname)
   end
 
   def create_new_position

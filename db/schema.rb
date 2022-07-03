@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
   end
 
   create_table "tags", charset: "utf8", force: :cascade do |t|
-    t.string "tag_name", null: false
+    t.string "tag_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
