@@ -1,9 +1,3 @@
-:root {
-  --agree-color: brown;
-  --disagree-color: blue;
-  --btn-height: 70px;
-}
-
 .room-wrapper {
   width: 100vw;
 }

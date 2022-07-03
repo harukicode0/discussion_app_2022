@@ -80,7 +80,7 @@ class RoomsController < ApplicationController
       @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids})
       render 'index'
     else
-      flash[:following] = "あなたは誰もフォローしていません"
+      flash[:following] = "あなたは誰もフォローしていません。ルーム一覧ページに戻りました"
       get_rooms
       render 'index'
     end
@@ -89,7 +89,7 @@ class RoomsController < ApplicationController
   private
 
   def room_other_params
-    params.require(:room_tag_user_form).permit(:title,:tag_name).merge(deadline: Time.now + 3.days, user_id: current_user.id, user_name: current_user.nickname)
+    params.require(:room_tag_user_form).permit(:title,:tag_name).merge(deadline: Time.now + 3.days, user_id: current_user.id)
   end
 
   def create_new_position

@@ -1,15 +1,10 @@
 class Room < ApplicationRecord
   has_many :user_rooms
   has_many :users, through: :user_rooms
+  belongs_to :owner, class_name: "User"
   has_many :comments,dependent: :destroy
-  has_one :owner
   has_many :room_tags, dependent: :destroy
   has_many :tags, through: :room_tags
-
-  # formobjectがうまくいけば削除する
-  # with_options presence: true do
-  #   validates :name
-  # end
 
   def self.search(search)
     if search != ""

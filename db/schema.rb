@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "owners", charset: "utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "owner_id"
-    t.bigint "room_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["owner_id"], name: "index_owners_on_owner_id"
-    t.index ["room_id"], name: "index_owners_on_room_id"
-  end
-
   create_table "positions", charset: "utf8", force: :cascade do |t|
     t.bigint "user_room_id"
     t.integer "standing_position_id", null: false
@@ -69,9 +59,11 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
 
   create_table "rooms", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
+    t.bigint "owner_id"
     t.datetime "deadline", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_rooms_on_owner_id"
   end
 
   create_table "tags", charset: "utf8", force: :cascade do |t|
@@ -110,8 +102,6 @@ ActiveRecord::Schema.define(version: 2022_07_01_065736) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
-  add_foreign_key "owners", "rooms"
-  add_foreign_key "owners", "users", column: "owner_id"
   add_foreign_key "positions", "user_rooms"
   add_foreign_key "room_tags", "rooms"
   add_foreign_key "room_tags", "tags"
