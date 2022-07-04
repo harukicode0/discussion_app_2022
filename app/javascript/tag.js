@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tagNameInput = document.querySelector("#tag_name");
+  if (!tagNameInput) return null;
   if (tagNameInput) {
     const inputElement = document.getElementById("tag_name");
     inputElement.addEventListener("input", () => {

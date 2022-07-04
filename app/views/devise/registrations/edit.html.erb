@@ -37,17 +37,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation,"再度変更後のパスワードを入力" %><br />
+    <%= f.label :password_confirmation,"変更後のパスワードを再入力" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="image-field">
-    <%= f.label :image, "アイコン画像の投稿" %><br>
+    <div id="previews"></div>
+    <%= f.label :image, "アイコン画像の投稿", id:"user-image" %><br>
     <%= f.file_field :image %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password,"変更前パスワード" %> <i>(ユーザー情報を変更する場合は必ず入力してください)</i><br />
+    <%= f.label :current_password,"変更承認のパスワード" %> <i>(ユーザー情報を変更する場合は必ず変更前パスワードを入力してください)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 

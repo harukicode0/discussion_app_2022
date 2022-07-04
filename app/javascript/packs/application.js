@@ -11,6 +11,7 @@ require("../time");
 require("../timeup");
 require("../delete_alert");
 require("../tag");
+require("../preview");
 
 Rails.start();
 // Turbolinks.start()
