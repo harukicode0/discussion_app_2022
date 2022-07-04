@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :followers, :followings, :your_joined_discussions]
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
-  
+
   def show
     @rooms = Room.where(owner_id:@user.id)
   end
