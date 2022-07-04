@@ -6,17 +6,6 @@ class RoomsController < ApplicationController
     get_rooms
   end
 
-  def search
-    @rooms = Room.includes(:owner).search(params[:keyword]).order(created_at: "DESC")
-    render 'index'
-  end
-
-  def tag_search
-    return nil if params[:keyword] == ""
-    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: tag }
-  end
-
   def show
     @room = Room.find(params[:id])
     @comments = @room.comments.includes(:user)
@@ -59,6 +48,17 @@ class RoomsController < ApplicationController
       create_new_position  #ポジションを作成
       redirect_to action: :show
     end
+  end
+
+  def search
+    @rooms = Room.search(params[:keyword]).order(created_at: "DESC")
+    render 'index'
+  end
+
+  def tag_search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
   end
 
   def sort_participants

@@ -6,10 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
 
   # POST /resource
-  def create
-    super
-    UserMailer.with(user: @user).welcome_email.deliver_now
-  end
+  # def create
+  #   super
+  #   UserMailer.with(user: @user).welcome_email.deliver_now
+  # end
 
   # DELETE /resource
   # def destroy

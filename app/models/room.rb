@@ -8,7 +8,7 @@ class Room < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Room.where('name LIKE(?)', "%#{search}%")
+      Room.where('title LIKE(?)', "%#{search}%")
     else
       Room.all
     end
