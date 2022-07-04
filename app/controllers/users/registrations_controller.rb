@@ -11,6 +11,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     UserMailer.with(user: @user).welcome_email.deliver_now
   end
 
+  # DELETE /resource
+  # def destroy
+  #   super
+  # end
+
   private
 
   def after_update_path_for(resource)
@@ -26,17 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   # def edit
-  #   super
+    # super
   # end
 
   # PUT /resource
   # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  # def destroy
-  #   super
+    # super
   # end
 
   # GET /resource/cancel

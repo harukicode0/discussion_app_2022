@@ -23,10 +23,15 @@ Rails.application.routes.draw do
       get :sort_comments
     end
   end
+
   resources :users, only: [:show] do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
     get :your_joined_discussions, on: :member
   end
+
+  # if Rails.env.development?
+  #   mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  # end
 end

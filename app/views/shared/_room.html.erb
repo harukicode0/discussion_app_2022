@@ -40,7 +40,7 @@
               <%= room.users.count%>名参加 
             </div>
             <div class=" content-bottom-list">
-            <% unless room.owner.nickname == nil%>
+            <% unless room.owner == nil%>
               <% if room.owner == current_user%>
                 <%= link_to "作成者：自分自身", user_path(current_user),class:"content-owner" %>
               <%else%>

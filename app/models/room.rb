@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
-  has_many :user_rooms
+  has_many :user_rooms,dependent: :destroy
   has_many :users, through: :user_rooms
-  belongs_to :owner, class_name: "User"
+  belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :comments,dependent: :destroy
   has_many :room_tags, dependent: :destroy
   has_many :tags, through: :room_tags
