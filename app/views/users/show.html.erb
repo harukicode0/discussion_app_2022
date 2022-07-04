@@ -4,7 +4,7 @@
 
     <div class="mypage-left">
       <div class="mypage-icon">
-      <%= image_tag @user.image, class:"user-image", alt:"no-image"  if @user.image.attached?%>
+      <%= image_tag @user.image.variant(resize: '300x300',gravity: "center", crop:"200x200+0+0"), class:"user-image" if @user.image.attached?%>
       <%if current_user == @user %>
         あなたのマイページ
       <% else %>
