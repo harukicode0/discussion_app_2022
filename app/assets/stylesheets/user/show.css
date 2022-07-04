@@ -33,11 +33,24 @@
   padding: 40px;
 }
 
-.user-image {
-  border-radius: 45%;
-  width: ;
-  object-fit: cover;
+/*****************************************
+右側 
+******************************************/
+.mypage-user-image {
+  background-color: blue;
+  width: 100%;
+  height: calc(width);
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin-bottom: 40px;
+}
+
+.user-image {
+  border-radius: 43%;
+  width: 100%;
+  height: calc(width);
+  object-fit: cover;
 }
 
 /*****************************************
