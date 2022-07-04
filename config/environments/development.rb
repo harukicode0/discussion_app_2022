@@ -79,10 +79,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: 'smtp.gmail.com',
   port: 587,
-  domain: 'discussion-app-2022.herokuapp.com',
+  domain: 'herokuapp.com',
   authentication: 'plain',
-  user_name: ENV["ADMIN_USER_EMAIL"],
-  password: ENV["ADMIN_USER_EMAIL_PASSWORD"],
+  user_name: 'apikey',
+  password: ENV['SENDGRID_API_KEY'],
   enable_starttls_auto: true
   }
   config.action_mailer.delivery_method = :letter_opener_web
