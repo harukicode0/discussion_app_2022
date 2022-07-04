@@ -73,4 +73,15 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  #ActionController-Gmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'discussion-app-2022.herokuapp.com',
+  user_name:            ENV["ADMIN_USER_EMAIL"],
+  password:             ENV["ADMIN_USER_EMAIL_PASSWORD"],
+  authentication:       'plain',
+  enable_starttls_auto: true }
 end

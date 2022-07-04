@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   get 'users/show'
-  devise_for :users, controllers: {registrations: 'users/registrations',sessions: 'users/sessions'}
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+    # sessions: 'users/sessions'
+  }
+
   root to: "rooms#index"
   resources :rooms do
     resources :comments,only:[:show, :create,:edit,:update, :destroy] do
       resources :likes,only:[:create, :destroy]
     end
-    
+
     member do
       post :standing_position
       get :sort_following
