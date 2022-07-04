@@ -11,12 +11,16 @@
         <div class="sort">
         <%# ソート機能 %>
           <ul class="sort-lists">
+            <li>条件検索：</li>
             <li class="sort-btn"><%= link_to "参加人数が多い順",sort_participants_rooms_path%></li>
             <li class="sort-btn"><%= link_to "コメントが多い順",sort_comments_rooms_path%></li>
             <%if user_signed_in?%>
               <li class="sort-btn"><%= link_to "フォロー先が作成した議論一覧",sort_following_room_path(current_user)%></li>
             <%end%>
           </ul>
+          <div class="search-results-number">
+            <%= @rooms.length%>件
+          </div>
         </div>
     </div>
   <%# コンテンツ表示 %>

@@ -36,6 +36,9 @@
             <li><%= link_to "作成した議論一覧", user_path(@user)%></li>
             <li><%= link_to "参加している議論一覧", your_joined_discussions_user_path(@user)%></li>
           </ul>
+          <div class="search-results-number">
+            <%= @rooms.length%>件
+          </div>
 
         <div class="mypage-content">
           <div class="mypage-title"></div>
