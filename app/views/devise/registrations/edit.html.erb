@@ -41,6 +41,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="image-field">
+    <%= f.label :image, "アイコン画像の投稿" %><br>
+    <%= f.file_field :image %>
+  </div>
+
   <div class="field">
     <%= f.label :current_password,"変更前パスワード" %> <i>(ユーザー情報を変更する場合は必ず入力してください)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
