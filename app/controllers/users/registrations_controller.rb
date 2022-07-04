@@ -5,6 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   before_action :authenticate_user!
 
+  # POST /resource
+  def create
+    super
+    UserMailer.with(user: @user).welcome_email.deliver_now
+  end
+
   private
 
   def after_update_path_for(resource)
@@ -17,12 +23,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
-  # POST /resource
-  def create
-    super
-    UserMailer.with(user: @user).welcome_email.deliver_later
-  end
 
   # GET /resource/edit
   # def edit
