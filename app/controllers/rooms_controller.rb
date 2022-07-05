@@ -51,7 +51,7 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.search(params[:keyword]).order(created_at: "DESC")
+    @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
     render 'index'
   end
 
@@ -63,12 +63,12 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
-    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc')
+    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
     render 'index'
   end
 
   def sort_comments
-    @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc')
+    @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc').page(params[:page]).per(25)
     render 'index'
   end
 
@@ -77,7 +77,7 @@ class RoomsController < ApplicationController
     @users = @user.followings
     if @users.exists?
       #ふぉろわーのIDを条件に、ルームを取得
-      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids})
+      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids}).page(params[:page]).per(25)
       render 'index'
     else
       flash[:following] = "あなたは誰もフォローしていません。ルーム一覧ページに戻りました"

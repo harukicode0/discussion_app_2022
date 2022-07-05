@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_rooms
-    @rooms = Room.includes(:owner).order(created_at: "DESC")
+    @rooms = Room.includes(:owner).order(created_at: "DESC").page(params[:page]).per(25)
   end
 
   def create_comments
