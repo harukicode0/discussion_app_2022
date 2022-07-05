@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
   
   def show
-    @rooms = Room.where(owner_id:@user.id).page(params[:page]).per(3)
+    @rooms = Room.where(owner_id:@user.id).page(params[:page]).per(10)
   end
 
   def followings
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def your_joined_discussions
     user_rooms = UserRoom.where(user_id: @user.id)
-    @rooms = Room.where(id:user_rooms.pluck(:room_id)).page(params[:page]).per(3)
+    @rooms = Room.where(id:user_rooms.pluck(:room_id)).page(params[:page]).per(10)
     render 'show'
   end
 
