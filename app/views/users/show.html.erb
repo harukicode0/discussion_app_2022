@@ -52,6 +52,9 @@
           <div class="my-discussion">
               <%= render partial: "shared/room", collection: @rooms %>
           </div>
+          <div class="pagenetion">
+            <%= paginate @rooms %>
+          </div>
         </div>
       </div>
     </div>
