@@ -21,3 +21,12 @@
   --disagree-color: blue;
   --btn-height: 70px;
 }
+
+@media (prefers-color-scheme: dark) {
+  /* ユーザーがダークモードに設定している時の設定を記述する場所 */
+  /* カラーは変数化している方が良い */
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+}
