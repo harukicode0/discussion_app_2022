@@ -51,6 +51,9 @@
           <div class="mypage-title"></div>
           <div class="my-discussion">
               <%= render partial: "shared/room", collection: @rooms %>
+            <div class="mypage-pagenation">
+              <%= paginate @rooms %>
+            </div>
           </div>
         </div>
       </div>

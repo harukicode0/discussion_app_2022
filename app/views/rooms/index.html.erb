@@ -26,6 +26,9 @@
   <%# コンテンツ表示 %>
     <div class="contents-wrapper">
       <%= render partial: "shared/room", collection: @rooms %>
+      <div class="mypage-pagenation">
+              <%= paginate @rooms %>
+            </div>
     </div>
   </div>
 </div>
