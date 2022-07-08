@@ -1,0 +1,23 @@
+<div class="sign-up-contents">
+  <div class="sign-up-content">
+    <div class="sign-up-title">
+      論点追加
+    </div>
+    <div class="sign-up-bottom">
+      <%= form_with model: @issue, url:room_issues_path(@room), method: :post, local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: @issue%>
+
+        <div class="field">
+          <%= f.label :issue_title, "論点",class:"label-name" %><br>
+          <%= f.text_field :issue_title, placeholder: "論点を入力してください",autocomplete: 'off', class:"input-name"%>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "作成", class:"input-name submit-bottom"%>
+        </div>
+      <% end %>
+      <%= link_to "roomへ", room_path(@room), class:"links-propaty"%>
+    </div>
+  </div>
+</div>
