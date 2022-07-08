@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_172707) do
+ActiveRecord::Schema.define(version: 2022_07_08_175848) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,36 @@ ActiveRecord::Schema.define(version: 2022_07_04_172707) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_comments_on_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "issue_comments", charset: "utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "issue_id"
+    t.bigint "user_id"
+    t.integer "standing_position_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_id"], name: "index_issue_comments_on_issue_id"
+    t.index ["user_id"], name: "index_issue_comments_on_user_id"
+  end
+
+  create_table "issue_likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "issue_comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_comment_id"], name: "index_issue_likes_on_issue_comment_id"
+    t.index ["user_id"], name: "index_issue_likes_on_user_id"
+  end
+
+  create_table "issues", charset: "utf8", force: :cascade do |t|
+    t.string "issue_title", null: false
+    t.bigint "room_id"
+    t.bigint "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_issues_on_owner_id"
+    t.index ["room_id"], name: "index_issues_on_room_id"
   end
 
   create_table "likes", charset: "utf8", force: :cascade do |t|
@@ -130,6 +160,11 @@ ActiveRecord::Schema.define(version: 2022_07_04_172707) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
+  add_foreign_key "issue_comments", "issues"
+  add_foreign_key "issue_comments", "users"
+  add_foreign_key "issue_likes", "issue_comments"
+  add_foreign_key "issue_likes", "users"
+  add_foreign_key "issues", "rooms"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
   add_foreign_key "positions", "user_rooms"

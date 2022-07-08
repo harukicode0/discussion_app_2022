@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
     @comment = Comment.new
     find_user_positioin
     @count_participants = count_participants(@room.id)
+    @issues = Issue.where(room_id: @room.id)
   end
 
   def new
@@ -37,7 +38,7 @@ class RoomsController < ApplicationController
       if @position = Position.find_by(user_room_id:@user_room.id)
         #ポジションがある場合
         @position.update(user_room_id: @user_room.id, standing_position_id:params[:standing_position]) 
-        redirect_to action: :show
+        send_collect_url
       else
         #ポジションがない場合
         create_new_position
@@ -46,7 +47,7 @@ class RoomsController < ApplicationController
     else
       @user_room = UserRoom.create(room_id: @room.id, user_id: current_user.id) #中間テーブルを作成
       create_new_position  #ポジションを作成
-      redirect_to action: :show
+      send_collect_url
     end
   end
 
@@ -86,6 +87,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  def this_site
+  end
+
   private
 
   def room_other_params
@@ -94,5 +98,15 @@ class RoomsController < ApplicationController
 
   def create_new_position
     @position = Position.create(user_room_id: @user_room.id, standing_position_id:params[:standing_position])
+  end
+
+  def send_collect_url
+    # issueコントローラーからのリクエストの場合はissueのshowにリダイレクトする
+    if request.referer.match(/issue/)
+      @issue = Issue.find(params[:id])
+      redirect_to room_issue_path(@room,@issue)
+    else
+      redirect_to action: :show
+    end
   end
 end

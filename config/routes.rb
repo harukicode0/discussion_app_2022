@@ -6,8 +6,13 @@ Rails.application.routes.draw do
 
   root to: "rooms#index"
   resources :rooms do
-    resources :comments,only:[:show, :create,:edit,:update, :destroy] do
-      resources :likes,only:[:create, :destroy]
+    resources :issues do
+      resources :issue_comments, only: [:create, :update, :edit, :destroy] do
+        resources :issue_likes, only: [:create, :destroy]
+      end
+    end
+    resources :comments, only: [:create,:edit,:update, :destroy] do
+      resources :likes, only: [:create, :destroy]
     end
 
     member do
@@ -16,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     collection do
+      get :this_site
       get :search
       get :tag_search
       get :sort_participants

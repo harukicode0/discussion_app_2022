@@ -8,4 +8,5 @@ class StandingPosition < ActiveHash::Base
   include ActiveHash::Associations
   has_many :positions
   has_many :comments
+  has_many :issue_comments
 end

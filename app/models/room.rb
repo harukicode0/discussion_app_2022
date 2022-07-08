@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   has_many :comments,dependent: :destroy
   has_many :room_tags, dependent: :destroy
   has_many :tags, through: :room_tags
+  has_many :issues, dependent: :destroy
 
   def self.search(search)
     if search != ""
