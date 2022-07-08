@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   root to: "rooms#index"
   resources :rooms do
+    resources :issue do
+      resources :issue_comments, only: [:show, :create, :update, :edit, :destroy]
+    end
     resources :comments,only:[:show, :create,:edit,:update, :destroy] do
       resources :likes,only:[:create, :destroy]
     end
