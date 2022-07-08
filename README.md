@@ -23,6 +23,8 @@ has_many:Comments
 has_many:Likes
 has_many:replys
 has_many:owners
+has_many:issues
+has_many:issue_comments
 
 ## Relationships
 
@@ -52,6 +54,7 @@ has_many:User_rooms
 has_many:comments
 has_many:Tags
 has_many:Room_tags
+has_many:issues
 
 ## User_rooms
 
@@ -93,6 +96,7 @@ belongs_to:Room
 
 belongs_to:user_room
 has_many:comment
+has_many:issue_comments
 
 ## Comments
 
@@ -171,9 +175,11 @@ belongs_to: user
 | id          | integer    | null: false                   |
 | issue_title | string     | null: false                   |
 | room        | references | null: false,foreign_key: true |
+| owner       | references | null: false,foreign_key: true |
 
 ### Association
 
+belongs_to: user
 belongs_to: room
 has_many: IssueComments
 
@@ -184,7 +190,11 @@ has_many: IssueComments
 | id       | integer    | null: false                   |
 | text     | text       | null: false                   |
 | issue_id | references | null: false,foreign_key: true |
+| owner    | references | null: false,foreign_key: true |
+| position | references | null: false,foreign_key: true |
 
 ### Association
 
-belongs_to: issue
+belongs_to: issues
+belongs_to: user
+belongs_to: position

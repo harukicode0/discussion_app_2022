@@ -54,16 +54,22 @@ ActiveRecord::Schema.define(version: 2022_07_08_064359) do
   create_table "issue_comments", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "issue_id"
+    t.bigint "user_id"
+    t.bigint "position_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["issue_id"], name: "index_issue_comments_on_issue_id"
+    t.index ["position_id"], name: "index_issue_comments_on_position_id"
+    t.index ["user_id"], name: "index_issue_comments_on_user_id"
   end
 
   create_table "issues", charset: "utf8", force: :cascade do |t|
     t.string "issue_title", null: false
     t.bigint "room_id"
+    t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_issues_on_owner_id"
     t.index ["room_id"], name: "index_issues_on_room_id"
   end
 
@@ -147,6 +153,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_064359) do
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
   add_foreign_key "issue_comments", "issues"
+  add_foreign_key "issue_comments", "positions"
+  add_foreign_key "issue_comments", "users"
   add_foreign_key "issues", "rooms"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
