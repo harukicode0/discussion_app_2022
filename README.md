@@ -100,13 +100,13 @@ has_many:issue_comments
 
 ## Comments
 
-| column   | type       | Options                       |
-| -------- | ---------- | ----------------------------- |
-| id       | integer    | null: false                   |
-| text     | text       | null: false                   |
-| user     | integer    | null: false,foreign_key: true |
-| room     | integer    | null: false,foreign_key: true |
-| position | references | null: false,foreign_key: true |
+| column               | type    | Options                       |
+| -------------------- | ------- | ----------------------------- | --- |
+| id                   | integer | null: false                   |
+| text                 | text    | null: false                   |
+| user                 | integer | null: false,foreign_key: true |
+| room                 | integer | null: false,foreign_key: true |
+| standing_position_id | integer | null: false,foreign_key: true | AH  |
 
 ### Association
 
@@ -185,13 +185,13 @@ has_many: IssueComments
 
 ## IssueComments
 
-| column   | type       | Options                       |
-| -------- | ---------- | ----------------------------- |
-| id       | integer    | null: false                   |
-| text     | text       | null: false                   |
-| issue_id | references | null: false,foreign_key: true |
-| owner    | references | null: false,foreign_key: true |
-| position | references | null: false,foreign_key: true |
+| column               | type       | Options                       |
+| -------------------- | ---------- | ----------------------------- | --- |
+| id                   | integer    | null: false                   |
+| text                 | text       | null: false                   |
+| issue_id             | references | null: false,foreign_key: true |
+| owner                | references | null: false,foreign_key: true |
+| standing_position_id | integer    | null: false,foreign_key: true | AH  |
 
 ### Association
 

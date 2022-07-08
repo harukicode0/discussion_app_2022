@@ -4,7 +4,7 @@ class CreateIssueComments < ActiveRecord::Migration[6.1]
       t.text :text, null: false
       t.references :issue, foreign_key: true
       t.references :user, foreign_key: true
-      t.references :position, foreign_key: true
+      t.integer :standing_position_id, null: false
       t.timestamps
     end
   end

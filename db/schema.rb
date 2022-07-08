@@ -55,11 +55,10 @@ ActiveRecord::Schema.define(version: 2022_07_08_064359) do
     t.text "text", null: false
     t.bigint "issue_id"
     t.bigint "user_id"
-    t.bigint "position_id"
+    t.integer "standing_position_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["issue_id"], name: "index_issue_comments_on_issue_id"
-    t.index ["position_id"], name: "index_issue_comments_on_position_id"
     t.index ["user_id"], name: "index_issue_comments_on_user_id"
   end
 
@@ -153,7 +152,6 @@ ActiveRecord::Schema.define(version: 2022_07_08_064359) do
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
   add_foreign_key "issue_comments", "issues"
-  add_foreign_key "issue_comments", "positions"
   add_foreign_key "issue_comments", "users"
   add_foreign_key "issues", "rooms"
   add_foreign_key "likes", "comments"
