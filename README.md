@@ -198,3 +198,16 @@ has_many: IssueComments
 belongs_to: issues
 belongs_to: user
 belongs_to: position
+
+## IssueLikes
+
+| column         | type       | Options                       |
+| -------------- | ---------- | ----------------------------- |
+| id             | integer    | null: false                   |
+| user           | references | null: false,foreign_key: true |
+| issue_comments | references | null: false,foreign_key: true |
+
+### Association
+
+belongs_to: issues
+belongs_to: user
