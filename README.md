@@ -163,3 +163,28 @@ belongs_to: Comment
 
 belongs_to: comment
 belongs_to: user
+
+## Issues
+
+| column      | type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| id          | integer    | null: false                   |
+| issue_title | string     | null: false                   |
+| room        | references | null: false,foreign_key: true |
+
+### Association
+
+belongs_to: room
+has_many: IssueComments
+
+## IssueComments
+
+| column   | type       | Options                       |
+| -------- | ---------- | ----------------------------- |
+| id       | integer    | null: false                   |
+| text     | text       | null: false                   |
+| issue_id | references | null: false,foreign_key: true |
+
+### Association
+
+belongs_to: issue
