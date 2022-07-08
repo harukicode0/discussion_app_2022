@@ -1,7 +1,7 @@
 class IssueCommentsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :find_issue_comments, only: [:edit,:update,:destroy]
-  # before_action :find_room_for_issue_comment, only: [:destroy]
+  before_action :find_issue_comments, only: [:edit,:update,:destroy]
+  before_action :find_issue_for_issue_comment, only: [:destroy]
 
   def create
     @issue_comment = IssueComment.new
@@ -41,11 +41,10 @@ class IssueCommentsController < ApplicationController
   end
 
   def destroy
-    @room = Room.find(params[:room_id])
-    if @issue_comment.user == current_user && @issue_comment.room_id == params[:room_id].to_i
+    if @issue_comment.user == current_user && @issue_comment.issue_id == params[:issue_id].to_i
       @issue_comment.destroy
     end
-    redirect_to room_path(@room)
+    redirect_to room_issue_path(@issue.room_id,@issue)
   end
 
   private
@@ -58,11 +57,11 @@ class IssueCommentsController < ApplicationController
   end
   
   def find_issue_comments
-    @issue_comment = Comment.find(params[:id])
+    @issue_comment = IssueComment.find(params[:id])
   end
 
-  def find_room_for_issue_comment
-    @room = Room.find(params[:room_id])
+  def find_issue_for_issue_comment
+    @issue = Issue.find(params[:issue_id])
   end
 
   def find_user_positioin_in_issue
