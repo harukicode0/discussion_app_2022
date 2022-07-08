@@ -6,6 +6,9 @@
   <%= @room.title%>
   :<%= @count_participants%>人参加中
   </div>
+  <div class="issue-title"> 
+    <%=@issue.issue_title%>
+  </div>
   <div class="room-issue">
     <%= link_to "ホーム", room_path(@room)%>
     <% @issues.each do |issue|%>

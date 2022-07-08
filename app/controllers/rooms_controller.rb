@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
     @comment = Comment.new
     find_user_positioin
     @count_participants = count_participants(@room.id)
+    @issues = Issue.where(room_id: params[:id])
   end
 
   def new
