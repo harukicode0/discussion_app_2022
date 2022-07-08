@@ -11,13 +11,13 @@
   <div class="room-issue">
     <%= link_to "ホーム", room_path(@room)%>
     <% @issues.each do |issue|%>
-      <%= link_to "#{issue.issue_title}", room_issue_path(issue)%>
+      <%= link_to "#{issue.issue_title}", room_issue_path(@room,issue)%>
     <%end%>
     <%= link_to "+", new_room_issue_path(@room)%>
   </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
-          <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
+          <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
             <%= f.hidden_field :standing_position, value:@agree%>
             <%= f.hidden_field :room_id, value:@room.id%>
             <%= f.submit 'YES！', class:"agree-btn opinion-btn"%>
@@ -31,7 +31,7 @@
 
 
       <div class="disagree-room opinion-room">
-         <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
+         <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
             <%= f.hidden_field :standing_position, value:@disagree%>
             <%= f.hidden_field :room_id, value:@room.id%>
             <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>

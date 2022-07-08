@@ -17,7 +17,7 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     if @issue.save
-      redirect_to room_path(params[:room_id])
+      redirect_to room_issue_path(params[:room_id],@issue)
     else
       @room = Room.find(params[:room_id])
       render 'new'
