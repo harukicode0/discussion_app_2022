@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
     @comments = @room.comments.includes(:user)
     find_user_positioin
     @count_participants = count_participants(@room.id)
+    @issues = Issue.where(room_id: @room.id)
     render 'rooms/show'
   end
 

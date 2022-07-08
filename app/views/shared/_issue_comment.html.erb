@@ -13,7 +13,7 @@
       <% end %>
   <% end %>
   <%if current_user == comment.user%>
-    <%= link_to "編集", room_issue_issue_comment_path(@room,@issue,comment)%>
+    <%= link_to "編集", edit_room_issue_issue_comment_path(@room,@issue,comment)%>
     <%= link_to "削除", room_issue_issue_comment_path(@room,@issue,comment),method: :delete%>
   <%end%>
 <%end%>
