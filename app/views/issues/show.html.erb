@@ -4,7 +4,6 @@
 <div class="room-wrapper">
   <div class="room-title">
   <%= @room.title%>
-  :<%= @count_participants%>人参加中
   </div>
   <div class="issue-title"> 
     <%=@issue.issue_title%>
@@ -24,7 +23,7 @@
             <%= f.submit 'YES！', class:"agree-btn opinion-btn"%>
           <%end%>
         <div class="agree-text opinion-text">
-          <% @comments.each do |comment| %>
+          <% @issue_comments.each do |comment| %>
             <%= render 'shared/comment',{comment:comment,value:@agree} %>
           <%end%>
         </div>
@@ -38,14 +37,14 @@
             <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>
           <%end%>
         <div class="disagree-text opinion-text">
-          <% @comments.each do |comment| %>
+          <% @issue_comments.each do |comment| %>
             <%= render 'shared/comment',{comment:comment,value:@disagree} %>
           <%end%>
         </div>
       </div>
   </div>
     <% if user_signed_in? %>
-      <%= form_with(model:[@room, @comment], local: true) do |f|%>
+      <%= form_with(model:[@room, @issue, @issue_comment], local: true) do |f|%>
           <div class="room-input-box">
               <div class="position-open">
                 <%if @position%>
