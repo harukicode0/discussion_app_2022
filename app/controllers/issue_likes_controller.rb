@@ -1,13 +1,15 @@
 class IssueLikesController < ApplicationController
   def create
-    like = Like.new(user_id: current_user.id,comment_id:params[:comment_id])
-    like.save
-    redirect_to room_path(params[:room_id])
+    issuelike = IssueLike.new(user_id: current_user.id, issue_comment_id:params[:issue_comment_id])
+    issuelike.save
+    @issue = Issue.find(params[:issue_id])
+    redirect_to room_issue_path(@issue.room_id,@issue)
   end
 
   def destroy
-    like = Like.find_by(user_id: current_user.id, comment_id: params[:comment_id])
-    like.destroy
-    redirect_to room_path(params[:room_id])
+    issuelike = IssueLike.find_by(user_id: current_user.id, issue_comment_id: params[:issue_comment_id])
+    issuelike.destroy
+    @issue = Issue.find(params[:issue_id])
+    redirect_to room_issue_path(@issue.room_id,@issue)
   end
 end
