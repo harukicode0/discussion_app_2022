@@ -6,6 +6,11 @@
   <%= @room.title%>
   :<%= @count_participants%>人参加中
   </div>
+  <div class="room-issue">
+    <%= link_to "ホーム", room_path(@room)%>
+    <%# 作成済みリンク羅列 %>
+    <%= link_to "+", new_room_issue_path(@room)%>
+  </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
           <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
