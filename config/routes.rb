@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     collection do
+      get :this_site
       get :search
       get :tag_search
       get :sort_participants

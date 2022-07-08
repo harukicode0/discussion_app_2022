@@ -87,6 +87,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  def this_site
+  end
+
   private
 
   def room_other_params
