@@ -3,7 +3,7 @@
 <%@disagree=2%>
 <div class="room-wrapper">
   <div class="room-title">
-  <%= @room.title%>
+  <%= @room.deadline < Time.now ? "終了:" : nil%><%= @room.title%>
   :<%= @count_participants%>人参加中
   </div>
   <div class="room-issue">
