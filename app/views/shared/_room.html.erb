@@ -32,9 +32,9 @@
           <div class="content-bottom">
             <div class="content-time content-bottom-list">残り時間:
               <div class="deadline" id="<%=room.id%>" style="display:none;"><%=room.deadline%></div>
-              <span id="hour<%=room.id%>"></span>時間
-              <span id="min<%=room.id%>"></span>分
-              <span id="sec<%=room.id%>"></span>秒
+              <span id="day<%=room.id%>"></span>
+              <span id="hour<%=room.id%>"></span>
+              <span id="min<%=room.id%>"></span>
             </div>
             <div class="content-participant content-bottom-list">
               <%= room.users.count%>名参加 
