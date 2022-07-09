@@ -3,15 +3,19 @@
     <%= comment.text%>
     <%= comment.user.nickname%>
   </div>
-  <% if comment.issue_like?(current_user,comment) %>
-      <%= link_to room_issue_issue_comment_issue_like_path(@room.id, @issue, comment.id), method: :delete do %>
-         <span style="color:red;">❤︎<%=comment.count_issue_like(comment)%></span>
-      <% end %>
-  <% else %>
-      <%= link_to room_issue_issue_comment_issue_likes_path(@room.id, @issue, comment.id), method: :post do %>
-        <span style="color:gray;">❤︎<%=comment.count_issue_like(comment)%></span>
-      <% end %>
-  <% end %>
+  <% if user_signed_in?%>
+    <% if comment.issue_like?(current_user,comment) %>
+        <%= link_to room_issue_issue_comment_issue_like_path(@room.id, @issue, comment.id), method: :delete do %>
+          <span style="color:red;">❤︎<%=comment.count_issue_like(comment)%></span>
+        <% end %>
+    <% else %>
+        <%= link_to room_issue_issue_comment_issue_likes_path(@room.id, @issue, comment.id), method: :post do %>
+          <span style="color:gray;">❤︎<%=comment.count_issue_like(comment)%></span>
+        <% end %>
+    <% end %>
+  <%else%>
+     <span style="color:gray;">❤︎<%=comment.count_issue_like(comment)%></span>
+  <%end%>
   <%if current_user == comment.user%>
     <%= link_to "編集", edit_room_issue_issue_comment_path(@room,@issue,comment)%>
     <%= link_to "削除", room_issue_issue_comment_path(@room,@issue,comment),method: :delete%>

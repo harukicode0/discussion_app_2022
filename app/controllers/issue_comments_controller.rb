@@ -66,13 +66,6 @@ class IssueCommentsController < ApplicationController
     @issue = Issue.find(params[:issue_id])
   end
 
-  def find_user_positioin_in_issue
-    @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@issue.room_id)
-    if user_signed_in? && @user_room.present?
-      @position = @user_room.position
-    end
-  end
-
   def find_room_and_issues
     @room = Room.find(@issue.room_id)
     @issues = Issue.where(room_id: @issue.room_id)
