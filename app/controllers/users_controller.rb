@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   def your_joined_discussions
-    user_rooms = UserRoom.where(user_id: @user.id)
-    @rooms = Room.where(id:user_rooms.pluck(:room_id)).page(params[:page]).per(15)
+    @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@user.id}).where.not(owner_id:@user.id).page(params[:page]).per(15)
     render 'show'
   end
 
