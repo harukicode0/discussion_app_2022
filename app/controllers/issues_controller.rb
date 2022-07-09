@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
   before_action :authenticate_user!, except:[:show]
+  before_action :count_down_timer, only: [:new,:create]
 
   def show
     @issue = Issue.find(params[:id])

@@ -2,6 +2,7 @@ class IssueCommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_issue_comments, only: [:edit,:update,:destroy]
   before_action :find_issue_for_issue_comment, only: [:destroy,:edit,:update]
+  before_action :count_down_timer, only: [:create,:edit,:update,:destroy]
 
   def create
     @issue_comment = IssueComment.new

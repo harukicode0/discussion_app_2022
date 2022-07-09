@@ -1,4 +1,6 @@
 class IssueLikesController < ApplicationController
+  before_action :count_down_timer
+  
   def create
     issuelike = IssueLike.new(user_id: current_user.id, issue_comment_id:params[:issue_comment_id])
     issuelike.save

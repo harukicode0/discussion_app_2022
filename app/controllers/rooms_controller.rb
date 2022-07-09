@@ -32,9 +32,6 @@ class RoomsController < ApplicationController
 
   def standing_position
     #ルームを探す
-    
-    binding.pry
-    
     @room = Room.find(params[:room_id])
      #中間テーブルが存在するか否かの条件式
     if @user_room = UserRoom.find_by(room_id: @room.id, user_id: current_user.id)
