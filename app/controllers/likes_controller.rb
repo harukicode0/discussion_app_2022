@@ -1,4 +1,7 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :count_down_timer
+
   def create
     like = Like.new(user_id: current_user.id,comment_id:params[:comment_id])
     like.save

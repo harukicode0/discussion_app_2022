@@ -8,7 +8,6 @@ import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 require("../time");
-require("../timeup");
 require("../delete_alert");
 require("../tag");
 require("../preview");

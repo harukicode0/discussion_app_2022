@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following,:sort_participants, :sort_comments]
   before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
+  before_action :count_down_timer, only: [:standing_position]
 
   def index
     get_rooms
@@ -89,6 +90,9 @@ class RoomsController < ApplicationController
 
   def this_site
   end
+
+
+
 
   private
 

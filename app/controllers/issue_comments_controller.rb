@@ -2,6 +2,7 @@ class IssueCommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_issue_comments, only: [:edit,:update,:destroy]
   before_action :find_issue_for_issue_comment, only: [:destroy,:edit,:update]
+  before_action :count_down_timer, only: [:create,:edit,:update,:destroy]
 
   def create
     @issue_comment = IssueComment.new
@@ -64,13 +65,6 @@ class IssueCommentsController < ApplicationController
 
   def find_issue_for_issue_comment
     @issue = Issue.find(params[:issue_id])
-  end
-
-  def find_user_positioin_in_issue
-    @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@issue.room_id)
-    if user_signed_in? && @user_room.present?
-      @position = @user_room.position
-    end
   end
 
   def find_room_and_issues

@@ -1,4 +1,7 @@
 class IssuesController < ApplicationController
+  before_action :authenticate_user!, except:[:show]
+  before_action :count_down_timer, only: [:new,:create]
+
   def show
     @issue = Issue.find(params[:id])
     @room = Room.find(@issue.room_id)
@@ -27,12 +30,5 @@ class IssuesController < ApplicationController
   private
   def issue_params
     params.require(:issue).permit(:issue_title).merge(room_id: params[:room_id],owner_id:current_user.id)
-  end
-
-  def find_user_positioin_in_issue
-    @user_room = UserRoom.find_by(user_id:current_user.id,room_id:@issue.room_id)
-    if user_signed_in? && @user_room.present?
-      @position = @user_room.position
-    end
   end
 end
