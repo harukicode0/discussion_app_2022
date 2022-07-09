@@ -1,1 +1,16 @@
 <%= render 'shared/header' %>
+<div class="explanation">
+  <div class="explanation-section">
+    <div class="explanation-about"></div>
+    <div class="demand-section"></div>
+    <div class="how-to-use"></div>
+    <div class="send-to-registra">
+      <% if user_signed_in?%>
+        <%= link_to 'ROOM作成', new_room_path , class: "create-room-list buttom" %>
+        <%= link_to 'Topページへ', root_path, class:"buttom"%>
+      <%else%>
+        <%= link_to 'いますぐ新規登録して討論を始める', '/users/sign_up', class: "sign-up buttom" %>
+      <%end%>
+    </div>
+  </div>
+</div>
