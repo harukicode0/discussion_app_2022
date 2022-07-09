@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   def count_down_timer
-    @room = Room.find(params[:id]) || @room = Room.find(params[:room_id])
+    @room = Room.find(params[:id] || params[:room_id])
     if @room.deadline < Time.now
       flash[:deadline] = "この議論は終了しているため、コメントの追加等の編集はできません"
       redirect_to request.referer
