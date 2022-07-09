@@ -40,4 +40,12 @@ class ApplicationController < ActionController::Base
   def count_participants(id)
     UserRoom.where(room_id:id).count
   end
+
+  def count_down_timer
+    @room = Room.find(params[:id]) || @room = Room.find(params[:room_id])
+    if @room.deadline < Time.now
+      flash[:deadline] = "この議論は終了しているため、コメントの追加等の編集はできません"
+      redirect_to request.referer
+    end
+  end
 end
