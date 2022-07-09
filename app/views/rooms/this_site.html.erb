@@ -1,0 +1,35 @@
+<%= render 'shared/header' %>
+<div class="explanation">
+  <div class="explanation-section">
+    <div class="explanation-about section">
+      <h1>どのようなサイト？</h1>
+      <p>気軽に討論するためのプラットフォームです</p>
+      <p>ここでは、皆さんが自由に議題を決め、ルームを作ることができます</p>
+      <p>皆さんはルームに参加し、賛成・反対のポジションを取ることによって、ルーム内でコメントできるようになります。</p>
+    </div>
+    <div class="demand section">
+      <h1>どういった時に、このサイトが役立つ？</h1>
+      <ul class="demand-lists">
+        <li>ある物・事に興味があるが、それに興味を持った人が集まらない</li>
+        <li>Twitter等のSNSを見て、人々のコミュニケーションがうまくいっていないと感じる</li>
+        <li>自分の意見と反対の意見に耳を傾け、見聞を広めたい</li>
+      </ul>
+    </div>
+    <div class="how-to-use section">
+      <h1>使い方は？</h1>
+        <div>①ユーザー登録</div>
+        <div>②議題設定、ルーム作成</div>
+        <div>③賛成・反対のポジションをとってコメント</div>
+        <div>④論点を管理</div>
+        <div>⑤残り時間が０になるとコメント不可</div>
+    </div>
+    <div class="send-to-registra section">
+      <% if user_signed_in?%>
+        <%= link_to 'ROOM作成', new_room_path , class: "create-room-list buttom" %>
+        <%= link_to 'Topページへ', root_path, class:"buttom"%>
+      <%else%>
+        <%= link_to 'いますぐ新規登録して討論を始める', '/users/sign_up', class: "sign-up buttom" %>
+      <%end%>
+    </div>
+  </div>
+</div>
