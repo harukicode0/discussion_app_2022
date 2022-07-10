@@ -5,14 +5,10 @@
   <div class="parts">
   <%# 検索ボックス %>
     <div class = "search-box">
-        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-          <%= form.text_field :keyword, placeholder: "検索する", class: "input-box" %>
-          <%= image_submit_tag("search.png", class: 'search-button') %>
-        <% end %>
         <div class="sort">
         <%# ソート機能 %>
           <ul class="sort-lists">
-            <li>条件検索：</li>
+            <li>並び替え：</li>
             <li class="sort-btn"><%= link_to "参加人数が多い順",sort_participants_rooms_path%></li>
             <li class="sort-btn"><%= link_to "コメントが多い順",sort_comments_rooms_path%></li>
             <%if user_signed_in?%>

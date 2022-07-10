@@ -1,47 +1,17 @@
 .main-wrapper {
-  width: 100%;
+  width: 100vw;
 }
 
 .parts {
   margin: 0 auto;
-  width: var(--content-width);
-}
-
-/*******************************************
- 検索ボックス 
- ********************************************/
-
-.search-box {
-  margin: 0 auto;
   width: 80%;
-  padding: 50px 0;
-  background-color: beige;
-}
-
-.search-form {
-  text-align: center;
-}
-
-.input-box {
-  width: 50%;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 20px;
-  border: none;
-  margin: 20px;
-  padding-left: 20px;
-}
-
-.search-button {
-  width: 30px;
-  height: 30px;
 }
 
 /*******************************************
 sort部分
  ********************************************/
 .sort {
-  background-color: white;
+  background-color: var(--base-color);
 }
 
 .sort-lists {
