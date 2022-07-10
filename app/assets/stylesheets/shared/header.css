@@ -17,6 +17,13 @@
 }
 
 .top-logo {
+  background: -webkit-linear-gradient(
+    left,
+    var(--agree-color),
+    var(--disagree-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Sacramento", cursive;
   line-height: var(--top-header-height);
   font-size: calc(var(--top-header-height) - 16px);
