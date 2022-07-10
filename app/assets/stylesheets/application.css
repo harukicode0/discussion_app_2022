@@ -24,6 +24,7 @@
   --footer-height: 25px;
   --base-color: #f2f3f3; /*背景の色*/
   --main-color: #ffffff; /*ヘッダー、コンテンツが表示されている部分に対する色*/
+  --font-color: rgb(34, 34, 34);
 }
 
 body {

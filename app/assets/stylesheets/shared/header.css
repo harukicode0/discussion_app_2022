@@ -21,7 +21,7 @@
   line-height: var(--top-header-height);
   font-size: calc(var(--top-header-height) - 16px);
   margin: 0 35px 0 30px;
-  color: black;
+  color: var(--font-color);
   text-decoration: none;
   position: relative;
 }

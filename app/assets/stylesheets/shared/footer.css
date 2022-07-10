@@ -18,7 +18,7 @@ footer {
   display: block;
   line-height: var(--footer-height);
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
   text-align: center;
   font-size: 14px;
   position: relative;
