@@ -12,31 +12,42 @@ sort部分
  ********************************************/
 .sort {
   background-color: var(--base-color);
+  padding: 120px 0 15px;
+}
+
+.sort-top {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--font-color);
+  margin: 0 0 10px 5px;
+  text-decoration: underline;
 }
 
 .sort-lists {
   display: flex;
   align-items: center;
-  justify-content: center;
   list-style: none;
   font-size: 14px;
 }
-
 .sort-btn {
-  width: 150px;
-  margin-right: 15px;
-  border: 1px solid rgb(50, 71, 255);
-  background-color: rgba(167, 187, 240, 0.5);
+  margin: 0 15px 0 5px;
+  display: block;
+  border: 1px solid var(--deep-disagree-color);
+  background-color: var(--main-color);
   border-radius: 20px;
   text-align: center;
-  padding: 7px 3px;
-  font-weight: bold;
+  padding: 7px 10px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--font-color);
 }
 
-.sort-btn a {
-  text-decoration: none;
-  color: black;
+.sort-btn:hover {
+  background-color: var(--deep-disagree-color);
+  color: var(--main-color);
+  transition: 1s;
 }
+
 /*******************************************
 コンテンツの表示
  ********************************************/

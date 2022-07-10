@@ -3,19 +3,16 @@
 <%= flash[:deadline] %>
 <div class="main-wrapper">
   <div class="parts">
-  <%# 検索ボックス %>
-    <div class = "search-box">
-        <div class="sort">
-        <%# ソート機能 %>
-          <ul class="sort-lists">
-            <li>並び替え：</li>
-            <li class="sort-btn"><%= link_to "参加人数が多い順",sort_participants_rooms_path%></li>
-            <li class="sort-btn"><%= link_to "コメントが多い順",sort_comments_rooms_path%></li>
-            <%if user_signed_in?%>
-              <li class="sort-btn"><%= link_to "フォロー先が作成した議論一覧",sort_following_room_path(current_user)%></li>
-            <%end%>
-          </ul>
-        </div>
+    <%# ソート機能 %>
+    <div class="sort">
+     <div class="sort-top">並び替え条件</div>
+      <ul class="sort-lists">
+        <li><%= link_to "参加人数が多い順",sort_participants_rooms_path,class:"sort-btn"%></li>
+        <li><%= link_to "コメントが多い順",sort_comments_rooms_path,class:"sort-btn"%></li>
+        <%if user_signed_in?%>
+          <li><%= link_to "フォロー先が作成した議論一覧",sort_following_room_path(current_user),class:"sort-btn"%></li>
+        <%end%>
+      </ul>
     </div>
   <%# コンテンツ表示 %>
     <div class="contents-wrapper">
