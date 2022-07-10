@@ -1,49 +1,90 @@
-:root{
-  --top-height:70px;
-}
-
-.top-page-header{
-  height: var(--top-height);
+.top-page-header {
+  height: var(--top-header-height);
   width: 100vw;
-  background-color: rgb(198, 189, 189);
+  background-color: var(--main-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.logo{
+/************************************
+ left-side 
+ ***********************************/
+.lists-left {
   height: 100%;
-  padding: 0 20px;
-}
-
-.top-title{
-  display: block;
-  height: 100%;
-  font-size: 40px;
-  line-height: var(--top-height);
-}
-
-.nav{
   display: flex;
-  justify-content: center;
   align-items: center;
+  list-style: none;
 }
 
-.lists-right{
+.top-logo {
+  font-family: "Sacramento", cursive;
+  line-height: var(--top-header-height);
+  font-size: calc(var(--top-header-height) - 16px);
+  margin: 0 35px 0 30px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+}
+
+.top-logo::after {
+  position: absolute; /*親要素であるaタグを基準に位置を指定*/
+  left: 0; /*アンダーラインを各メニュー（aタグ）の左端に指定*/
+  content: ""; /*擬似要素に入るテキスト*/
+  width: 100%; /*アンダーラインを各aタグの幅に合わせる*/
+  height: 2px; /*アンダーラインの高さ（太さ）*/
+  background: #000000; /*アンダーラインの色*/
+  bottom: 10px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.5s;
+}
+
+.top-logo:hover::after {
+  transform: scale(1, 1);
+}
+
+/************************************
+ right-side 
+ ***********************************/
+.lists-right {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
-  text-decoration: none;
 }
 
-.buttom{
-  line-height: var(--top-height);
+.buttom {
+  line-height: var(--top-header-height);
   display: block;
   text-decoration: none;
-  font-size: 20px;
-  border: 1px solid black;
+  font-size: 16px;
   text-align: center;
   color: black;
-  width: 120px;
+  letter-spacing: 0.2px;
+  margin-right: 30px;
+  position: relative;
+}
+
+.buttom::after {
+  position: absolute; /*親要素であるaタグを基準に位置を指定*/
+  left: 0; /*アンダーラインを各メニュー（aタグ）の左端に指定*/
+  content: ""; /*擬似要素に入るテキスト*/
+  width: 100%; /*アンダーラインを各aタグの幅に合わせる*/
+  height: 2px; /*アンダーラインの高さ（太さ）*/
+  background: #000000; /*アンダーラインの色*/
+  bottom: 10px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.5s;
+}
+
+.buttom:hover::after {
+  transform: scale(1, 1);
+}
+
+.name-list {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

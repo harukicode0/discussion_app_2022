@@ -5,7 +5,6 @@
 .parts {
   margin: 0 auto;
   width: var(--content-width);
-  background-color: rgba(170, 42, 42, 0.5);
 }
 
 /*******************************************

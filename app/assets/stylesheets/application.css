@@ -20,8 +20,14 @@
   --agree-color: brown;
   --disagree-color: blue;
   --btn-height: 70px;
+  --top-header-height: 50px;
+  --base-color: #f2f3f3;
+  --main-color: #ffffff;
 }
 
+body {
+  background-color: var(--base-color);
+}
 @media (prefers-color-scheme: dark) {
   /* ユーザーがダークモードに設定している時の設定を記述する場所 */
   /* カラーは変数化している方が良い */
