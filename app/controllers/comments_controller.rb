@@ -12,10 +12,12 @@ class CommentsController < ApplicationController
         redirect_to room_path(@room)
       else
         create_comments
+        @issues = Issue.where(room_id: @room.id)
         render 'rooms/show'
       end
     else
       create_comments
+      @issues = Issue.where(room_id: @room.id)
       render 'rooms/show'
     end
   end

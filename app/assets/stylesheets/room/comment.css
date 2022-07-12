@@ -1,0 +1,91 @@
+.comment {
+  padding: 10px;
+  font-size: 18px;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+/**********************************
+ icon部分 
+ **********************************/
+.comment-user-image img {
+  border-radius: 46%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/**********************************
+ コメントヘッダー部分 
+ **********************************/
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+.comment-user-name {
+  margin: 0px 30px 5px 0px;
+  font-size: 18px;
+}
+
+.comment-user-name a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.comment-time {
+  font-size: 12px;
+  color: var(--font-color);
+  opacity: 0.4;
+  text-align: unset;
+}
+
+/**********************************
+ コメント本体部分 
+ **********************************/
+.comment-body {
+  color: var(--font-color);
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+/**********************************
+ コメント下部分 
+ **********************************/
+.comment-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-footer-like a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.comment-heart {
+  margin-left: 10px;
+}
+
+.comment-heart-red {
+  color: red;
+}
+
+.comment-heart-gray {
+  color: rgb(198, 198, 198);
+}
+
+/**********************************
+ 編集削除部分 
+ **********************************/
+.comment-footer-author {
+  font-size: 14px;
+}
+
+.comment-footer-author a {
+  text-decoration: none;
+  color: rgb(198, 198, 198);
+  opacity: 0.9;
+  margin-right: 10px;
+}
