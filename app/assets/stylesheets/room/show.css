@@ -265,3 +265,17 @@ plus-btn
 .room-input-box-disabled {
   border: 1px solid var(--font-color);
 }
+
+/************************************
+ issueについて部分  
+ ***********************************/
+.issue-title {
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: var(--main-color);
+  width: 100%;
+  color: var(--font-color);
+  padding: 5px;
+  margin: 35px auto 10px;
+  text-align: center;
+}

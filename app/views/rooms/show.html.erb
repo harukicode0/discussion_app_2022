@@ -4,7 +4,7 @@
 <div class="room-wrapper">
   <div class="room-header">
     <div class="room-title">
-      <%= @room.deadline < Time.now ? "終了:" : nil%><%= @room.title%>
+      <%= @room.deadline < Time.now ? "終了:" :"タイトル："%><%= @room.title%>
     </div>
     <ul class="room-info">
       <li>参加人数：<%= @count_participants%>名</li>
