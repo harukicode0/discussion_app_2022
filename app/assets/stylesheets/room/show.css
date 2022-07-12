@@ -56,7 +56,7 @@
   justify-content: center;
   padding-top: 10px;
   background-color: var(--disagree-color);
-  color: var(--base-color);
+  color: var(--main-color);
   border-radius: 3px;
   opacity: 0.7;
 }
@@ -142,17 +142,20 @@ plus-btn
 }
 
 /************************************
- コメント部分  
+ コメント表示部分  
  ***********************************/
 .comments-room {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - 210px);
+  height: 700px;
+  margin: auto;
+  background-color: var(--base-color);
+  margin: 60px auto 40px;
 }
 
 .opinion-room {
-  width: 50%;
+  width: 47%;
   height: 100%;
 }
 
@@ -163,12 +166,13 @@ plus-btn
 }
 
 .opinion-btn {
+  font-family: "Sacramento", cursive;
   width: 100%;
   height: var(--btn-height);
   text-align: center;
-  font-size: 50px;
-  color: white;
-  line-height: 70px;
+  font-size: 32px;
+  color: var(--base-color);
+  line-height: var(--btn-height);
   letter-spacing: 20px;
   border: none;
 }
@@ -177,29 +181,51 @@ plus-btn
   background-color: var(--agree-color);
 }
 
+.agree-btn:hover {
+  background-color: var(--deep-agree-color);
+  box-shadow: 0px -5px 15px var(--agree-color);
+  transition: 1s;
+}
+
 .disagree-btn {
   background-color: var(--disagree-color);
 }
 
-.opinion-text {
+.disagree-btn:hover {
+  background-color: var(--deep-disagree-color);
+  box-shadow: 0px -5px 15px var(--disagree-color);
+  transition: 1s;
+}
+
+.opinion-text-area {
+  box-sizing: border-box;
   width: 100%;
   height: calc(100% - var(--btn-height));
   overflow-wrap: break-word;
   overflow-y: scroll;
+  background-color: white;
 }
 
-.agree-text {
-  border: 2px solid var(--agree-color);
+.agree-text-area {
+  border-bottom: 2px solid var(--agree-color);
+  border-left: 2px solid var(--agree-color);
+  border-right: 2px solid var(--agree-color);
 }
 
-.disagree-text {
-  border: 2px solid var(--disagree-color);
+.disagree-text-area {
+  border-bottom: 2px solid var(--disagree-color);
+  border-left: 2px solid var(--disagree-color);
+  border-right: 2px solid var(--disagree-color);
 }
+
+/************************************
+ コメント投稿部分  
+ ***********************************/
 
 .room-input-box {
   width: 100%;
   height: 70px;
-  background-color: bisque;
+  background-color: rgba(255, 228, 196, 0.47);
   display: flex;
   justify-content: space-between;
   align-items: center;
