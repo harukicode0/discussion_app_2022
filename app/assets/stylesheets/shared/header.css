@@ -33,23 +33,6 @@
   position: relative;
 }
 
-.top-logo::after {
-  position: absolute; /*親要素であるaタグを基準に位置を指定*/
-  left: 0; /*アンダーラインを各メニュー（aタグ）の左端に指定*/
-  content: ""; /*擬似要素に入るテキスト*/
-  width: 100%; /*アンダーラインを各aタグの幅に合わせる*/
-  height: 2px; /*アンダーラインの高さ（太さ）*/
-  background: var(--font-color); /*アンダーラインの色*/
-  bottom: 10px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform 0.5s;
-}
-
-.top-logo:hover::after {
-  transform: scale(1, 1);
-}
-
 /************************************
  検索ボックス
  ***********************************/
@@ -95,7 +78,6 @@
   border: none;
   padding: 5px 10px 4px 0px;
   outline: none;
-  /* border-left: 2px solid #000000; */
 }
 
 .input-box::placeholder {

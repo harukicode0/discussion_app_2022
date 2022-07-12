@@ -4,7 +4,7 @@ function search_box() {
   const line = document.querySelector(".search-form");
   // ページをクリックした時の処理
   document.addEventListener("click", (e) => {
-    // クリックした要素（"#search-box"）の親要素を判定している
+    // クリックした要素【document】の親要素（"#search-box"）を判定している
     if (e.target.closest("#search-box")) {
       // "#search-box";がある場合の処理
       line.classList.remove("search-form");

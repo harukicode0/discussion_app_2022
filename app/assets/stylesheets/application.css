@@ -15,18 +15,19 @@
  */
 
 :root {
-  --content-height: 400px;
+  --content-height: 130px;
   --name-input-box-size: 80%;
-  --agree-color: #ff2b00;
+  --agree-color: #eb3412;
   --deep-agree-color: #8a2a16;
-  --disagree-color: #0062ff;
+  --disagree-color: #269bff;
   --deep-disagree-color: #1851ad;
   --center-color: #bb00ff;
   --btn-height: 70px;
   --top-header-height: 50px;
   --footer-height: 25px;
-  --base-color: #f2f3f3; /*背景の色*/
-  --main-color: #ffffff; /*ヘッダー、コンテンツが表示されている部分に対する色*/
+  --base-color: #e6e6e6; /*背景の色*/
+  --main-color: #ffffff; /*コンテンツが表示されている部分に対する色*/
+  --second-main-color: #404040;
   --font-color: rgb(34, 34, 34);
 }
 

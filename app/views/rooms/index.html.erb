@@ -14,12 +14,12 @@
         <%end%>
       </ul>
     </div>
-  <%# コンテンツ表示 %>
+    <%# コンテンツ表示 %>
     <div class="contents-wrapper">
       <%= render partial: "shared/room", collection: @rooms %>
       <div class="mypage-pagenation">
-              <%= paginate @rooms %>
-            </div>
+        <%= paginate @rooms %>
+      </div>
     </div>
   </div>
 </div>
