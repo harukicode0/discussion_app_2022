@@ -1,7 +1,7 @@
 <header class='top-page-header'>
   <ul class="lists-left">
     <li><%= link_to 'YES or NO', "/" ,class:"top-logo"%> </li>
-    <li><% if user_signed_in?%><%=ink_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
+    <li><% if user_signed_in?%><%=link_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
     <li>
       <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
         <%= form.button type:"submit",class: 'search-button' do%>

@@ -2,9 +2,11 @@
 <%@agree=1%>
 <%@disagree=2%>
 <div class="room-wrapper">
+
   <div class="room-title">
   <%= @room.title%>
   </div>
+
   <div class="issue-title"> 
     <%=@issue.issue_title%>
   </div>
@@ -15,6 +17,7 @@
     <%end%>
     <%= link_to "+", new_room_issue_path(@room)%>
   </div>
+
   <div class= "comments-room">
       <div class="agree-room opinion-room">
           <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>

@@ -67,6 +67,7 @@ sort部分
 
 .content:hover {
   box-shadow: 0px 0px 25px var(--font-color);
+  transform: translateY(-5px);
   transition: 0.3s;
 }
 
