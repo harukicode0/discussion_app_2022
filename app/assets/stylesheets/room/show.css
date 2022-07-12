@@ -223,36 +223,45 @@ plus-btn
  ***********************************/
 
 .room-input-box {
-  width: 100%;
-  height: 70px;
-  background-color: rgba(255, 228, 196, 0.47);
+  width: 70%;
+  height: var(--btn-height);
+  background-color: var(--base-color);
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .comment_box {
-  width: 80%;
+  width: 60%;
   border: none;
   margin: 20px;
   padding: 5px 0 0 10px;
   border-radius: 5px;
+  font-size: 18px;
 }
 
 .comment_bottom_r {
   margin: 10px;
+  padding: 10px;
   width: 10%;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 5px;
   border: none;
-  background-color: aquamarine;
+  background-color: var(--font-color);
+  color: var(--main-color);
 }
 
 .position-open {
   width: 10%;
-  height: 70px;
-  line-height: 70px;
+  height: var(--btn-height);
+  line-height: var(--btn-height);
   text-align: center;
-  background-color: red;
+  background-color: var(--font-color);
+  color: var(--main-color);
   font-size: 14px;
+}
+
+.room-input-box-disabled {
+  border: 1px solid var(--font-color);
 }
