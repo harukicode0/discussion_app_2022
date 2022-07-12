@@ -21,6 +21,7 @@
   text-align: center;
   color: var(--font-color);
   background-color: var(--main-color);
+  border-radius: 3px;
 }
 
 .room-info {
@@ -34,6 +35,7 @@
   color: var(--font-color);
   list-style: none;
   background-color: var(--main-color);
+  border-radius: 3px;
 }
 
 .room-info li {
@@ -43,7 +45,24 @@
  room-issue
  ***********************************/
 .room-issues {
+  display: flex;
   width: 100%;
+}
+
+.room-issues-left {
+  width: 60px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  background-color: var(--disagree-color);
+  color: var(--base-color);
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.room-issues-right {
+  width: calc(100% - 60px);
   font-size: 18px;
   background-color: var(--main-color);
   padding: 10px;
@@ -53,11 +72,12 @@
   list-style: none;
   overflow-x: auto;
   white-space: nowrap;
+  border-radius: 3px;
 }
 
 .room-scroll {
   /* ショートハンドで記述 */
-  animation: scrollAnime 40s linear infinite 15s;
+  animation: scrollAnime 40s linear infinite 20s;
 }
 
 .room-scroll:hover {
@@ -103,7 +123,7 @@ plus-btn
  ***********************************/
 
 .room-issue-plus {
-  margin-right: 90px;
+  margin-right: 5px;
   position: relative;
 }
 .issue-add-explain {
@@ -112,10 +132,12 @@ plus-btn
   left: -13px;
   display: none;
   padding: 2px;
+  background-color: var(--main-color);
+  color: var(--font-color);
 }
 
 .room-issue-plus:hover .issue-add-explain {
-  display: inline;
+  display: block;
   opacity: 0.5;
 }
 

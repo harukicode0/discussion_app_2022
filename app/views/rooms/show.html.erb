@@ -3,18 +3,19 @@
 <%@disagree=2%>
 <div class="room-wrapper">
   <div class="room-header">
-    <div class="room-title">
+  <div class="room-title">
     <%= @room.deadline < Time.now ? "終了:" : nil%><%= @room.title%>
-    </div>
+  </div>
 
       <ul class="room-info">
         <li>参加人数：<%= @count_participants%>名</li>
         <li>作成者：<%= @room.owner.nickname%></li>
       </ul>
-
     <div class="room-issues">
+    <div class="room-issues-left">論点</div>
+    <div class="room-issues-right">
     <div class="room-scroll">
-      <div class="room-issue room-issue-home">論点：</div>
+    
       <div class="room-issue room-issue-plus"><%= link_to "+", new_room_issue_path(@room)%><span class="issue-add-explain">論点を追加する</span></div>
       <div class="room-issue room-issue-home"><%= link_to "ホーム", room_path(@room)%></div>
       <% @issues.each do |issue|%>
@@ -23,7 +24,7 @@
     </div>
     </div>
   </div>
-
+  </div>
   <div class= "comments-room">
       <div class="agree-room opinion-room">
           <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
