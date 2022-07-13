@@ -138,11 +138,8 @@ edit
   font-size: 18px;
 }
 
-.mypage-top-a {
-  background-color: var(--main-color);
-}
-
 .mypage-top-a-set {
+  background-color: var(--main-color);
   text-decoration: underline;
   text-decoration-color: var(--disagree-color);
   text-underline-offset: 10px;
