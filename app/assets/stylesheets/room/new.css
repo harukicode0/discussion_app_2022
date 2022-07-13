@@ -3,7 +3,7 @@
  ***************************/
 #search-result {
   width: var(--name-input-box-size);
-  background-color: rebeccapurple;
+  background-color: var(--base-color);
   padding: 2px;
   margin: 0 auto;
   text-align: left;
@@ -13,14 +13,16 @@
 
 .child {
   margin: 0 5px 10px 0;
-  border: 1px solid blue;
-  background-color: #f4f4f4;
+  border: 1px solid var(--deep-disagree-color);
+  background-color: var(--main-color);
+  color: var(--font-color);
   padding: 5px;
   font-size: 14px;
-  border-radius: 3px;
+  border-radius: 5px;
   line-height: 40px;
 }
 
 .child:hover {
-  background-color: blue;
+  background-color: var(--deep-disagree-color);
+  color: var(--main-color);
 }
