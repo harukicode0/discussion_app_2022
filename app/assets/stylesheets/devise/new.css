@@ -1,13 +1,13 @@
 .sign-up-contents {
   width: 100vw;
-  height: calc(100vh);
-  background-color: blanchedalmond;
+  height: 100vh;
+  background-color: var(--base-color);
   position: absolute;
 }
 
 .sign-up-content {
   width: 500px;
-  background-color: rgb(81, 145, 124);
+  background-color: var(--base-color);
   margin: 0 auto;
   position: relative;
   top: 10%;
@@ -18,12 +18,22 @@
   width: 100%;
   font-size: 52px;
   margin-bottom: 40px;
-  color: brown;
+  color: var(--font-color);
   padding-bottom: 10px;
-  background-color: beige;
+  background-color: var(--base-color);
   letter-spacing: 10px;
+  border-bottom: 4px double var(--agree-color);
+  border-image: linear-gradient(
+    to right,
+    var(--agree-color) 0%,
+    var(--disagree-color) 100%
+  );
+  border-image-slice: 1;
 }
 
+/************************************
+ タイトル以下部分  
+ ***********************************/
 .sign-up-bottom {
   width: 100%;
   padding: 0px 0px 40px;
@@ -38,25 +48,57 @@
 
 .necessary {
   width: 50px;
-  background-color: rgb(227, 57, 57);
-  color: rgb(244, 242, 183);
+  background-color: var(--agree-color);
+  color: var(--main-color);
   padding: 2px 5px;
   border-radius: 10px;
   margin-left: 10px;
+  font-size: 14px;
 }
 
+/************************************
+ 入力ボックス  
+ ***********************************/
 .input-name {
   width: var(--name-input-box-size);
+  background-color: var(--base-color);
   height: 30px;
   border: none;
-  border-radius: 2px;
+  border-bottom: 1px solid var(--font-color);
   margin: 10px 0;
+  outline: none;
+  font-size: 18px;
+}
+
+.input-name:hover {
+  background-color: var(--main-color);
+  transition: 1s;
 }
 
 .actions {
-  margin: 40px 0 20px;
+  margin: 40px auto 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
+.submit-bottom {
+  font-size: 20px;
+  letter-spacing: 2px;
+  background-color: var(--main-color);
+  width: var(--name-input-box-size);
+  height: 30px;
+  border: 1px solid var(--font-color);
+}
+
+.submit-bottom:hover {
+  box-shadow: 0px 1px 3px var(--font-color);
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
+
+/************************************
+更新用CSS 
+ ***********************************/
 .input-tab {
   font-size: 20px;
   height: 30px;
@@ -69,12 +111,34 @@
   margin: 10px 5px;
 }
 
-.submit-bottom {
-  font-size: 20px;
-  letter-spacing: 2px;
+.bottom-field {
+  margin-bottom: 50px;
 }
 
-.sign-to-top-btn {
-  text-decoration: none;
-  color: aliceblue;
+.image-field {
+  margin: 70px 0;
+  font-size: 20px;
+}
+
+.input-atention {
+  font-size: 12px;
+  color: var(--second-main-color);
+}
+
+.edit-password {
+  text-decoration: underline;
+  text-decoration-color: var(--agree-color);
+}
+
+.denger-place {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 100px auto;
+}
+
+.denger-place input,
+a {
+  opacity: 0.8;
 }
