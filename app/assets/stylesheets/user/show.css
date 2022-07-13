@@ -1,13 +1,12 @@
 .mypage {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(209, 81, 81);
+  background-color: var(--base-color);
 }
 
 .mypage-wrapper {
   margin: auto;
   width: 80%;
-  background-color: rgb(203, 203, 203);
   display: flex;
   justify-content: center;
 }
@@ -18,24 +17,26 @@
 
 .mypage-left {
   width: 20%;
-  background-color: aqua;
+  background-color: var(--main-color);
   margin: 50px;
-  color: black;
-  font-size: 40px;
+  color: var(--font-color);
+  font-size: 20px;
   height: 100%;
 }
+
+/*****************************************
+icon
+******************************************/
 
 .mypage-icon {
   padding: 40px;
 }
 
-.mypage-info {
-  padding: 40px;
+.mypage-user-name {
+  text-align: center;
+  word-break: break-all;
 }
 
-/*****************************************
-左側 
-******************************************/
 .mypage-user-image {
   background-color: blue;
   width: 100%;
@@ -55,25 +56,96 @@
 }
 
 /*****************************************
+following
+******************************************/
+.mypage-info {
+  padding: 40px;
+}
+
+.follow-info {
+  line-height: 30px;
+}
+
+.follow-info a {
+  text-decoration: none;
+  color: var(--font-color);
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.follow-info a::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--font-color);
+  bottom: -1px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.follow-info a:hover::after {
+  transform: scale(1, 1);
+}
+
+.follow-btn {
+  margin: 40px auto;
+  text-align: center;
+}
+
+/*****************************************
+edit
+******************************************/
+.mypage-edit {
+  text-align: center;
+  padding: 40px;
+}
+
+.mypage-edit a {
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--font-color);
+}
+
+.mypage-edit a:hover {
+  color: var(--agree-color);
+}
+
+/*****************************************
 右側 
 ******************************************/
 
 .mypage-right {
   width: 80%;
   margin: 50px 50px 50px 0;
-  background-color: azure;
+  background-color: var(--main-color);
 }
 
 .mypage-top {
-  list-style: none;
   display: flex;
+  background-color: var(--base-color);
+}
+
+.mypage-top-a {
   padding: 20px;
 }
 
-.mypage-top a {
+.mypage-top-a a {
   text-decoration: none;
-  margin-right: 20px;
-  font-size: 20px;
+  color: var(--second-main-color);
+  font-size: 18px;
+}
+
+.mypage-top-a {
+  background-color: var(--main-color);
+}
+
+.mypage-top-a-set {
+  text-decoration: underline;
+  text-decoration-color: var(--disagree-color);
+  text-underline-offset: 10px;
 }
 
 .my-discussion {
@@ -81,4 +153,8 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.my-discussion > div {
+  border-top: 1px solid rgba(38, 155, 255, 0.5);
 }
