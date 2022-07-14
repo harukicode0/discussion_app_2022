@@ -1,0 +1,68 @@
+.follow-contents {
+  width: 30%;
+  margin: 50px auto 0;
+}
+
+.follow-title {
+  font-size: 36px;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--disagree-color);
+}
+
+/*****************************************
+ユーザー表示
+******************************************/
+.follow-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto 0;
+  padding: 10px;
+  border-bottom: 1px solid var(--disagree-color);
+}
+
+/*****************************************
+imageとname
+******************************************/
+.follow-user-image img {
+  border-radius: 46%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.follow-content-left {
+  display: flex;
+  align-items: center;
+}
+
+.follow-name {
+  word-break: break-all;
+  width: 60%;
+}
+
+.follow-name a {
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--font-color);
+}
+
+/*****************************************
+follow-btn
+******************************************/
+.follow-follow-btn {
+  width: 100px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid var(--font-color);
+  color: var(--font-color);
+  border-radius: 14px;
+  background-color: var(--base-color);
+}
+
+.follow-follow-btn:hover {
+  background-color: var(--font-color);
+  color: var(--base-color);
+}

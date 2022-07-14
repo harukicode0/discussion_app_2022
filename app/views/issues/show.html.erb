@@ -2,67 +2,87 @@
 <%@agree=1%>
 <%@disagree=2%>
 <div class="room-wrapper">
-  <div class="room-title">
-  <%= @room.title%>
-  </div>
-  <div class="issue-title"> 
-    <%=@issue.issue_title%>
-  </div>
-  <div class="room-issue">
-    <%= link_to "ホーム", room_path(@room)%>
-    <% @issues.each do |issue|%>
-      <%= link_to "#{issue.issue_title}", room_issue_path(@room,issue)%>
-    <%end%>
-    <%= link_to "+", new_room_issue_path(@room)%>
-  </div>
-  <div class= "comments-room">
-      <div class="agree-room opinion-room">
-          <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
-            <%= f.hidden_field :standing_position, value:@agree%>
-            <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'YES！', class:"agree-btn opinion-btn"%>
-          <%end%>
-        <div class="agree-text opinion-text">
-          <% @issue_comments.each do |comment| %>
-            <%= render 'shared/issue_comment',{comment:comment,value:@agree} %>
-          <%end%>
-        </div>
+  <div class="room-header">
+    <div class="issue-title"> 
+      <%= @room.deadline < Time.now ? "終了:" : "タイトル："%><%= @room.title%>
+    </div>
+    <div class="room-title">
+      論点：<%=@issue.issue_title%>
+    </div>
+    
+    <ul class="room-info">
+      <li>参加人数：<%= @count_participants%>名</li>
+      <li>作成者：<%= @room.owner.nickname%></li>
+    </ul>
+    <div class="room-issues">
+      <div class="room-issues-left">
+        論点
       </div>
-
-
-      <div class="disagree-room opinion-room">
-         <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
-            <%= f.hidden_field :standing_position, value:@disagree%>
-            <%= f.hidden_field :room_id, value:@room.id%>
-            <%= f.submit 'NO！',class:"disagree-btn opinion-btn"%>
-          <%end%>
-        <div class="disagree-text opinion-text">
-          <% @issue_comments.each do |comment| %>
-            <%= render 'shared/issue_comment',{comment:comment,value:@disagree} %>
-          <%end%>
-        </div>
-      </div>
-  </div>
-    <% if user_signed_in? %>
-      <%= form_with(model:[@room, @issue, @issue_comment], local: true) do |f|%>
-          <div class="room-input-box">
-              <div class="position-open">
-                <%if @position%>
-                  立ち位置:<%= @position.standing_position.name%>
-                <%else%>
-                  <div class="room-input-box">
-                  ポジションを取って、この議論に参加しよう！
-                  </div>
-                <%end%>
-              </div>
-              <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
-              <%= f.submit '表明', class:"comment_bottom_r"%>
+      <div class="room-issues-right">
+        <div class="room-scroll">
+          <div class="room-issue room-issue-plus">
+            <%= link_to "+", new_room_issue_path(@room)%><span class="issue-add-explain">論点を追加する</span>
           </div>
+          <div class="room-issue room-issue-home">
+            <%= link_to "ホーム", room_path(@room)%>
+          </div>
+          <% @issues.each do |issue|%>
+            <div class="room-issue room-issue-option">
+              <%= link_to "#{issue.issue_title}", room_issue_path(@room.id,issue.id)%>
+            </div>
+          <%end%>
+       </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class= "comments-room">
+    <div class="agree-room opinion-room">
+      <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
+        <%= f.hidden_field :standing_position, value:1%><%# #1は賛成を示す %>
+        <%= f.hidden_field :room_id, value:@room.id%>
+        <%= f.submit 'YES', class:"agree-btn opinion-btn"%>
       <%end%>
+      <div class="agree-text-area opinion-text-area">
+        <% @issue_comments.each do |comment| %>
+          <%= render 'shared/comment',{comment:comment,value:@agree} %>
+        <%end%>
+      </div>
+    </div>
+
+
+    <div class="disagree-room opinion-room">
+      <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
+        <%= f.hidden_field :standing_position, value:2%><%# #2は反対を示す %>
+        <%= f.hidden_field :room_id, value:@room.id%>
+        <%= f.submit 'NO',class:"disagree-btn opinion-btn"%>
+      <%end%>
+      <div class="disagree-text-area opinion-text-area">
+        <% @issue_comments.each do |comment| %>
+          <%= render 'shared/comment',{comment:comment,value:@disagree} %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+
+    <% if user_signed_in? && @position.present?%>
+      
+      <%= form_with(model:[@room, @issue, @issue_comment], local: true) do |f|%>
+      <div class="room-input-box">
+        <div class="position-open">
+          立ち位置:<%= @position.standing_position.name%>
+        </div>
+          <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+          <%= f.submit 'post', class:"comment_bottom_r"%>
+      </div>
+      <%end%>
+    <%elsif user_signed_in? %>
+      <div class="room-input-box room-input-box-disabled">
+        <p>ポジションを取って、この議論に参加しよう！</p>
+      </div>
     <%else%>
-     <div class="room-input-box">
-      ログインしてポジションを取るとコメントできます
+      <div class="room-input-box room-input-box-disabled">
+        ログインしてポジションを取るとコメントできます
       </div>
     <%end%>
-
 </div>

@@ -1,26 +1,161 @@
 .room-wrapper {
   width: 100vw;
+  background-color: var(--base-color);
+}
+
+/************************************
+ room-header  
+ ***********************************/
+.room-header {
+  width: 80%;
+  background-color: var(--base-color);
+  margin: 20px auto;
 }
 
 .room-title {
+  box-sizing: border-box;
   width: 100%;
-  background-color: aqua;
+  padding: 7px;
   height: 70px;
-  line-height: 70px;
-  font-size: 42px;
-  color: blueviolet;
+  font-size: 28px;
   text-align: center;
+  color: var(--font-color);
+  background-color: var(--main-color);
+  border-radius: 3px;
 }
 
-.comments-room {
+.room-info {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  padding: 5px;
+  font-size: 16px;
+  color: var(--font-color);
+  list-style: none;
+  background-color: var(--main-color);
+  border-radius: 3px;
+}
+
+.room-info li {
+  margin-right: 30px;
+}
+/************************************
+ room-issue
+ ***********************************/
+.room-issues {
+  display: flex;
+  width: 100%;
+}
+
+.room-issues-left {
+  width: 60px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  background-color: var(--disagree-color);
+  color: var(--main-color);
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.room-issues-right {
+  width: calc(100% - 60px);
+  font-size: 18px;
+  background-color: var(--main-color);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+
+.room-scroll {
+  /* ショートハンドで記述 */
+  animation: scrollAnime 40s linear infinite 20s;
+}
+
+.room-scroll:hover {
+  /* ホバー時にアニメーションを止める */
+  animation-play-state: paused;
+}
+
+@keyframes scrollAnime {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.room-issue {
+  padding: 0px 3px 10px 3px;
+  display: inline-block;
+}
+
+.room-issue-home,
+.room-issue-option {
+  margin-right: 5px;
+}
+
+.room-issue a {
+  text-decoration: none;
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.room-issue a:hover {
+  background-color: var(--font-color);
+  color: var(--main-color);
+  transition: 0.3s;
+}
+
+/************************************
+plus-btn 
+ ***********************************/
+
+.room-issue-plus {
+  margin-right: 5px;
+  position: relative;
+}
+.issue-add-explain {
+  position: absolute;
+  top: 20px;
+  left: -13px;
+  display: none;
+  padding: 2px;
+  background-color: var(--main-color);
+  color: var(--font-color);
+}
+
+.room-issue-plus:hover .issue-add-explain {
+  display: block;
+  opacity: 0.5;
+}
+
+/************************************
+ コメント表示部分  
+ ***********************************/
+.comments-room {
+  width: 80%;
+  display: flex;
   justify-content: space-between;
-  height: calc(100vh - 210px);
+  height: 700px;
+  margin: auto;
+  background-color: var(--base-color);
+  margin: 60px auto 40px;
 }
 
 .opinion-room {
-  width: 50%;
+  width: 47%;
   height: 100%;
 }
 
@@ -31,12 +166,13 @@
 }
 
 .opinion-btn {
+  font-family: "Sacramento", cursive;
   width: 100%;
   height: var(--btn-height);
   text-align: center;
-  font-size: 50px;
-  color: white;
-  line-height: 70px;
+  font-size: 32px;
+  color: var(--base-color);
+  line-height: var(--btn-height);
   letter-spacing: 20px;
   border: none;
 }
@@ -45,56 +181,101 @@
   background-color: var(--agree-color);
 }
 
+.agree-btn:hover {
+  background-color: var(--deep-agree-color);
+  box-shadow: 0px -5px 15px var(--agree-color);
+  transition: 1s;
+}
+
 .disagree-btn {
   background-color: var(--disagree-color);
 }
 
-.opinion-text {
+.disagree-btn:hover {
+  background-color: var(--deep-disagree-color);
+  box-shadow: 0px -5px 15px var(--disagree-color);
+  transition: 1s;
+}
+
+.opinion-text-area {
+  box-sizing: border-box;
   width: 100%;
   height: calc(100% - var(--btn-height));
   overflow-wrap: break-word;
   overflow-y: scroll;
+  background-color: white;
 }
 
-.agree-text {
-  border: 2px solid var(--agree-color);
+.agree-text-area {
+  border-bottom: 2px solid var(--agree-color);
+  border-left: 2px solid var(--agree-color);
+  border-right: 2px solid var(--agree-color);
 }
 
-.disagree-text {
-  border: 2px solid var(--disagree-color);
+.disagree-text-area {
+  border-bottom: 2px solid var(--disagree-color);
+  border-left: 2px solid var(--disagree-color);
+  border-right: 2px solid var(--disagree-color);
 }
+
+/************************************
+ コメント投稿部分  
+ ***********************************/
 
 .room-input-box {
-  width: 100%;
-  height: 70px;
-  background-color: bisque;
+  width: 70%;
+  height: var(--btn-height);
+  background-color: var(--base-color);
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .comment_box {
-  width: 80%;
+  width: 60%;
   border: none;
   margin: 20px;
   padding: 5px 0 0 10px;
   border-radius: 5px;
+  font-size: 18px;
 }
 
 .comment_bottom_r {
   margin: 10px;
+  padding: 10px;
   width: 10%;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 5px;
   border: none;
-  background-color: aquamarine;
+  background-color: var(--font-color);
+  color: var(--main-color);
 }
 
 .position-open {
   width: 10%;
-  height: 70px;
-  line-height: 70px;
+  height: var(--btn-height);
+  line-height: var(--btn-height);
   text-align: center;
-  background-color: red;
+  background-color: var(--font-color);
+  color: var(--main-color);
   font-size: 14px;
+}
+
+.room-input-box-disabled {
+  border: 1px solid var(--font-color);
+}
+
+/************************************
+ issueについて部分  
+ ***********************************/
+.issue-title {
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: var(--main-color);
+  width: 100%;
+  color: var(--font-color);
+  padding: 5px;
+  margin: 35px auto 10px;
+  text-align: center;
 }

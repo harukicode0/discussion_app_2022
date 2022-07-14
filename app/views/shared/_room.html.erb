@@ -1,57 +1,65 @@
-            <% @yes = 0 %>
-            <% @no = 0 %>
-            <% @userrooms.where(room_id:room.id).each do |userroom| %>
-              <%if userroom.position != nil%>
-                <%if userroom.position.standing_position_id == 1%>
-                  <%@yes+=1%>
-                <%elsif userroom.position.standing_position_id == 2%>
-                  <%@no+=1%>
-                <%end%>
-              <%end%>
-            <%end%>
-            <%if @yes != 0 || @no != 0%>
-              <% @y_percent = 100*@yes/(@yes + @no)%>
-            <%end%>
-      <div class="content">
-        <a href="<%= room_path(room)%>" >
-          <div class="content-top">
-            <div class="contents-title">
-              <%= room.title%>
-            </div>
-          </div>
-        </a>
-          <div class="content-percentage">
-            <div class="agree">YES:
-              <%if @yes != 0%><%=@y_percent%>%<%else%>0<%end%>
-            </div>
-            <div class="disagree">NO:
-              <%if @no != 0%><%=100 - @y_percent%>%<%else%>0<%end%>
-            </div>
-          </div>
+<% @yes = 0 %>
+<% @no = 0 %>
+<% @userrooms.where(room_id:room.id).each do |userroom| %>
+<%if userroom.position != nil%>
+<%if userroom.position.standing_position_id == 1%>
+<%@yes+=1%>
+<%elsif userroom.position.standing_position_id == 2%>
+<%@no+=1%>
+<%end%>
+<%end%>
+<%end%>
+<%if @yes != 0 || @no != 0%>
+<% @y_percent = 100*@yes/(@yes + @no)%>
+<%end%>
 
-          <div class="content-bottom">
-            <div class="content-time content-bottom-list">残り時間:
-              <div class="deadline" id="<%=room.id%>" style="display:none;"><%=room.deadline%></div>
-              <span id="day<%=room.id%>"></span>
-              <span id="hour<%=room.id%>"></span>
-              <span id="min<%=room.id%>"></span>
-            </div>
-            <div class="content-participant content-bottom-list">
-              <%= room.users.count%>名参加 
-            </div>
-            <div class=" content-bottom-list">
-            <% unless room.owner == nil%>
-              <% if room.owner == current_user%>
-                <%= link_to "作成者：自分自身", user_path(current_user),class:"content-owner" %>
-              <%else%>
-                <%= link_to "作成者：#{room.owner.nickname}", user_path(room.owner.id),class:"content-owner" %>
-                <%if user_signed_in? && room.owner.is_followed_by?(current_user)%>
-                  (followed)
-                <%end%>
-              <%end%>
-            <%else%>
-              作成者失踪
-            <%end%>
-            </div>
-          </div>
+<div class="content">
+  <div class="content-top">
+    <a href="<%= room_path(room)%>" class="content-title">
+        <p><%= room.title%></p>
+    </a>
+
+    <%# 時間表示 %>
+    <div class="content-info">
+      <div class="content-time content-bottom-list">残り時間：
+        <div class="deadline" id="<%=room.id%>" style="display:none;">
+          <%=room.deadline%>
         </div>
+        <span id="day<%=room.id%>"></span>
+        <span id="hour<%=room.id%>"></span>
+        <span id="min<%=room.id%>"></span>
+      </div>
+      <%# 参加人数の表示 %>
+      <div class="content-participant content-bottom-list">
+        参加人数：<%= room.users.count%>人
+      </div>
+      <%# 制作者情報 %>
+      <div class=" content-bottom-list">
+        <% unless room.owner == nil%>
+          <% if room.owner == current_user%>
+            <%= link_to "作成者様：自分自身", user_path(current_user),class:"content-owner" %>
+          <%else%>
+            <%= link_to "作成者様：#{room.owner.nickname}", user_path(room.owner.id),class:"content-owner" %>
+            <%if user_signed_in? && room.owner.is_followed_by?(current_user)%>
+                (followed)
+            <%end%>
+          <%end%>
+        <%else%>
+          作成者様：失踪
+        <%end%>
+      </div>
+
+      <div class="agree-number">
+        <span class="agree">
+          YES：<%if @yes != 0 || @no != 0%><%=@y_percent%>%<%else%>none<%end%>
+        </span>
+        <span class="nutral">
+        ||
+        </span>
+        <span class="disagree">
+          NO：<%if @no != 0 || @yes != 0%><%=100 - @y_percent%>%<%else%>none<%end%>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

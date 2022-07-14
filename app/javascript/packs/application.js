@@ -11,6 +11,9 @@ require("../time");
 require("../delete_alert");
 require("../tag");
 require("../preview");
+require("../search-box");
+require("../mypage-location");
+require("../sort-location");
 
 Rails.start();
 // Turbolinks.start()

@@ -1,0 +1,12 @@
+.links-propaty,
+.sign-to-top-btn {
+  color: var(--second-main-color);
+  text-decoration: none;
+}
+
+.links-propaty:hover {
+  color: var(--center-color);
+}
+.sign-to-top-btn:hover {
+  color: var(--center-color);
+}

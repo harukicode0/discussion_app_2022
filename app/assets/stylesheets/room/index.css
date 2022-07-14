@@ -1,158 +1,164 @@
 .main-wrapper {
-  width: 100%;
+  width: 100vw;
 }
 
 .parts {
   margin: 0 auto;
-  width: var(--content-width);
-  background-color: rgba(170, 42, 42, 0.5);
-}
-
-/*******************************************
- 検索ボックス 
- ********************************************/
-
-.search-box {
-  margin: 0 auto;
   width: 80%;
-  padding: 50px 0;
-  background-color: beige;
-}
-
-.search-form {
-  text-align: center;
-}
-
-.input-box {
-  width: 50%;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 20px;
-  border: none;
-  margin: 20px;
-  padding-left: 20px;
-}
-
-.search-button {
-  width: 30px;
-  height: 30px;
 }
 
 /*******************************************
 sort部分
  ********************************************/
 .sort {
-  background-color: white;
+  background-color: var(--base-color);
+  padding: 120px 0 15px;
+}
+
+.sort-top {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--font-color);
+  margin: 0 0 10px 5px;
+  text-decoration: underline;
 }
 
 .sort-lists {
   display: flex;
   align-items: center;
-  justify-content: center;
   list-style: none;
   font-size: 14px;
 }
 
 .sort-btn {
-  width: 150px;
-  margin-right: 15px;
-  border: 1px solid rgb(50, 71, 255);
-  background-color: rgba(167, 187, 240, 0.5);
+  margin: 0 15px 0 5px;
+  display: block;
+  border: 1px solid var(--deep-disagree-color);
+  background-color: var(--main-color);
   border-radius: 20px;
   text-align: center;
-  padding: 7px 3px;
-  font-weight: bold;
+  padding: 7px 10px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--font-color);
 }
 
-.sort-btn a {
-  text-decoration: none;
-  color: black;
+.sort-btn:hover {
+  background-color: var(--deep-disagree-color);
+  color: var(--main-color);
+  transition: 0.5s;
 }
+
+.sort-btn-set {
+  background-color: var(--deep-disagree-color);
+  color: var(--main-color);
+}
+
 /*******************************************
 コンテンツの表示
  ********************************************/
 .contents-wrapper {
-  width: 80%;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
+  width: 100%;
   padding-bottom: 80px;
   margin: 0 auto;
-  background-color: bisque;
+  background-color: var(--base-color);
 }
 
 .content {
-  width: 24%;
+  width: 100%;
   height: var(--content-height);
-  background-color: aquamarine;
-  margin: 5px 0;
+  background-color: var(--main-color);
+  margin-bottom: 25px;
 }
 
-.content a {
-  text-decoration: none;
-}
-
-.content-top {
-  box-sizing: border-box;
-  width: 100%;
-  height: 70%;
-  padding: 20px;
-  background-color: rgb(149, 74, 142);
-  color: aliceblue;
-  font-size: 30px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-
-.content-percentage {
-  display: flex;
-  width: 100%;
-  height: 10%;
-}
-
-.agree {
-  background-color: brown;
-  color: azure;
-  font-size: 20px;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-
-.disagree {
-  background-color: rgb(26, 26, 105);
-  color: azure;
-  font-size: 20px;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  padding: 5px;
+.content:hover {
+  box-shadow: 0px 0px 25px var(--font-color);
+  transform: translateY(-5px);
+  transition: 0.3s;
 }
 
 /*******************************************
-コンテンツ下部の表示
+title
+ ********************************************/
+.content-top {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.content-title {
+  border-radius: 5px;
+  display: block;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  letter-spacing: 1.5px;
+  color: var(--font-color);
+  font-size: 36px;
+  line-height: calc((var(--content-height) - 40px) / 2);
+  background-color: var(--main-color);
+}
+
+.content-title p {
+  /* ２行表示の３点リーダー */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/*******************************************
+コンテンツの右側
  ********************************************/
 
-.content-bottom {
+.content-info {
   box-sizing: border-box;
-  height: calc(100% - 10% - 70%);
-  width: 100%;
-  padding: 10px 30px;
-  background-color: rgb(139, 148, 45);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  width: 20%;
+  padding: 19px;
+  background-color: var(--main-color);
+  border-left: 1px solid var(--second-main-color);
+  color: var(--second-main-color);
+  line-height: calc((var(--content-height) - 40px) / 4);
+  font-style: italic;
 }
 
 .content-bottom-list {
-  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .content-owner {
-  color: aliceblue;
+  color: var(--second-main-color);
   text-decoration: none;
+  position: relative;
+}
+
+.content-owner::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--font-color);
+  bottom: -1px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.content-owner:hover::after {
+  transform: scale(1, 1);
+}
+
+.agree {
+  color: var(--deep-agree-color);
+  font-weight: 700;
+}
+
+.disagree {
+  color: var(--deep-disagree-color);
+  font-weight: 700;
 }
