@@ -8,7 +8,7 @@
     </div>
     <ul class="room-info">
       <li>参加人数：<%= @count_participants%>名</li>
-      <li>作成者：<%= @room.owner.nickname%></li>
+      <li><%=link_to "作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%></li>
     </ul>
     <div class="room-issues">
       <div class="room-issues-left">
@@ -66,7 +66,7 @@
       <%= form_with(model:[@room, @comment], local: true) do |f|%>
       <div class="room-input-box">
         <div class="position-open">
-          立ち位置:<%= @position.standing_position.name%>
+          立ち位置:<span class="position-open-users"><%= @position.standing_position.name%></span>
         </div>
           <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
           <%= f.submit 'post', class:"comment_bottom_r"%>
