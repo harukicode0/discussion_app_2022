@@ -14,6 +14,7 @@ require("../preview");
 require("../search-box");
 require("../mypage-location");
 require("../sort-location");
+require("../position-color");
 
 Rails.start();
 // Turbolinks.start()
