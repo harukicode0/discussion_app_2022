@@ -22,7 +22,14 @@ function countdown() {
         min + "分"
       ).padStart(2, "0");
     } else {
-      document.getElementById("day" + differ_id).textContent = String("終了");
+      let child = document.getElementById("day" + differ_id);
+      child.textContent = String("終了");
+      let end_line_parent = child.closest(".content");
+      let end_word_parent = end_line_parent.querySelector(".content-end");
+
+      console.log(end_word_parent);
+      end_line_parent.classList.add("content-end-line-set");
+      end_word_parent.style.display = "block";
     }
   }
   setTimeout(countdown, 60000);

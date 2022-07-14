@@ -8,7 +8,7 @@
     </div>
     <ul class="room-info">
       <li>参加人数：<%= @count_participants%>名</li>
-      <li><%=link_to "作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%></li>
+      <li><%if @room.owner.present?%><%= link_to "作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%><%else%>制作者失踪<%end%></li>
     </ul>
     <div class="room-issues">
       <div class="room-issues-left">
