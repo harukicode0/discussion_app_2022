@@ -53,13 +53,13 @@
         <div class="mypage-content">
           <div class="my-discussion">
               <%= render partial: "shared/room", collection: @rooms %>
-            <div class="mypage-pagenation">
-              <%= paginate @rooms %>
-            </div>
           </div>
         </div>
-        
       </div>
+
+      <div class="mypage-pagenation ">
+          <%= paginate @rooms %>
+        </div>
     </div>
   </div>
 </div>

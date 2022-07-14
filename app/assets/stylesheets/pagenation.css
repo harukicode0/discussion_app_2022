@@ -1,16 +1,39 @@
+.page-pagenation {
+  width: 100%;
+  background-color: var(--base-color);
+}
+
+.pagination {
+  list-style: none;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination > li {
+}
+
 /*ページネーション自体のデザイン*/
 .pagination > li > a {
-  border: none; /*枠線をなくす*/
-  color: #696969; /*文字の色を変える*/
+  border-left: 1px solid var(--font-color);
+  color: var(--font-color);
+  text-decoration: none;
+  padding: 10px;
+  background-color: var(--main-color);
 }
 
+.pagination > :last-child > a {
+  border-right: 1px solid var(--font-color);
+}
 /* 表示しているページ番号のデザイン */
 .pagination > .active > a {
-  background: #93c9ff; /*背景の色を変える*/
+  background-color: var(--disagree-color); /*背景の色を変える*/
+  color: var(--main-color);
 }
 
-.mypage-pagenation {
-  width: 100%;
-  background-color: aqua;
-  text-align: center;
+/*ホバー時のデザイン*/
+.pagination > li > a:hover {
+  background-color: var(--disagree-color);
+  color: var(--main-color);
 }

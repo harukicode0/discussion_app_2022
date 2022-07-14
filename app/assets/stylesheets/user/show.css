@@ -38,7 +38,6 @@ icon
 }
 
 .mypage-user-image {
-  background-color: blue;
   width: 100%;
   height: calc(width);
   display: flex;
@@ -123,6 +122,9 @@ edit
   background-color: var(--main-color);
 }
 
+/*****************************************
+見出し
+******************************************/
 .mypage-top {
   display: flex;
   background-color: var(--base-color);
@@ -145,6 +147,9 @@ edit
   text-underline-offset: 10px;
 }
 
+/*****************************************
+コンテンツ表示 
+******************************************/
 .my-discussion {
   padding: 20px;
   display: flex;
@@ -154,4 +159,8 @@ edit
 
 .my-discussion > div {
   border-top: 1px solid rgba(38, 155, 255, 0.5);
+}
+
+.my-discussion > div:last-child {
+  border-bottom: 1px solid rgba(38, 155, 255, 0.5);
 }
