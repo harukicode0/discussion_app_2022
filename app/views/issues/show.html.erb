@@ -69,7 +69,7 @@
       <%= form_with(model:[@room, @issue, @issue_comment], local: true) do |f|%>
       <div class="room-input-box">
         <div class="position-open">
-          立ち位置:<%= @position.standing_position.name%>
+          立ち位置:<span class="position-open-users"><%= @position.standing_position.name%></span>
         </div>
           <div class="comment-box-position">
             <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box"%>

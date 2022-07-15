@@ -39,17 +39,15 @@ class RoomsController < ApplicationController
       if @position = Position.find_by(user_room_id:@user_room.id)
         #ポジションがある場合
         @position.update(user_room_id: @user_room.id, standing_position_id:params[:standing_position]) 
-        send_collect_url
       else
         #ポジションがない場合
         create_new_position
-        redirect_to action: :show
       end
     else
       @user_room = UserRoom.create(room_id: @room.id, user_id: current_user.id) #中間テーブルを作成
       create_new_position  #ポジションを作成
-      send_collect_url
     end
+    send_collect_url
   end
 
   def search
@@ -90,9 +88,6 @@ class RoomsController < ApplicationController
 
   def this_site
   end
-
-
-
 
   private
 
