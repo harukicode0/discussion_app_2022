@@ -15,6 +15,10 @@
          <%= @user.nickname%>さん
         </div>
       </div>
+      <div class="mypage-user-profile">
+        <p>profile</p>
+        <%= @user.profile%>
+      </div>
       <div class="mypage-info">
         <div class="follow-info">
           <%= link_to "#{@user.followings.count}フォロー", followings_user_path(@user) %>  <br/>

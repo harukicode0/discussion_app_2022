@@ -97,7 +97,7 @@
 }
 
 /************************************
-更新用CSS 
+更新用CSS、edit
  ***********************************/
 .input-tab {
   font-size: 20px;
@@ -118,6 +118,14 @@
 .image-field {
   margin: 70px 0;
   font-size: 20px;
+}
+
+.field-profile {
+  height: 200px;
+  width: 100%;
+  word-break: break-all;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
 .input-atention {
