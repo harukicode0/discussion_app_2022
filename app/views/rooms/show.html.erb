@@ -27,7 +27,7 @@
        </div>
       </div>
       <div class="room-issue room-issue-plus">
-        <%= link_to "+", new_room_issue_path(@room)%><div class="issue-add-explain">論点を追加する</div>
+        <%= link_to "+", new_room_issue_path(@room)%><div class="issue-add-explain">論点を追加</div>
       </div>
     </div>
   </div>
@@ -69,7 +69,7 @@
           立ち位置:<span class="position-open-users"><%= @position.standing_position.name%></span>
         </div>
           <div class="comment-box-position">
-            <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+            <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box"%>
           </div>
           <%= f.submit 'post', class:"comment_bottom_r"%>
       </div>

@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_175848) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
-    t.string "profile"
+    t.text "profile"
     t.integer "sex_id"
     t.date "birthday"
     t.string "reset_password_token"
