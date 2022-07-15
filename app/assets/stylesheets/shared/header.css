@@ -30,7 +30,10 @@
   margin: 0 35px 0 30px;
   color: var(--font-color);
   text-decoration: none;
-  position: relative;
+}
+
+.top-logo:hover {
+  filter: brightness(80%);
 }
 
 /************************************
