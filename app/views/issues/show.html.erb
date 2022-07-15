@@ -11,8 +11,7 @@
     </div>
     
     <ul class="room-info">
-      <li>参加人数：<%= @count_participants%>名</li>
-      <li>作成者：<%= @room.owner.nickname%></li>
+      <li>この論点の作成者：<%= @issue.owner.nickname%></li>
     </ul>
     <div class="room-issues">
       <div class="room-issues-left">
@@ -20,9 +19,6 @@
       </div>
       <div class="room-issues-right">
         <div class="room-scroll">
-          <div class="room-issue room-issue-plus">
-            <%= link_to "+", new_room_issue_path(@room)%><span class="issue-add-explain">論点を追加する</span>
-          </div>
           <div class="room-issue room-issue-home">
             <%= link_to "ホーム", room_path(@room)%>
           </div>
@@ -32,6 +28,9 @@
             </div>
           <%end%>
        </div>
+      </div>
+      <div class="room-issue room-issue-plus">
+        <%= link_to "+", new_room_issue_path(@room)%><div class="issue-add-explain">論点を追加</div>
       </div>
     </div>
   </div>
@@ -72,7 +71,9 @@
         <div class="position-open">
           立ち位置:<%= @position.standing_position.name%>
         </div>
-          <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+          <div class="comment-box-position">
+            <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box"%>
+          </div>
           <%= f.submit 'post', class:"comment_bottom_r"%>
       </div>
       <%end%>
