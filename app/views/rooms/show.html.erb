@@ -68,7 +68,9 @@
         <div class="position-open">
           立ち位置:<span class="position-open-users"><%= @position.standing_position.name%></span>
         </div>
-          <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+          <div class="comment-box-position">
+            <%= f.text_area :text, placeholder:"コメントを入力してください" ,class:"comment_box"%>
+          </div>
           <%= f.submit 'post', class:"comment_bottom_r"%>
       </div>
       <%end%>

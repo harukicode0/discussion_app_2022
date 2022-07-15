@@ -243,7 +243,6 @@ plus-btn
   margin: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .position-open {
@@ -256,17 +255,34 @@ plus-btn
   font-size: 14px;
   border-radius: 5px;
 }
+.comment-box-position {
+  height: var(--btn-height);
+  width: 60%;
+  margin: 0 20px;
+  position: relative;
+}
 
 .comment_box {
-  width: 60%;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
   border: none;
-  margin: 20px;
   padding: 5px 0 0 10px;
   border-radius: 5px;
   font-size: 18px;
+  outline: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.comment_box_set {
+  border: 1px solid var(--font-color);
+  height: 300px;
 }
 
 .comment_bottom_r {
+  box-sizing: border-box;
   height: 100%;
   padding: 10px;
   width: 10%;
