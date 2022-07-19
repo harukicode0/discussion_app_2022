@@ -13,7 +13,7 @@
       <%= f.button type:"submit",class: 'search-button' do%>
           <i class="fas fa-search"></i>
         <%end%>
-      <%= f.text_field :title_cont, placeholder: "検索する", class: "input-box",id:'search-box'%>
+      <%= f.text_field :title_cont, placeholder: "検索する", class: "input-box",id:'search-box',value: params[:q][:title_cont]%>
       <% end %>
     </li>
   </ul>
