@@ -79,9 +79,6 @@ class RoomsController < ApplicationController
       squished_keywords = params[:q][:title].squish
       params[:q][:title_cont_any] = squished_keywords.split(" ")
     end
-    binding.pry
-    
-    # @q = Room.joins(:comments).group(:room_id).order('count(text) desc')
     @q = Room.joins(:comments).ransack(params[:q])
     @rooms = @q.result.group(:room_id).order('count(text) desc').page(params[:page]).per(25)
     @value = params[:q]&.dig(:title)

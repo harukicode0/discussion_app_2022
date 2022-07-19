@@ -7,9 +7,13 @@
      <div class="sort-top">並び替え条件</div>
       <ul class="sort-lists">
         <li><%#= sort_link(Room.ransack(params[:q]), :title, 'タイトル', created_at: :desc) %><%= link_to "参加人数が多い順",sort_participants_rooms_path,class:"sort-btn"%></li>
-        <li><%= search_form_for Room.ransack(params[:q]), url: sort_comments_rooms_path, class: "search-form" do |f| %>
-      <%= f.hidden_field :title, class: "input-box",id:'search-box', value: @value%><%= f.submit 'コメントが多い順' %>
-      <% end %><%#= link_to "コメントが多い順",sort_comments_rooms_path(q:@value),class:"sort-btn"%></li>
+        <li>
+          <%= search_form_for Room.ransack(params[:q]), url: sort_comments_rooms_path do |f| %>
+            <%= f.hidden_field :title, value: @value%>
+            
+            <%= f.submit 'コメントが多い順',class:"sort-btn"%>
+          <% end %>
+        </li>
         <%if user_signed_in?%>
           <li><%= link_to "フォロー先が作成した議論一覧",sort_following_room_path(current_user),class:"sort-btn"%></li>
         <%end%>

@@ -3,7 +3,9 @@ function sort_current_location() {
   if (!links) return null;
   const url = location.href;
   links.forEach(function (item) {
-    if (url == item.href) {
+    let result = url.indexOf(item.form.action);
+    if (result == 0) {
+      console.log("ok");
       item.classList.add("sort-btn-set");
     }
   });

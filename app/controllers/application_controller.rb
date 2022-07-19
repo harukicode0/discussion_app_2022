@@ -28,9 +28,6 @@ class ApplicationController < ActionController::Base
       squished_keywords = params[:q][:title].squish
       params[:q][:title_cont_any] = squished_keywords.split(" ")
     end
-    
-    # binding.pry
-    
     @q = Room.includes(:owner).ransack(params[:q])
     @rooms = @q.result.order(created_at: "DESC").page(params[:page]).per(25)
     @value = params[:q]&.dig(:title)
