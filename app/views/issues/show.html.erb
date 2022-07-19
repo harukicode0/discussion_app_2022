@@ -38,13 +38,13 @@
   <div class= "comments-room">
     <div class="agree-room opinion-room">
       <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
-        <%= f.hidden_field :standing_position, value:1%><%# #1は賛成を示す %>
+        <%= f.hidden_field :standing_position, value:@agree%><%# #1は賛成を示す %>
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'YES', class:"agree-btn opinion-btn"%>
       <%end%>
       <div class="agree-text-area opinion-text-area">
         <% @issue_comments.each do |comment| %>
-          <%= render 'shared/comment',{comment:comment,value:@agree} %>
+          <%= render 'shared/issue_comment',{comment:comment,value:@agree} %>
         <%end%>
       </div>
     </div>
@@ -52,13 +52,13 @@
 
     <div class="disagree-room opinion-room">
       <%= form_with url: standing_position_room_path(@issue), local: true do |f|%>
-        <%= f.hidden_field :standing_position, value:2%><%# #2は反対を示す %>
+        <%= f.hidden_field :standing_position, value:@disagree%><%# #2は反対を示す %>
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'NO',class:"disagree-btn opinion-btn"%>
       <%end%>
       <div class="disagree-text-area opinion-text-area">
         <% @issue_comments.each do |comment| %>
-          <%= render 'shared/comment',{comment:comment,value:@disagree} %>
+          <%= render 'shared/issue_comment',{comment:comment,value:@disagree} %>
         <%end%>
       </div>
     </div>

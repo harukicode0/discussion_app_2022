@@ -48,6 +48,7 @@
   letter-spacing: 0.5px;
   font-size: 16px;
   padding-bottom: 5px;
+  word-break: break-all;
 }
 
 /**********************************

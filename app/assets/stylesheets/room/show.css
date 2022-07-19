@@ -274,11 +274,11 @@ plus-btn
   position: absolute;
   right: 0;
   bottom: 0;
+  transition: 1s;
 }
 
 /* クリックしたコメント投稿欄を拡張する */
 .comment_box_set {
-  transition: 1s;
   border: 1px solid var(--font-color);
   height: 300px;
 }
