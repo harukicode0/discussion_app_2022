@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following,:sort_participants, :sort_comments]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following,:sort_participants, :sort_comments, :this_site]
   before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
   before_action :count_down_timer, only: [:standing_position]
 
@@ -63,6 +63,9 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
+    
+    binding.pry
+    
     @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
     render 'index'
   end
