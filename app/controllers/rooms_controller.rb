@@ -76,9 +76,9 @@ class RoomsController < ApplicationController
 
   def sort_following
     @user = User.find(params[:id])
+    #ふぉろわーのIDを条件に、ルームを取得
     @users = @user.followings
     if @users.exists?
-      #ふぉろわーのIDを条件に、ルームを取得
       seach_params_adjust
       @q = Room.joins(:user_rooms).ransack(params[:q])
       @rooms = @q.result.where(user_rooms:{user_id:@users.ids}).order(created_at: "DESC").page(params[:page]).per(25)
