@@ -19,7 +19,12 @@
           <% end %>
         </li>
         <%if user_signed_in?%>
-          <li><%= link_to "フォロー先が作成した議論一覧",sort_following_room_path(current_user),class:"sort-btn"%></li>
+          <li>
+            <%= search_form_for Room.ransack(params[:q]), url: sort_following_room_path(current_user) do |f| %>
+              <%= f.hidden_field :title, value: @value%>
+              <%= f.submit 'フォロー先が作成した議論一覧',class:"sort-btn"%>
+            <% end %>
+          </li>
         <%end%>
       </ul>
     </div>

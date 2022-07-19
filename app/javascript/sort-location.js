@@ -12,3 +12,4 @@ function sort_current_location() {
 }
 
 window.addEventListener("load", sort_current_location);
+// ソートのカラーを変更し、どのソートが適用されているかわかるようにするため

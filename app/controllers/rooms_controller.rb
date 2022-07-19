@@ -96,7 +96,13 @@ class RoomsController < ApplicationController
     @users = @user.followings
     if @users.exists?
       #ふぉろわーのIDを条件に、ルームを取得
-      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids}).page(params[:page]).per(25)
+      if params[:q]&.dig(:title)
+        squished_keywords = params[:q][:title].squish
+        params[:q][:title_cont_any] = squished_keywords.split(" ")
+      end
+      @q = Room.joins(:user_rooms).ransack(params[:q])
+      @rooms = @q.result.where(user_rooms:{user_id:@users.ids}).order(created_at: "DESC").page(params[:page]).per(25)
+      @value = params[:q]&.dig(:title)
       render 'index'
     else
       flash[:following] = "あなたは誰もフォローしていません。ルーム一覧ページに戻りました"
