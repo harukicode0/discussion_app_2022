@@ -50,17 +50,6 @@ class RoomsController < ApplicationController
     send_collect_url
   end
 
-  def search
-    if params[:q]&.dig(:name)
-      squished_keywords = params[:q][:name].squish
-      params[:q][:title_cont_any] = squished_keywords.split(" ")
-    end
-    # @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
-    @q = Room.ransack(params[:q])
-    @rooms = @q.result.page(params[:page]).per(25)
-    render 'index'
-  end
-
   def tag_search
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
@@ -69,10 +58,7 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
-    if params[:q]&.dig(:title)
-      squished_keywords = params[:q][:title].squish
-      params[:q][:title_cont_any] = squished_keywords.split(" ")
-    end
+    seach_params_adjust
     @q = Room.joins(:user_rooms).ransack(params[:q])
     @rooms = @q.result.group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
     @value = params[:q]&.dig(:title)
@@ -81,10 +67,7 @@ class RoomsController < ApplicationController
 
   def sort_comments
     # コメントが多い順
-    if params[:q]&.dig(:title)
-      squished_keywords = params[:q][:title].squish
-      params[:q][:title_cont_any] = squished_keywords.split(" ")
-    end
+    seach_params_adjust
     @q = Room.joins(:comments).ransack(params[:q])
     @rooms = @q.result.group(:room_id).order('count(text) desc').page(params[:page]).per(25)
     @value = params[:q]&.dig(:title)
@@ -96,10 +79,7 @@ class RoomsController < ApplicationController
     @users = @user.followings
     if @users.exists?
       #ふぉろわーのIDを条件に、ルームを取得
-      if params[:q]&.dig(:title)
-        squished_keywords = params[:q][:title].squish
-        params[:q][:title_cont_any] = squished_keywords.split(" ")
-      end
+      seach_params_adjust
       @q = Room.joins(:user_rooms).ransack(params[:q])
       @rooms = @q.result.where(user_rooms:{user_id:@users.ids}).order(created_at: "DESC").page(params[:page]).per(25)
       @value = params[:q]&.dig(:title)
