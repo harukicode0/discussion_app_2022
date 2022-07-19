@@ -69,12 +69,18 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
-    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
+    if params[:q]&.dig(:title)
+      squished_keywords = params[:q][:title].squish
+      params[:q][:title_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Room.joins(:user_rooms).ransack(params[:q])
+    @rooms = @q.result.group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
     render 'index'
   end
 
   def sort_comments
-    # params[:title_cont_any] = params[:q].split(" ")
+    # コメントが多い順
     if params[:q]&.dig(:title)
       squished_keywords = params[:q][:title].squish
       params[:q][:title_cont_any] = squished_keywords.split(" ")
