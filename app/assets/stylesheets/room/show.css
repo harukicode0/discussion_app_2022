@@ -276,7 +276,9 @@ plus-btn
   bottom: 0;
 }
 
+/* クリックしたコメント投稿欄を拡張する */
 .comment_box_set {
+  transition: 1s;
   border: 1px solid var(--font-color);
   height: 300px;
 }
