@@ -4,8 +4,7 @@ class RoomsController < ApplicationController
   before_action :count_down_timer, only: [:standing_position]
 
   def index
-    @q = Room.ransack(params[:q])
-    @rooms = @q.result.page(params[:page]).per(25)
+    get_rooms
   end
 
   def show
@@ -52,6 +51,10 @@ class RoomsController < ApplicationController
   end
 
   def search
+    if params[:q]&.dig(:name)
+      squished_keywords = params[:q][:name].squish
+      params[:q][:title_cont_any] = squished_keywords.split(" ")
+    end
     # @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
     @q = Room.ransack(params[:q])
     @rooms = @q.result.page(params[:page]).per(25)
@@ -71,7 +74,17 @@ class RoomsController < ApplicationController
   end
 
   def sort_comments
-    @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc').page(params[:page]).per(25)
+    # params[:title_cont_any] = params[:q].split(" ")
+    if params[:q]&.dig(:title)
+      squished_keywords = params[:q][:title].squish
+      params[:q][:title_cont_any] = squished_keywords.split(" ")
+    end
+    binding.pry
+    
+    # @q = Room.joins(:comments).group(:room_id).order('count(text) desc')
+    @q = Room.joins(:comments).ransack(params[:q])
+    @rooms = @q.result.group(:room_id).order('count(text) desc').page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
     render 'index'
   end
 

@@ -24,12 +24,16 @@ class ApplicationController < ActionController::Base
 
   def get_rooms
     # 検索の記述も含めているため注意
-    if params[:q]&.dig(:title)
+    if params[:q]&.dig(:title) #or検索の条件式
       squished_keywords = params[:q][:title].squish
       params[:q][:title_cont_any] = squished_keywords.split(" ")
     end
-    @q = Room.ransack(params[:q])
-    @rooms = @q.result.includes(:owner).order(created_at: "DESC").page(params[:page]).per(25)
+    
+    # binding.pry
+    
+    @q = Room.includes(:owner).ransack(params[:q])
+    @rooms = @q.result.order(created_at: "DESC").page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
   end
 
   def create_comments
