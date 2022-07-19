@@ -9,11 +9,11 @@
         <%#end%>
         <%#= form.text_field :keyword, placeholder: "検索する", class: "input-box",id:'search-box',autocomplete: 'off',value:params[:keyword] %>
       <%# end %>
-      <%= search_form_for Room.ransack(params[:q]), url: search_rooms_path, class: "search-form" do |f| %>
+      <%= search_form_for Room.ransack(params[:q]), url: root_path, class: "search-form" do |f| %>
       <%= f.button type:"submit",class: 'search-button' do%>
           <i class="fas fa-search"></i>
         <%end%>
-      <%= f.text_field :title_cont, placeholder: "検索する", class: "input-box",id:'search-box',value: params[:q][:title_cont]%>
+      <%= f.text_field :title, placeholder: "検索する", class: "input-box",id:'search-box',autocomplete: 'off', value: params[:q]&.dig(:title)%>
       <% end %>
     </li>
   </ul>
