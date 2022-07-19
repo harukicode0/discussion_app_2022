@@ -3,11 +3,17 @@
     <li><%= link_to 'YES or NO', "/" ,class:"top-logo"%> </li>
     <li><% if user_signed_in?%><%=link_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
     <li>
-      <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.button type:"submit",class: 'search-button' do%>
+      <%#= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%#= form.button type:"submit",class: 'search-button' do%>
+          <%# <i class="fas fa-search"></i> %>
+        <%#end%>
+        <%#= form.text_field :keyword, placeholder: "検索する", class: "input-box",id:'search-box',autocomplete: 'off',value:params[:keyword] %>
+      <%# end %>
+      <%= search_form_for Room.ransack(params[:q]), url: search_rooms_path, class: "search-form" do |f| %>
+      <%= f.button type:"submit",class: 'search-button' do%>
           <i class="fas fa-search"></i>
         <%end%>
-        <%= form.text_field :keyword, placeholder: "検索する", class: "input-box",id:'search-box',autocomplete: 'off',value:params[:keyword] %>
+      <%= f.text_field :title_cont, placeholder: "検索する", class: "input-box",id:'search-box'%>
       <% end %>
     </li>
   </ul>

@@ -4,7 +4,8 @@ class RoomsController < ApplicationController
   before_action :count_down_timer, only: [:standing_position]
 
   def index
-    get_rooms
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result.page(params[:page]).per(25)
   end
 
   def show
@@ -51,7 +52,9 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
+    # @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result.page(params[:page]).per(25)
     render 'index'
   end
 
@@ -63,9 +66,6 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
-    
-    binding.pry
-    
     @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
     render 'index'
   end
