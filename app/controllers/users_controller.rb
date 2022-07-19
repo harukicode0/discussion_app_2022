@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
   
   def show
-    @rooms = Room.where(owner_id:@user.id).page(params[:page]).per(1)
+    @rooms = Room.where(owner_id:@user.id).page(params[:page]).per(15)
   end
 
   def followings

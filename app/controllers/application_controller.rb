@@ -23,7 +23,19 @@ class ApplicationController < ActionController::Base
   end
 
   def get_rooms
-    @rooms = Room.includes(:owner).order(created_at: "DESC").page(params[:page]).per(25)
+    # 検索の記述も含めているため注意
+    seach_params_adjust
+    @q = Room.includes(:owner).ransack(params[:q])
+    @rooms = @q.result.order(created_at: "DESC").page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
+  end
+
+  def seach_params_adjust
+     #or検索の条件式
+    if params[:q]&.dig(:title)
+      squished_keywords = params[:q][:title].squish
+      params[:q][:title_cont_any] = squished_keywords.split(" ")
+    end
   end
 
   def create_comments
@@ -53,7 +65,7 @@ class ApplicationController < ActionController::Base
   end
 
   def count_down_timer
-    @room = Room.find(params[:id] || params[:room_id])
+    @room = Room.find(params[:room_id] || params[:id])
     if @room.deadline < Time.now
       flash[:deadline] = "この議論は終了しているため、コメントの追加等の編集はできません"
       redirect_to request.referer

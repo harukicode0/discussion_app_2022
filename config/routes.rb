@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
     collection do
       get :this_site
-      get :search
       get :tag_search
       get :sort_participants
       get :sort_comments

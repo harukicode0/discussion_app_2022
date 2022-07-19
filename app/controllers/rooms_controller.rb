@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following,:sort_participants, :sort_comments]
+  before_action :authenticate_user!, except:[:index, :show, :search, :sort_following,:sort_participants, :sort_comments, :this_site]
   before_action :get_user_rooms, only: [:index, :search, :sort_participants, :sort_comments,:sort_following]
   before_action :count_down_timer, only: [:standing_position]
 
@@ -39,22 +39,15 @@ class RoomsController < ApplicationController
       if @position = Position.find_by(user_room_id:@user_room.id)
         #ポジションがある場合
         @position.update(user_room_id: @user_room.id, standing_position_id:params[:standing_position]) 
-        send_collect_url
       else
         #ポジションがない場合
         create_new_position
-        redirect_to action: :show
       end
     else
       @user_room = UserRoom.create(room_id: @room.id, user_id: current_user.id) #中間テーブルを作成
       create_new_position  #ポジションを作成
-      send_collect_url
     end
-  end
-
-  def search
-    @rooms = Room.search(params[:keyword]).order(created_at: "DESC").page(params[:page]).per(25)
-    render 'index'
+    send_collect_url
   end
 
   def tag_search
@@ -65,21 +58,31 @@ class RoomsController < ApplicationController
 
   def sort_participants
     #ルームへの参加者が多い順
-    @rooms = Room.joins(:user_rooms).group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
+    seach_params_adjust
+    @q = Room.joins(:user_rooms).ransack(params[:q])
+    @rooms = @q.result.group(:room_id).order('count(user_id) desc').page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
     render 'index'
   end
 
   def sort_comments
-    @rooms = Room.joins(:comments).group(:room_id).order('count(text) desc').page(params[:page]).per(25)
+    # コメントが多い順
+    seach_params_adjust
+    @q = Room.joins(:comments).ransack(params[:q])
+    @rooms = @q.result.group(:room_id).order('count(text) desc').page(params[:page]).per(25)
+    @value = params[:q]&.dig(:title)
     render 'index'
   end
 
   def sort_following
     @user = User.find(params[:id])
+    #ふぉろわーのIDを条件に、ルームを取得
     @users = @user.followings
     if @users.exists?
-      #ふぉろわーのIDを条件に、ルームを取得
-      @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@users.ids}).page(params[:page]).per(25)
+      seach_params_adjust
+      @q = Room.joins(:user_rooms).ransack(params[:q])
+      @rooms = @q.result.where(user_rooms:{user_id:@users.ids}).order(created_at: "DESC").page(params[:page]).per(25)
+      @value = params[:q]&.dig(:title)
       render 'index'
     else
       flash[:following] = "あなたは誰もフォローしていません。ルーム一覧ページに戻りました"
@@ -90,9 +93,6 @@ class RoomsController < ApplicationController
 
   def this_site
   end
-
-
-
 
   private
 
