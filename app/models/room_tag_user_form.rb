@@ -15,7 +15,7 @@ class RoomTagUserForm
     @room_id = room.id
   end
 
-  def update
+  def update(params,room)
     room.update(title: title)
     Tag.update(tag_name: tag_name) if tag_name != ""
     @room_id = room.id

@@ -5,7 +5,7 @@
       ルーム編集
     </div>
     <div class="sign-up-bottom">
-      <%= form_with model: @room_tag_user_form, url:room_path, local: true do |f| %>
+      <%= form_with model: @room_tag_user_form, url:room_path,method: :patch, local: true do |f| %>
 
       <%= render 'shared/error_messages', model: @room_tag_user_form%>
 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "作成", class:"input-name submit-bottom"%>
+          <%= f.submit "編集する", class:"input-name submit-bottom"%>
         </div>
       <% end %>
     </div>

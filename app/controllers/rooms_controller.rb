@@ -34,16 +34,15 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     room_attributes = @room.attributes
     @room_tag_user_form = RoomTagUserForm.new(room_attributes)
-    
+    @room_tag_user_form.tag_name = @room.tags&.first&.tag_name
   end
 
   def update
-    
-    binding.pry
-    
+    @room = Room.find(params[:id])
+    user_collect
     @room_tag_user_form = RoomTagUserForm.new(room_other_params)
     if @room_tag_user_form.valid?
-      @room_tag_user_form.update
+      @room_tag_user_form.update(room_other_params,@room)
       redirect_to room_path(@room_tag_user_form.room_id)
     else
       render 'edit'
@@ -131,6 +130,12 @@ class RoomsController < ApplicationController
       redirect_to room_issue_path(@room,@issue)
     else
       redirect_to action: :show
+    end
+  end
+
+  def user_collect
+    if current_user != @room.owner
+      redirect_to root_path
     end
   end
 end
