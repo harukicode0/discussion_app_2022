@@ -313,3 +313,11 @@ plus-btn
   margin: 35px auto 10px;
   text-align: center;
 }
+
+.issue-title a {
+  text-decoration: none;
+}
+
+.issue-title a:hover {
+  filter: brightness(60%);
+}
