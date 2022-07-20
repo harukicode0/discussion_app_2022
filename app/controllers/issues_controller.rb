@@ -42,7 +42,10 @@ class IssuesController < ApplicationController
   end
 
   def destroy
-
+    issue = Issue.find(params[:id])
+    room = issue.room
+    issue.destroy
+    redirect_to room_path(room) || root_path
   end
   
 
