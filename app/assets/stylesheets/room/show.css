@@ -12,6 +12,17 @@
   margin: 20px auto;
 }
 
+.room-title-edit-btn {
+  font-size: 14px;
+  color: var(--font-color);
+  text-align: center;
+  text-decoration: none;
+}
+
+.room-title-edit-btn:hover {
+  color: var(--deep-agree-color);
+}
+
 .room-title {
   box-sizing: border-box;
   width: 100%;
@@ -47,112 +58,129 @@
   color: black;
 }
 /************************************
- room-issue
+ room-issue-left
  ***********************************/
 .room-issues {
-  display: flex;
   width: 100%;
 }
-
 .room-issues-left {
-  width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.room-ronten {
   font-size: 18px;
   display: flex;
   justify-content: center;
-  padding-top: 10px;
+  align-items: center;
+  padding: 10px;
   background-color: var(--disagree-color);
   color: var(--main-color);
   border-radius: 3px;
   opacity: 0.7;
+  cursor: pointer;
 }
 
-.room-issues-right {
-  width: calc(100% - 60px);
-  font-size: 18px;
-  background-color: var(--main-color);
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  overflow-x: auto;
-  white-space: nowrap;
-  border-radius: 3px;
+.comment-yazirusi {
+  height: 18px;
+  padding: 0 5px;
 }
 
-.room-scroll {
-  /* ショートハンドで記述 */
-  animation: scrollAnime 40s linear infinite 20s;
+.comment-yazirusi.comment-yazirusi-set {
+  transform: rotate(180deg);
 }
-
-.room-scroll:hover {
-  /* ホバー時にアニメーションを止める */
-  animation-play-state: paused;
-}
-
-@keyframes scrollAnime {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.room-issue {
-  padding: 0px 3px 10px 3px;
-  display: inline-block;
-}
-
-.room-issue-home,
-.room-issue-option {
-  margin-right: 5px;
-}
-
-.room-issue a {
-  text-decoration: none;
-  color: var(--font-color);
-  border: 1px solid var(--font-color);
-  padding: 3px 5px;
-  border-radius: 3px;
-}
-
-.room-issue a:hover {
-  background-color: var(--font-color);
-  color: var(--main-color);
-  transition: 0.3s;
-}
-
 /************************************
 plus-btn 
  ***********************************/
 
 .room-issue-plus {
   box-sizing: border-box;
-  width: 60px;
-  font-size: 20px;
   display: flex;
-  justify-content: center;
-  padding-top: 10px;
-  height: 100%;
+  margin-left: 10px;
   position: relative;
-  background-color: var(--main-color);
 }
+.room-issue-plus a {
+  font-size: 18px;
+  padding: 10px;
+  text-decoration: none;
+  border: 1px solid var(--font-color);
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
 .issue-add-explain {
   position: absolute;
-  top: 40px;
-  left: -13px;
+  top: 5px;
+  left: 30px;
   display: none;
   padding: 2px;
   background-color: var(--main-color);
   color: var(--font-color);
-  width: 100px;
   font-size: 14px;
+  width: 80px;
+  text-align: center;
 }
 
 .room-issue-plus:hover .issue-add-explain {
   display: block;
   opacity: 0.5;
+}
+
+/************************************
+ room-issue-right
+ ***********************************/
+.room-issues-right {
+  background-color: var(--main-color);
+  display: none;
+  /* スライド横スクロール自動化のための記述 */
+  /* overflow-x: auto; */
+  /* white-space: nowrap; */
+}
+
+.room-issues-right.room-issues-right-set {
+  /* クリックしたときissuesを表示させる */
+  display: block;
+}
+
+.room-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  /* ショートハンドで記述
+  animation: scrollAnime 40s linear infinite 20s; */
+}
+
+/* .room-scroll:hover {
+  ホバー時にアニメーションを止める
+  animation-play-state: paused;
+} */
+
+/* @keyframes scrollAnime {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
+.room-issue {
+  margin: 7px;
+}
+
+.room-issue a {
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.room-issue a:hover,
+.room-issue-plus a:hover {
+  background-color: var(--font-color);
+  color: var(--main-color);
+  transition: 0.3s;
 }
 
 /************************************
@@ -274,11 +302,12 @@ plus-btn
   position: absolute;
   right: 0;
   bottom: 0;
+  transition: 1s;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* クリックしたコメント投稿欄を拡張する */
 .comment_box_set {
-  transition: 1s;
   border: 1px solid var(--font-color);
   height: 300px;
 }
@@ -311,4 +340,12 @@ plus-btn
   padding: 5px;
   margin: 35px auto 10px;
   text-align: center;
+}
+
+.issue-title a {
+  text-decoration: none;
+}
+
+.issue-title a:hover {
+  filter: brightness(60%);
 }

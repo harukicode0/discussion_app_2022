@@ -1,23 +1,51 @@
 <%if comment.standing_position_id == value%>
   <div class="comment">
-    <%= comment.text%>
-    <%= comment.user.nickname%>
+    <div class="comment-user-image-wrap">
+        <%if comment.user.image.attached?%>
+          <%=link_to image_tag(comment.user.image.variant(resize: '50x50',gravity: "center", crop:"40x40+0+0").processed),user_path(comment.user.id), class:"comment-user-image"%>
+        <%else%>
+          <%= link_to image_tag('hito.png'),user_path(comment.user.id), class:"comment-user-image"%>
+        <%end%>
+    </div>
+
+    <div class="comment-right">
+      <div class="comment-header">
+          <div class="comment-user-name">
+          <%=link_to comment.user.nickname, user_path(comment.user.id)%>
+          </div>
+          <div class="comment-time">
+          <%= comment.updated_at%>
+          </div>
+      </div>
+
+      <div class="comment-body">
+        <%= comment.text%>
+      </div>
+
+      <div class="comment-footer">
+        <div class="comment-footer-like">
+          <% if user_signed_in?%>
+            <% if comment.issue_like?(current_user,comment) %>
+                <%= link_to room_comment_like_path(@room.id, comment.id), method: :delete do %>
+                  <%= image_tag'heart-red.png'%><span class="comment-heart comment-heart-red"><%=comment.count_like(comment)%></span>
+                <% end %>
+            <% else %>
+                <%= link_to room_comment_likes_path(@room.id, comment.id), method: :post do %>
+                  <%= image_tag'heart.png'%><span class="comment-heart comment-heart-gray"><%=comment.count_issue_like(comment)%></span>
+                <% end %>
+            <% end %>
+          <%else%>
+            <%= image_tag'heart.png'%><span class="comment-heart  comment-heart-gray"><%=comment.count_like(comment)%></span>
+          <%end%>
+        </div>
+    
+        <%if current_user == comment.user%>
+          <div class="comment-footer-author">
+            <%= link_to "編集", edit_room_comment_path(@room,comment),class:'comment-edit-btn'%>
+            <%= link_to "削除", room_comment_path(@room,comment),method: :delete,class:'comment-destroy-btn'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
   </div>
-  <% if user_signed_in?%>
-    <% if comment.issue_like?(current_user,comment) %>
-        <%= link_to room_issue_issue_comment_issue_like_path(@room.id, @issue, comment.id), method: :delete do %>
-          <span style="color:red;">❤︎<%=comment.count_issue_like(comment)%></span>
-        <% end %>
-    <% else %>
-        <%= link_to room_issue_issue_comment_issue_likes_path(@room.id, @issue, comment.id), method: :post do %>
-          <span style="color:gray;">❤︎<%=comment.count_issue_like(comment)%></span>
-        <% end %>
-    <% end %>
-  <%else%>
-     <span style="color:gray;">❤︎<%=comment.count_issue_like(comment)%></span>
-  <%end%>
-  <%if current_user == comment.user%>
-    <%= link_to "編集", edit_room_issue_issue_comment_path(@room,@issue,comment)%>
-    <%= link_to "削除", room_issue_issue_comment_path(@room,@issue,comment),method: :delete%>
-  <%end%>
 <%end%>
