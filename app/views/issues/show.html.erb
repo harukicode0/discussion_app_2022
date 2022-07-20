@@ -3,7 +3,8 @@
 <%@disagree=2%>
 <div class="room-wrapper">
   <div class="room-header">
-    <div class="issue-title"> 
+    <div class="issue-title">
+      <%= link_to '(編集)',edit_room_path(@room),class:"room-title-edit-btn" if current_user == @room.owner%>
       <%= @room.deadline < Time.now ? "終了:" : "タイトル："%><%=link_to @room.title,room_path(@issue.room)%>
     </div>
     <div class="room-title">

@@ -12,6 +12,17 @@
   margin: 20px auto;
 }
 
+.room-title-edit-btn {
+  font-size: 14px;
+  color: var(--font-color);
+  text-align: center;
+  text-decoration: none;
+}
+
+.room-title-edit-btn:hover {
+  color: var(--deep-agree-color);
+}
+
 .room-title {
   box-sizing: border-box;
   width: 100%;
