@@ -8,7 +8,7 @@
       <%= @room.deadline < Time.now ? "終了:" : "タイトル："%><%=link_to @room.title,room_path(@issue.room)%>
     </div>
     <div class="room-title">
-      論点：<%=@issue.issue_title%>
+      <%= link_to '(編集)', edit_room_issue_path(@room,@issue)%>論点：<%=@issue.issue_title%>
     </div>
     
     <ul class="room-info">

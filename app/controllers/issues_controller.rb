@@ -27,6 +27,24 @@ class IssuesController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
+  def update
+    @issue = Issue.find(params[:id])
+      if @issue.update(params[:object])
+        redirect_to @issue
+      else
+        render 'edit'
+      end
+  end
+
+  def destroy
+
+  end
+  
+
   private
   def issue_params
     params.require(:issue).permit(:issue_title).merge(room_id: params[:room_id],owner_id:current_user.id)

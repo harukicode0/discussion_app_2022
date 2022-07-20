@@ -2,7 +2,7 @@
 <div class="sign-up-contents">
   <div class="sign-up-content">
     <div class="sign-up-title">
-      ルーム編集
+      ルームタイトルの編集
     </div>
     <div class="sign-up-bottom">
       <%= form_with model: @room_tag_user_form, url:room_path,method: :patch, local: true do |f| %>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "編集する", class:"input-name submit-bottom"%>
+          <%= f.submit "編集完了", class:"input-name submit-bottom"%>
         </div>
       <% end %>
     </div>
