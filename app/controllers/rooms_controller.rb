@@ -30,6 +30,26 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit
+    @room = Room.find(params[:id])
+    room_attributes = @room.attributes
+    @room_tag_user_form = RoomTagUserForm.new(room_attributes)
+    
+  end
+
+  def update
+    
+    binding.pry
+    
+    @room_tag_user_form = RoomTagUserForm.new(room_other_params)
+    if @room_tag_user_form.valid?
+      @room_tag_user_form.update
+      redirect_to room_path(@room_tag_user_form.room_id)
+    else
+      render 'edit'
+    end
+  end
+  
   def standing_position
     #ルームを探す
     @room = Room.find(params[:room_id])

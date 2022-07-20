@@ -144,7 +144,7 @@ title
   background-color: var(--main-color);
   border-left: 1px solid var(--second-main-color);
   color: var(--second-main-color);
-  line-height: calc((var(--content-height) - 40px) / 4);
+  line-height: calc((var(--content-height) - 40px) / 5);
   font-style: italic;
 }
 
