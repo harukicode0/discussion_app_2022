@@ -41,8 +41,8 @@
     
         <%if current_user == comment.user%>
           <div class="comment-footer-author">
-            <%= link_to "編集", edit_room_comment_path(@room,comment)%>
-            <%= link_to "削除", room_comment_path(@room,comment),method: :delete%>
+            <%= link_to "編集", edit_room_comment_path(@room,comment),class:'comment-edit-btn'%>
+            <%= link_to "削除", room_comment_path(@room,comment),method: :delete,class:'comment-destroy-btn'%>
           </div>
         <%end%>
       </div>

@@ -275,6 +275,7 @@ plus-btn
   right: 0;
   bottom: 0;
   transition: 1s;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* クリックしたコメント投稿欄を拡張する */
