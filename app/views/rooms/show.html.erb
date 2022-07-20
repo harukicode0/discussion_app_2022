@@ -13,7 +13,7 @@
     <div class="room-issues">
       <div class="room-issues-left">
         <div class="room-issue-ronten">
-          <div class="room-ronten">
+          <div class="room-ronten", id='room-ronten'>
             論点
             <%= image_tag 'downyazirusi.png',class:"comment-yazirusi"%>
           </div>
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="room-issues-right">
+      <div class="room-issues-right",style="display: none">
         <div class="room-scroll">
           <div class="room-issue room-issue-home">
             <%= link_to "ホーム", room_path(@room)%>

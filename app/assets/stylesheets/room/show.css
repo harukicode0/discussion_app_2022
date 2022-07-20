@@ -67,6 +67,7 @@
   color: var(--main-color);
   border-radius: 3px;
   opacity: 0.7;
+  cursor: pointer;
 }
 
 .comment-yazirusi {
@@ -115,9 +116,15 @@ plus-btn
  ***********************************/
 .room-issues-right {
   background-color: var(--main-color);
+  display: none;
   /* スライド横スクロール自動化のための記述 */
   /* overflow-x: auto; */
   /* white-space: nowrap; */
+}
+
+.room-issues-right.room-issues-right-set {
+  /* クリックしたときissuesを表示させる */
+  display: block;
 }
 
 .room-scroll {
@@ -142,7 +149,7 @@ plus-btn
 } */
 
 .room-issue {
-  margin: 5px;
+  margin: 7px;
 }
 
 .room-issue a {
