@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_action :authenticate_user!, except:[:show]
-  before_action :count_down_timer, only: [:new,:create]
+  before_action :count_down_timer, only: [:new,:create, :update, :destroy, :edit]
 
   def show
     @issue = Issue.find(params[:id])
@@ -28,13 +28,14 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    
+    @room = Room.find(params[:room_id])
+    @issue = Issue.find(params[:id])
   end
 
   def update
     @issue = Issue.find(params[:id])
-      if @issue.update(params[:object])
-        redirect_to @issue
+      if @issue.update(issue_params)
+        redirect_to 'show'
       else
         render 'edit'
       end
