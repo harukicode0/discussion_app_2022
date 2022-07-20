@@ -61,10 +61,10 @@
           NO：<%if @no != 0 || @yes != 0%><%=100 - @y_percent%>%<%else%>none<%end%>
         </span>
       </div>
-      
+
       <div class="room-authority-btn">
         <% if room.owner == current_user%>
-          <div class="room-authority-edit-btn"><%= link_to '編集',edit_room_path(room)%></div>
+          <div class="room-authority-edit-btn"><%= link_to 'タイトルを編集',edit_room_path(room)%></div>
         <%end%>
       </div>
     </div>

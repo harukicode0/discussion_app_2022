@@ -186,3 +186,12 @@ title
   color: var(--deep-disagree-color);
   font-weight: 700;
 }
+
+.room-authority-edit-btn a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.room-authority-edit-btn a:hover {
+  color: var(--agree-color);
+}
