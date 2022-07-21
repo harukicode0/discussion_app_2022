@@ -34,8 +34,4 @@ Rails.application.routes.draw do
     get :followers, on: :member
     get :your_joined_discussions, on: :member
   end
-
-  # if Rails.env.development?
-  #   mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  # end
 end
