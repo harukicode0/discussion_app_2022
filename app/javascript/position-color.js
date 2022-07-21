@@ -6,11 +6,13 @@ function position_color() {
   const parent = position.parentElement;
   const post_btn = document.querySelector(".comment_bottom_r");
   if (text == "Yes") {
-    parent.style.backgroundColor = "var(--agree-color)";
+    parent.style.borderBottom = "2px solid var(--agree-color)";
+    parent.style.color = "var(--deep-agree-color)";
     post_btn.style.backgroundColor = "var(--agree-color)";
   } else if (text == "No") {
-    parent.style.backgroundColor = "var(--disagree-color)";
-    post_btn.style.backgroundColor = "var(--disagree-color)";
+    parent.style.borderBottom = "2px solid var(--disagree-color)";
+    parent.style.color = "var(--deep-disagree-color)";
+    post_btn.style.backgroundColor = "var(--deep-disagree-color)";
   }
 }
 
