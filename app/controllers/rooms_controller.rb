@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @comments = @room.comments.includes(:user)
+    @comments = @room.comments.includes(:user).order(created_at: "DESC")
     @comment = Comment.new
     find_user_positioin
     @count_participants = count_participants(@room.id)

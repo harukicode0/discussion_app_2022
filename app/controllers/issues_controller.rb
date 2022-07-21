@@ -5,7 +5,7 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
     @room = Room.find(@issue.room_id)
-    @issue_comments = @issue.issue_comments.includes(:user)
+    @issue_comments = @issue.issue_comments.includes(:user).order(created_at: "DESC")
     @issue_comment = IssueComment.new
     get_user_rooms
     find_user_positioin_in_issue

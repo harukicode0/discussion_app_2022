@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_comments
-    @comments = @room.comments.includes(:user)
+    @comments = @room.comments.includes(:user).order(created_at: "DESC")
   end
 
   def find_user_positioin
