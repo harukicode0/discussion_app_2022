@@ -15,22 +15,32 @@
       論点：<%=@issue.issue_title%>
     </div>
     
-    <ul class="room-info">
-      <li><%if @issue.owner.present?%><%= link_to "この論点の作成者：#{@issue.owner.nickname}", user_path(@issue.owner), class:"room-info-name"%><%else%>制作者失踪<%end%></li>
-    </ul>
-    <div class="room-issues">
-      <div class="room-issues-left">
-        <div class="room-issue-ronten">
-          <div class="room-ronten", id='room-ronten'>
-            論点
-            <%= image_tag 'downyazirusi.png',class:"comment-yazirusi"%>
+    <div class="room-title-bottom">
+    
+      <div class="room-info-top">
+        <div class="room-info-dropdown-btn" id="room-info-dropdown-btn">作成者等</div>
+          <ul class="room-info", id="room-info">
+            <li>参加人数：<%= @count_participants%>名</li>
+            <li><%if @issue.owner.present?%><%= link_to "論点作成者：#{@issue.owner.nickname}", user_path(@issue.owner), class:"room-info-name"%><%else%>ルーム作成者：失踪<%end%></li>
+            <li><%if @room.owner.present?%><%= link_to "ルーム作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%><%else%>ルーム作成者：失踪<%end%></li>
+          </ul>
+      </div>
+
+      <div class="room-issues">
+        <div class="room-issues-left">
+          <div class="room-issue-ronten">
+            <div class="room-ronten", id='room-ronten'>
+              論点
+              <%= image_tag 'downyazirusi.png',class:"comment-yazirusi"%>
+            </div>
+          </div>
+          <div class="room-issue-plus">
+            <%= link_to "+", new_room_issue_path(@room)%>
+            <div class="issue-add-explain">論点を追加</div>
           </div>
         </div>
-        <div class="room-issue-plus">
-          <%= link_to "+", new_room_issue_path(@room)%>
-          <div class="issue-add-explain">論点を追加</div>
-        </div>
       </div>
+    </div>
 
       <div class="room-issues-right">
         <div class="room-scroll">
@@ -44,7 +54,6 @@
           <%end%>
         </div>
       </div>
-    </div>
   </div>
   
   <div class= "comments-room">

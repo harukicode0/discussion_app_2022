@@ -9,12 +9,12 @@
     </div>
 
     <div class="room-title-bottom">
-    
+
       <div class="room-info-top">
-        <div class="room-info-dropdown-btn" id="room-info-dropdown-btn">制作者等</div>
+        <div class="room-info-dropdown-btn" id="room-info-dropdown-btn">作成者等</div>
           <ul class="room-info", id="room-info">
             <li>参加人数：<%= @count_participants%>名</li>
-            <li><%if @room.owner.present?%><%= link_to "作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%><%else%>制作者失踪<%end%></li>
+            <li><%if @room.owner.present?%><%= link_to "ルーム作成者：#{@room.owner.nickname}", user_path(@room.owner), class:"room-info-name"%><%else%>ルーム作成者：失踪<%end%></li>
           </ul>
       </div>
 
