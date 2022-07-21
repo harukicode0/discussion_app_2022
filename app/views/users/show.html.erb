@@ -17,7 +17,7 @@
       </div>
       <div class="mypage-user-profile">
         <p>profile</p>
-        <%= @user.profile%>
+        <%=@user.profile != nil ? @user.profile : "プロフィールは編集画面にて入力できます。"%>
       </div>
       <div class="mypage-info">
         <div class="follow-info">

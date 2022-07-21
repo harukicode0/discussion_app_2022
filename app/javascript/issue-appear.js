@@ -6,6 +6,7 @@ function issue_appear() {
   ronten.addEventListener("click", function () {
     room_issue.classList.toggle("room-issues-right-set");
     yazirusi.classList.toggle("comment-yazirusi-set");
+    ronten.classList.toggle("room-ronten-set");
   });
 }
 

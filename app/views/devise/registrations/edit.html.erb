@@ -4,70 +4,73 @@
     <div class="sign-up-title">
       <h2>編集 <%= resource_name.to_s.humanize %></h2>
     </div>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :nickname, "■ニックネーム",class:"label-name" %>
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "ニックネーム",class:"input-name"%>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email, "■E-mail" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"input-name" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-    <%= f.label :sex_id, "■性別"%><br/>
-    <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"input-tab sex-select"}) %> 
-  </div>
+      <div class="field">
+        <%= f.label :nickname, "■ニックネーム",class:"label-name" %>
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "ニックネーム",class:"input-name"%>
+      </div>
+      
+      <div class="field">
+        <%= f.label :email, "■E-mail" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"input-name" %>
+      </div>
 
-  <div class="field bottom-field">
-    <%= f.label :birthday, "■生年月日"%><br/>
-    <%= f.date_select :birthday, {start_year: 1950, end_year: 2016,include_blank: true, use_two_digit_numbers: true},{class: "input-tab birthday-select"}%> 
-  </div>
+      <div class="field">
+        <%= f.label :sex_id, "■性別"%><br/>
+        <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"input-tab sex-select"}) %> 
+      </div>
 
-  <div class="field ">
-    <%= f.label :profile, "■プロフィール" %><br />
-    <%= f.text_area :profile, autofocus: true, autocomplete: "email",class:"input-name field-profile" %>
-  </div>
+      <div class="field bottom-field">
+        <%= f.label :birthday, "■生年月日"%><br/>
+        <%= f.date_select :birthday, {start_year: 1950, end_year: 2016,include_blank: true, use_two_digit_numbers: true},{class: "input-tab birthday-select"}%> 
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="field">
+        <%= f.label :profile, "■プロフィール" %><br/>
+        <%= f.text_area :profile, autofocus: true, autocomplete: "email",class:"input-name field-profile" %>
+      </div>
 
-  <div class="field bottom-field">
-    <%= f.label :password,"■変更後のパスワード" %>
-    <%= f.password_field :password, autocomplete: "new-password",class:"input-name" %>
-     <br/><span class="input-atention">6文字以上。変更しない場合は空欄のままにしてください</span>
-  </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>
+          Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation,"■変更後のパスワードを再入力" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"input-name" %>
-  </div>
+      <div class="field bottom-field">
+        <%= f.label :password,"■変更後のパスワード" %>
+        <%= f.password_field :password, autocomplete: "new-password",class:"input-name" %>
+        <br/><span class="input-atention">6文字以上。変更しない場合は空欄のままにしてください</span>
+      </div>
 
-  <div class="image-field">
-    <div id="previews"></div>
-    <%= f.label :image, "■アイコン画像の投稿", id:"user-image" %><br>
-    <%= f.file_field :image %>
-  </div>
+      <div class="field">
+        <%= f.label :password_confirmation,"■変更後のパスワードを再入力" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"input-name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :current_password,"■更新承認のパスワード",class:"edit-password" %><span class="necessary">必須</span><br/>
-    <%= f.password_field :current_password, autocomplete: "current-password",class:"input-name" %>
-     <br/><span class="input-atention">(ユーザー情報を変更する場合はここに必ず変更前パスワードを入力してください)</span>
-     <br/><br/><br/>
-  </div>
+      <div class="image-field">
+        <div id="previews"></div>
+        <%= f.label :image, "■アイコン画像の投稿", id:"user-image" %><br>
+        <%= f.file_field :image %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "更新",class:"submit-bottom" %>
-  </div>
-<% end %>
-<div class="denger-place">
-<%= link_to "戻る", :back, class:"links-propaty" %>
-<%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-</div>
+      <div class="field">
+        <%= f.label :current_password,"■更新承認のパスワード",class:"edit-password" %><span class="necessary">必須</span><br/>
+        <%= f.password_field :current_password, autocomplete: "current-password",class:"input-name" %>
+        <br/><span class="input-atention">(ユーザー情報を変更する場合はここに必ず変更前パスワードを入力してください)</span>
+        <br/><br/><br/>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "更新",class:"submit-bottom" %>
+      </div>
+    <% end %>
+      <div class="denger-place">
+      <%= link_to "戻る", :back, class:"links-propaty" %>
+      <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+      </div>
     </div>
   </div>
 </div>
