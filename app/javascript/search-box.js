@@ -1,7 +1,6 @@
 function search_box() {
-  const search_box = document.querySelector("#search-box");
-  if (!search_box) return null;
   const line = document.querySelector(".search-form");
+  if (!line) return null;
   // ページをクリックした時の処理
   document.addEventListener("click", (e) => {
     // クリックした要素【document】の親要素（"#search-box"）を判定している
