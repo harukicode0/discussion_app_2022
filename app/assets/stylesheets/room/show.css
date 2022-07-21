@@ -194,6 +194,16 @@ plus-btn
 }
 
 /************************************
+立ち位置
+ ***********************************/
+.position-open {
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  margin-left: auto;
+}
+
+/************************************
  room-issue-right
  ***********************************/
 .room-issues-right {
@@ -260,7 +270,7 @@ plus-btn
   height: 700px;
   margin: auto;
   background-color: var(--base-color);
-  margin: 60px auto 40px;
+  margin: 40px auto;
 }
 
 .opinion-room {
@@ -326,7 +336,7 @@ plus-btn
  ***********************************/
 
 .room-input-box {
-  width: 70%;
+  width: 60%;
   height: var(--btn-height);
   background-color: var(--base-color);
   margin: auto;
@@ -334,19 +344,9 @@ plus-btn
   justify-content: center;
 }
 
-.position-open {
-  width: 10%;
-  height: var(--btn-height);
-  line-height: var(--btn-height);
-  text-align: center;
-  background-color: var(--font-color);
-  color: var(--main-color);
-  font-size: 14px;
-  border-radius: 5px;
-}
 .comment-box-position {
   height: var(--btn-height);
-  width: 60%;
+  width: 70%;
   margin: 0 20px;
   position: relative;
 }
