@@ -8,13 +8,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @room = Room.find(params[:room_id])
     if find_user_positioin != nil
-      if Comment.create(comment_params)
-        redirect_to room_path(@room)
-      else
-        create_comments
-        @issues = Issue.where(room_id: @room.id)
-        render 'rooms/show'
-      end
+      Comment.create(comment_params)
+      redirect_to room_path(@room)
     else
       create_comments
       @issues = Issue.where(room_id: @room.id)

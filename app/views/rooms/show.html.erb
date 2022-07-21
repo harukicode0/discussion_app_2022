@@ -47,7 +47,7 @@
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'YES', class:"agree-btn opinion-btn"%>
       <%end%>
-      <div class="agree-text-area opinion-text-area">
+      <div class="agree-text-area opinion-text-area" id='agree-text-area'>
         <% @comments.each do |comment| %>
           <%= render 'shared/comment',{comment:comment,value:@agree} %>
         <%end%>
@@ -61,7 +61,7 @@
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'NO',class:"disagree-btn opinion-btn"%>
       <%end%>
-      <div class="disagree-text-area opinion-text-area">
+      <div class="disagree-text-area opinion-text-area" id="disagree-text-area">
         <% @comments.each do |comment| %>
           <%= render 'shared/comment',{comment:comment,value:@disagree} %>
         <%end%>
@@ -71,15 +71,15 @@
 
     <% if user_signed_in? && @position.present?%>
       
-      <%= form_with(model:[@room, @comment], local: true) do |f|%>
+      <%= form_with(model:[@room, @comment], local: true,id:"comment-form") do |f|%>
       <div class="room-input-box">
         <div class="position-open">
           立ち位置:<span class="position-open-users"><%= @position.standing_position.name%></span>
         </div>
           <div class="comment-box-position">
-            <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box"%>
+            <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box",id:"comment_box"%>
           </div>
-          <%= f.submit 'post', class:"comment_bottom_r"%>
+          <%= f.submit 'post', class:"comment_bottom_r",id:"comment_bottom_r"%>
       </div>
       <%end%>
     <%elsif user_signed_in? %>
