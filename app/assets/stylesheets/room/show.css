@@ -7,7 +7,7 @@
  room-header  
  ***********************************/
 .room-header {
-  width: 80%;
+  width: 60%;
   background-color: var(--base-color);
   margin: 20px auto;
 }
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 7px;
-  height: 70px;
+  height: 105px;
   font-size: 28px;
   text-align: center;
   color: var(--font-color);
@@ -35,34 +35,82 @@
   border-radius: 3px;
 }
 
-.room-info {
-  box-sizing: border-box;
+/************************************
+タイトルボトム部分
+ ***********************************/
+
+.room-title-bottom {
+  margin-top: 10px;
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 10px 0px;
-  padding: 5px;
-  font-size: 16px;
+}
+/************************************
+プルダウン
+ ***********************************/
+.room-info-top {
+  position: relative;
+}
+.room-info-top-set {
+  background-color: var(--main-color);
+}
 
+.room-info-dropdown-btn {
+  font-size: 18px;
+  display: flex;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
+  cursor: pointer;
+  position: relative;
+}
+
+.room-info-dropdown-btn::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--font-color);
+  bottom: 0px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.5s;
+}
+
+.room-info-dropdown-btn:hover::after {
+  transform: scale(1, 1);
+}
+
+.room-info {
+  display: none;
+  position: absolute;
+  align-items: center;
+  padding: 5px;
+  font-size: 18px;
+  line-height: 25px;
   list-style: none;
   background-color: var(--main-color);
   border-radius: 3px;
 }
 
+.room-info-set {
+  display: block;
+  width: 120px;
+}
+
 .room-info li {
-  margin-right: 30px;
   color: var(--font-color);
+  font-size: 14px;
 }
 .room-info-name {
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
 }
 /************************************
- room-issue-left
+論点
  ***********************************/
-.room-issues {
-  width: 100%;
-}
 .room-issues-left {
   display: flex;
   align-items: center;
@@ -73,12 +121,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  background-color: var(--disagree-color);
-  color: var(--main-color);
-  border-radius: 3px;
-  opacity: 0.7;
+  padding: 5px 10px;
+  color: var(--font-color);
   cursor: pointer;
+  position: relative;
+}
+
+.room-ronten.room-ronten-set {
+  background-color: var(--main-color);
+}
+
+.room-ronten::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--font-color);
+  bottom: 0px;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.5s;
+}
+
+.room-ronten:hover::after {
+  transform: scale(1, 1);
 }
 
 .comment-yazirusi {
@@ -187,7 +254,7 @@ plus-btn
  コメント表示部分  
  ***********************************/
 .comments-room {
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   height: 700px;
@@ -199,12 +266,6 @@ plus-btn
 .opinion-room {
   width: 47%;
   height: 100%;
-}
-
-.agree-room {
-}
-
-.disagree-room {
 }
 
 .opinion-btn {
@@ -302,7 +363,7 @@ plus-btn
   position: absolute;
   right: 0;
   bottom: 0;
-  transition: 1s;
+  transition: 0.4s;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
