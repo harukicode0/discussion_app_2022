@@ -17,6 +17,7 @@ require("../sort-location");
 require("../position-color");
 require("../comment-big");
 require("../issue-appear");
+require("../room-dropdown");
 // require("../ajax");
 
 Rails.start();
