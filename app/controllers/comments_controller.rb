@@ -5,20 +5,13 @@ class CommentsController < ApplicationController
   before_action :count_down_timer, only: [:create,:edit,:update,:destroy]
 
   def create
-    
-    binding.pry
-    
     @comment = Comment.new
     @room = Room.find(params[:room_id])
     if find_user_positioin != nil
       comment = Comment.create(comment_params)
-      if comment.present?
-        render json:{ comment: comment }
-      else
-        create_comments
-        @issues = Issue.where(room_id: @room.id)
-        render 'rooms/show'
-      end
+      # create_comments
+      # @issues = Issue.where(room_id: @room.id)
+      render json:{ comment: comment }
     else
       create_comments
       @issues = Issue.where(room_id: @room.id)

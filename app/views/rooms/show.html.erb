@@ -47,7 +47,7 @@
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'YES', class:"agree-btn opinion-btn"%>
       <%end%>
-      <div class="agree-text-area opinion-text-area">
+      <div class="agree-text-area opinion-text-area" id='agree-text-area'>
         <% @comments.each do |comment| %>
           <%= render 'shared/comment',{comment:comment,value:@agree} %>
         <%end%>
@@ -61,7 +61,7 @@
         <%= f.hidden_field :room_id, value:@room.id%>
         <%= f.submit 'NO',class:"disagree-btn opinion-btn"%>
       <%end%>
-      <div class="disagree-text-area opinion-text-area">
+      <div class="disagree-text-area opinion-text-area" id="disagree-text-area">
         <% @comments.each do |comment| %>
           <%= render 'shared/comment',{comment:comment,value:@disagree} %>
         <%end%>
