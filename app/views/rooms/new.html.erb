@@ -15,6 +15,11 @@
         </div>
 
         <div class="field">
+          <%= f.label :days, "開催期間",class:"label-name" %><br>
+          <%= f.select :days, [1,2,3,4,5]%><span class="room-created-date">日間</span>
+        </div>
+
+        <div class="field">
           <%= f.label :tag_name, "タグ",class:"label-name"%><br>
           <%= f.text_field :tag_name, placeholder: "タグを紐付けしてください(任意)",autocomplete: 'off',class:"input-name",id:"tag_name"%>
           <div id="search-result"></div>
