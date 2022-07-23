@@ -3,7 +3,7 @@ class RoomTagUserForm
 
   attr_accessor(
     :id, :title,:days, :owner_id, :deadline, :user_id, :room_id, :tag_name, :created_at, :updated_at, :tag_id)
-  
+
     days_regex = /[1-5]/
   with_options presence: true do
     validates :title ,presence: {message: "タイトルは必ず入力してください"}
