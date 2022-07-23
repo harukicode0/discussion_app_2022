@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
 
   with_options presence: true do
     validates :text
+    validates :standing_position_id
   end
   # validates :standing_position_id, numericality: true
 

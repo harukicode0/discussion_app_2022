@@ -4,9 +4,10 @@ class IssueComment < ApplicationRecord
   belongs_to :issue
   belongs_to :user
   has_many :issue_likes, dependent: :destroy
-  
+
   with_options presence: true do
     validates :text
+    validates :standing_position_id
   end
 
   def issue_like?(user, comment)
