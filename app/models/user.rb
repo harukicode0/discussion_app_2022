@@ -4,8 +4,8 @@ class User < ApplicationRecord
   
   validates :nickname, presence:true, presence: { message: "を入力してください"}
 
-    validates :image, content_type: {in:[:png, :jpg, :jpeg], message: "はpng, jpg, jpegいずれかの形式にして下さい。"},
-    size: { between: 1.kilobyte..4.megabytes , message: '画像容量が大きすぎぃ、4megabytes以下でお願いします。' }
+  validates :image, content_type: {in:[:png, :jpg, :jpeg], message: "はpng, jpg, jpegいずれかの形式にして下さい"},
+  size: { between: 1.kilobyte..4.megabytes , message: '画像容量が大きすぎぃ、4megabytes以下でおなしゃす' }
 
   #アクティブハッシュの読み込みのための記述
   extend ActiveHash::Associations::ActiveRecordExtensions
