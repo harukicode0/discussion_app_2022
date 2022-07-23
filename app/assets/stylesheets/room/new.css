@@ -26,3 +26,14 @@
   background-color: var(--deep-disagree-color);
   color: var(--main-color);
 }
+/***************************
+セレクトぼックス
+ ***************************/
+.field select {
+  font-size: 18px;
+  padding: 5px;
+  margin: 10px 5px 10px 0;
+}
+.room-created-date {
+  text-align: center;
+}
