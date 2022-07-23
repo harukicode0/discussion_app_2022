@@ -16,7 +16,7 @@ class IssuesController < ApplicationController
     @issue = Issue.new
     @room = Room.find(params[:room_id])
   end
-  
+
   def create
     @issue = Issue.new(issue_params)
     if @issue.save
