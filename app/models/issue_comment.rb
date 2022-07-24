@@ -7,7 +7,7 @@ class IssueComment < ApplicationRecord
 
   with_options presence: true do
     validates :text
-    validates :standing_position_id
+    validates :standing_position_id,  numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 2}
   end
 
   def issue_like?(user, comment)
