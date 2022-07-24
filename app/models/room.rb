@@ -10,7 +10,7 @@ class Room < ApplicationRecord
   # validate
   validates :title, presence: true
   # カスタムメソッド
-  validate :deadline_date_cannot_be 
+  validate :deadline_date_cannot_be
 
   def self.search(search)
     if search != ""
@@ -26,7 +26,9 @@ class Room < ApplicationRecord
 
   private
   def deadline_date_cannot_be
-    if (deadline.present? && deadline > Time.now + 5.days + 1.seconds) || (deadline.present? && deadline < Time.now) || deadline.nil?
+    if (deadline.present? && deadline > Time.now + 5.days + 1.seconds) ||
+       (deadline.present? && deadline < Time.now) ||
+        deadline.nil?
       errors.add(:deadline, "開催期間は1〜5日のいずれかを選択してください")
     end
   end

@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe Room, type: :model do
   before do
     @room = FactoryBot.build(:room)
+    sleep 0.2
   end
 
   describe 'チャットルーム作成' do
@@ -18,18 +19,23 @@ RSpec.describe Room, type: :model do
         @room.valid?
         expect(@room.errors.full_messages).to include("Titleを入力してください")
       end
+      it 'owner_idが空では作成できない' do
+        @room.owner_id = ''
+        @room.valid?
+        expect(@room.errors.full_messages).to include("Ownerを入力してください")
+      end
       it "deadlineが空欄では作成できない" do
         @room.deadline = ''
         @room.valid?
         expect(@room.errors.full_messages).to include("Deadline開催期間は1〜5日のいずれかを選択してください")
       end
       it "deadlineが6日後以降では作成できない" do
-        @room.deadline = Time.now + 6.days
+        @room.deadline = Time.zone.now + 6.days
         @room.valid?
         expect(@room.errors.full_messages).to include("Deadline開催期間は1〜5日のいずれかを選択してください")
       end
       it "deadlineが1日前では作成できない" do
-        @room.deadline = Time.now - 1.days
+        @room.deadline = Time.zone.now - 1.days
         @room.valid?
         expect(@room.errors.full_messages).to include("Deadline開催期間は1〜5日のいずれかを選択してください")
       end
