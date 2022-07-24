@@ -11,7 +11,6 @@ class Room < ApplicationRecord
   validates :title, presence: true
   # カスタムメソッド
   validate :deadline_date_cannot_be 
-  # validates :deadline, presence: true
 
   def self.search(search)
     if search != ""
