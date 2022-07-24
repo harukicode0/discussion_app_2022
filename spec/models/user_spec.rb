@@ -46,20 +46,26 @@ RSpec.describe User, type: :model do
     context 'ユーザー編集できる時' do
       it '投稿する写真がjpeg形式の時保存できる' do
         @user.image = nil
-        user.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
-        binding.pry
-        
+        @user.image.attach(io: File.open('public/images/test_image.jpeg'), filename: 'test_image.jpeg')
+        expect(@user).to be_valid
       end
       it '投稿する写真がpng形式の時保存できる' do
-        
+        @user.image = nil
+        @user.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+        expect(@user).to be_valid
       end
       it '投稿する写真がjpg形式の時保存できる' do
-        
+        @user.image = nil
+        @user.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+        expect(@user).to be_valid
       end
     end
     context 'ユーザー編集できない時' do
       it '投稿する写真がpdf形式の時保存できない' do
-        
+        @user.image = nil
+        @user.image.attach(io: File.open('public/images/test_image.pdf'), filename: 'test_image.pdf')
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Imageはpng, jpg, jpegいずれかの形式にして下さい")
       end
     end
   end
