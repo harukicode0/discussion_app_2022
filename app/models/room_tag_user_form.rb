@@ -4,14 +4,13 @@ class RoomTagUserForm
   attr_accessor(
     :id, :title,:days, :owner_id, :deadline, :user_id, :room_id, :tag_name, :created_at, :updated_at, :tag_id)
 
-    days_regex = /[1-5]/
   with_options presence: true do
     validates :title ,presence: {message: "タイトルは必ず入力してください"}
-    validates :days, format: {with: days_regex, message: "開催期間は１〜5日のいずれかを選択してください。"}
   end
+  validate :deadline_date_cannot_be
 
   def save
-    room = Room.create(title: title, user_ids: [user_id], deadline: Time.now + days.to_i.days, owner_id: user_id)
+    room = Room.create(title: title, user_ids: [user_id], deadline: deadline, owner_id: user_id)
     if tag_name != ""
       tag = Tag.where(tag_name: tag_name).first_or_initialize
       tag.save
@@ -36,5 +35,12 @@ class RoomTagUserForm
 
     room.update(title: title)
     @room_id = room.id
+  end
+
+  private
+  def deadline_date_cannot_be
+    if (deadline.present? && deadline > Time.now + 5.days + 1.seconds) || (deadline.present? && deadline < Time.now) || deadline.nil?
+      errors.add(:deadline, "開催期間は1〜5日のいずれかを選択してください")
+    end
   end
 end
