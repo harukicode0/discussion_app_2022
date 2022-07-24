@@ -22,6 +22,9 @@ class RoomsController < ApplicationController
 
   def create
     @room_tag_user_form = RoomTagUserForm.new(room_other_params)
+    
+    # binding.pry
+    
     if @room_tag_user_form.valid?
       @room_tag_user_form.save
       redirect_to room_path(@room_tag_user_form.room_id)
@@ -116,7 +119,7 @@ class RoomsController < ApplicationController
   private
 
   def room_other_params
-    params.require(:room_tag_user_form).permit(:title,:tag_name).merge(deadline: Time.now + params[:room_tag_user_form][:days].to_i.days, user_id: current_user.id)
+    params.require(:room_tag_user_form).permit(:title,:tag_name,:days).merge(deadline: Time.now + params[:room_tag_user_form][:days].to_i.days, user_id: current_user.id)
   end
 
   def create_new_position

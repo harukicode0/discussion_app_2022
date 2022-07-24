@@ -7,6 +7,11 @@ class Room < ApplicationRecord
   has_many :tags, through: :room_tags
   has_many :issues, dependent: :destroy
 
+  # validate
+  validates :title, presence: true
+  # カスタムメソッド
+  validate :deadline_date_cannot_be
+
   def self.search(search)
     if search != ""
       Room.where('title LIKE(?)', "%#{search}%")
@@ -17,5 +22,14 @@ class Room < ApplicationRecord
 
   def is_followed_by?(user)
     Relationship.find_by(following_id: user.id).present?
+  end
+
+  private
+  def deadline_date_cannot_be
+    if (deadline.present? && deadline > Time.now + 5.days + 1.seconds) ||
+       (deadline.present? && deadline < Time.now) ||
+        deadline.nil?
+      errors.add(:deadline, "開催期間は1〜5日のいずれかを選択してください")
+    end
   end
 end

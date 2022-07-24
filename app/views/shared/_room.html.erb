@@ -34,6 +34,19 @@
       <div class="content-participant content-bottom-list">
         参加人数：<%= room.users.count%>人
       </div>
+
+      <div class="agree-number">
+        <span class="agree">
+          YES：<%if @yes != 0 || @no != 0%><%=@y_percent%>%<%else%>none<%end%>
+        </span>
+        <span class="nutral">
+        ||
+        </span>
+        <span class="disagree">
+          NO：<%if @no != 0 || @yes != 0%><%=100 - @y_percent%>%<%else%>none<%end%>
+        </span>
+      </div>
+
       <%# 制作者情報 %>
       <div class=" content-bottom-list">
         <% unless room.owner == nil%>
@@ -48,18 +61,6 @@
         <%else%>
           作成者様：失踪
         <%end%>
-      </div>
-
-      <div class="agree-number">
-        <span class="agree">
-          YES：<%if @yes != 0 || @no != 0%><%=@y_percent%>%<%else%>none<%end%>
-        </span>
-        <span class="nutral">
-        ||
-        </span>
-        <span class="disagree">
-          NO：<%if @no != 0 || @yes != 0%><%=100 - @y_percent%>%<%else%>none<%end%>
-        </span>
       </div>
 
       <div class="room-authority-btn">
