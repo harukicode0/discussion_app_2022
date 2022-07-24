@@ -3,6 +3,6 @@ FactoryBot.define do
     text{Faker::Lorem.sentence}
     standing_position_id{rand(1..2)}
     association :user
-    association :room
+    association :issue
   end
 end
