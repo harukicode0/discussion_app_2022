@@ -121,27 +121,25 @@ title
 
 .content-title {
   border-radius: 5px;
-  display: block;
-  text-decoration: none;
   box-sizing: border-box;
   width: 75%;
   height: 100%;
   padding: 20px;
-  letter-spacing: 1.5px;
-  color: var(--font-color);
-  font-size: 36px;
-  line-height: calc((var(--content-height) - 40px) / 2);
   background-color: var(--main-color);
+  overflow-wrap: break-word;
 }
 
-.content-title p {
-  /* ２行表示の３点リーダー */
+.content-title a {
+  text-decoration: none;
+  font-size: 28px;
+  line-height: calc((var(--content-height) - 40px) / 2);
+  letter-spacing: 1px;
+  color: var(--font-color);
   display: -webkit-box;
+  overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
 }
-
 /*******************************************
 コンテンツの右側
  ********************************************/
@@ -219,5 +217,30 @@ title
   }
   .sort-btn {
     margin: 5px 0 0 0;
+  }
+  .content {
+    height: calc(var(--content-height) * 2);
+  }
+  .content-top {
+    height: 50%;
+    width: 100%;
+    display: block;
+  }
+  .content-title {
+    width: 100%;
+    padding: 5px;
+  }
+  .content-title a {
+    font-size: 20px;
+    line-height: 30px;
+    -webkit-line-clamp: 4;
+  }
+  .content-info {
+    /* display: flex; */
+    background-color: none;
+    height: auto;
+    width: 100%;
+    border-left: none;
+    border-top: 1px dashed var(--font-color);
   }
 }
