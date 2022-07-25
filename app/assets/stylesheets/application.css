@@ -42,3 +42,11 @@ body {
     color: #fff; */
   }
 }
+
+/* スマホ版サイズ */
+@media (max-width: 500px) {
+}
+
+/* タブレットサイズ */
+@media (max-width: 1000px) {
+}
