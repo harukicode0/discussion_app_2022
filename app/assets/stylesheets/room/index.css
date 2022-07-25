@@ -30,10 +30,15 @@ sort部分
 }
 
 .sort-lists {
-  display: flex;
   align-items: center;
   list-style: none;
   font-size: 14px;
+  display: none;
+}
+
+.sort-lists-set {
+  transition: 1s;
+  display: flex;
 }
 
 .sort-btn {
