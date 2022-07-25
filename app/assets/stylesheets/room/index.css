@@ -7,12 +7,6 @@
   width: 60%;
 }
 
-@media (max-width: 500px) {
-  .parts {
-    width: 95%;
-  }
-}
-
 /*******************************************
 sort部分
  ********************************************/
@@ -68,14 +62,6 @@ sort部分
 .sort-btn-set {
   background-color: var(--deep-disagree-color);
   color: var(--main-color);
-}
-@media (max-width: 500px) {
-  .sort-lists-set {
-    display: block;
-  }
-  .sort-btn {
-    margin: 5px 0 0 0;
-  }
 }
 /*******************************************
 コンテンツの表示
@@ -217,4 +203,21 @@ title
 
 .room-authority-edit-btn a:hover {
   color: var(--agree-color);
+}
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  .sort {
+    padding: 30px 0 30px;
+  }
+  .parts {
+    width: 95%;
+  }
+  .sort-lists-set {
+    display: block;
+  }
+  .sort-btn {
+    margin: 5px 0 0 0;
+  }
 }

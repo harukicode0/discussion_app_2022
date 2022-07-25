@@ -144,20 +144,22 @@
  レスポンシブ対応 
 ******************************/
 .lists-right-buger {
-  text-decoration: underline;
   display: none;
+  line-height: var(--top-header-height);
+  font-size: 16px;
+  text-align: center;
+  color: var(--main-color);
+  background-color: var(--second-main-color);
+  letter-spacing: 0.2px;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 500px) {
-  .top-page-header {
-  }
   .top-logo {
-    font-size: 18px;
-    margin-left: 5px;
+    font-size: 16px;
+    margin-left: 2px;
     padding: none;
-  }
-  .lists-left {
-    /* flex-wrap: wrap; */
   }
   .search-form {
     margin: 0;
@@ -169,18 +171,26 @@
   .search-button {
     font-size: 14px;
   }
-
-  .lists-right {
+  .lists-right-buger {
     display: block;
   }
-
+  .lists-right {
+    display: none;
+    position: absolute;
+    background-color: var(--main-color);
+    top: var(--top-header-height);
+    right: 0;
+  }
+  .lists-right-buger-set {
+    display: block;
+  }
   .buttom {
     margin: 0;
     font-size: 14px;
-    display: none;
     line-height: 100%;
-  }
-  .lists-right-buger {
-    display: block;
+    line-height: 30px;
+    border: 1px solid var(--deep-disagree-color);
+    text-align: center;
+    width: 120px;
   }
 }
