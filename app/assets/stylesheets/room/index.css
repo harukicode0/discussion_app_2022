@@ -83,7 +83,8 @@ sort部分
 
 .content-end {
   display: none;
-  font-size: 36px;
+  font-size: 45px;
+  color: var(--deep-agree-color);
   position: absolute;
   top: 50%;
   left: 50%;
