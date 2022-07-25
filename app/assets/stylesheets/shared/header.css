@@ -140,22 +140,30 @@
   text-overflow: ellipsis;
 }
 
+/******************************
+ レスポンシブ対応 
+******************************/
+.lists-right-buger {
+  text-decoration: underline;
+  display: none;
+}
+
 @media (max-width: 500px) {
   .top-page-header {
-    height: auto;
   }
   .top-logo {
     font-size: 18px;
-    line-height: 40px;
     margin-left: 5px;
+    padding: none;
   }
   .lists-left {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
   }
   .search-form {
-    margin-left: 20px;
+    margin: 0;
   }
   .input-box {
+    margin: none;
     font-size: 14px;
   }
   .search-button {
@@ -165,8 +173,14 @@
   .lists-right {
     display: block;
   }
+
   .buttom {
     margin: 0;
     font-size: 14px;
+    display: none;
+    line-height: 100%;
+  }
+  .lists-right-buger {
+    display: block;
   }
 }
