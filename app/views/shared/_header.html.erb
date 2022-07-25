@@ -10,7 +10,7 @@
       <% end %>
     </li>
   </ul>
-  <div class="lists-right-buger buttom">menu</div>
+  <div class="lists-right-buger">menu</div>
   <ul class='lists-right'>
       <li><% if user_signed_in?%><%=link_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
       <% if user_signed_in?%>
