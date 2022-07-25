@@ -1,7 +1,9 @@
 <header class='top-page-header'>
   <ul class="lists-left">
     <li><%= link_to 'YES or NO', "/" ,class:"top-logo"%> </li>
-    <li><% if user_signed_in?%><%=link_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
+  </ul>
+
+  <ul class='lists-right'>
     <li>
       <%= search_form_for Room.ransack(params[:q]), url: root_path, class: "search-form" do |f| %>
         <%= f.button type:"submit",class: 'search-button' do%>
@@ -10,9 +12,7 @@
         <%= f.text_field :title, placeholder: "検索する", class: "input-box",id:'search-box',autocomplete: 'off', value: @value%>
       <% end %>
     </li>
-  </ul>
-
-  <ul class='lists-right'>
+      <li><% if user_signed_in?%><%=link_to 'Room作成', new_room_path , class: "create-room-list buttom"%><%end%></li>
       <% if user_signed_in?%>
         <li><%= link_to "#{current_user.nickname}さん", user_path(current_user), class: "name-list buttom" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout buttom"%> </li>

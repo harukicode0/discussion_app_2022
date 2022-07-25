@@ -69,7 +69,14 @@ sort部分
   background-color: var(--deep-disagree-color);
   color: var(--main-color);
 }
-
+@media (max-width: 500px) {
+  .sort-lists-set {
+    display: block;
+  }
+  .sort-btn {
+    margin: 5px 0 0 0;
+  }
+}
 /*******************************************
 コンテンツの表示
  ********************************************/

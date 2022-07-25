@@ -28,20 +28,18 @@
   line-height: var(--top-header-height);
   font-size: calc(var(--top-header-height) - 16px);
   margin: 0 35px 0 30px;
-  color: var(--font-color);
   text-decoration: none;
 }
 
 .top-logo:hover {
   filter: brightness(80%);
 }
-
 /************************************
  検索ボックス
  ***********************************/
 .search-form,
 .is-fixed {
-  margin-left: 20px;
+  margin-right: 20px;
   position: relative;
 }
 
@@ -140,4 +138,35 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 500px) {
+  .top-page-header {
+    height: auto;
+  }
+  .top-logo {
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: 5px;
+  }
+  .lists-left {
+    flex-wrap: wrap;
+  }
+  .search-form {
+    margin-left: 20px;
+  }
+  .input-box {
+    font-size: 14px;
+  }
+  .search-button {
+    font-size: 14px;
+  }
+
+  .lists-right {
+    display: block;
+  }
+  .buttom {
+    margin: 0;
+    font-size: 14px;
+  }
 }
