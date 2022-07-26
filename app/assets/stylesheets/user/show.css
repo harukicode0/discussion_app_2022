@@ -165,14 +165,12 @@ edit
   background-color: var(--base-color);
 }
 
-.mypage-top-a {
-  padding: 20px;
-}
-
 .mypage-top-a a {
   text-decoration: none;
   color: var(--second-main-color);
   font-size: 18px;
+  display: block;
+  padding: 20px 40px;
 }
 
 .mypage-top-a-set {
@@ -244,7 +242,14 @@ edit
     width: 100%;
     margin: 0;
   }
+  .mypage-top {
+    width: 100%;
+  }
+  .mypage-top-a {
+    width: 50%;
+  }
   .mypage-top-a a {
     font-size: 14px;
+    padding: 20px;
   }
 }

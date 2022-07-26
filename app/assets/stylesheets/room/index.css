@@ -215,13 +215,19 @@ title
     width: 95%;
   }
   .sort-lists-set {
-    display: block;
+    background: none;
   }
   .sort-btn {
     margin: 5px 0 0 0;
   }
   .content {
     height: calc(var(--content-height) * 2);
+  }
+  .content-end {
+    font-size: 36px;
+    /* position: absolute; */
+    top: 30%;
+    /* left: 50%; */
   }
   .content-top {
     height: 50%;
@@ -238,7 +244,6 @@ title
     -webkit-line-clamp: 4;
   }
   .content-info {
-    /* display: flex; */
     background-color: none;
     height: auto;
     width: 100%;
