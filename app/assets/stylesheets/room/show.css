@@ -433,4 +433,17 @@ plus-btn
   .room-title span {
     -webkit-line-clamp: 5;
   }
+  .room-input-box {
+    width: 95%;
+    margin: 25px auto;
+  }
+  .comment-box-position {
+    margin: 0;
+  }
+  .comment_box_set {
+    height: 150px;
+  }
+  .comment_bottom_r {
+    width: 30%;
+  }
 }
