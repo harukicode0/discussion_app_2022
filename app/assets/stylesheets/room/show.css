@@ -223,6 +223,7 @@ plus-btn
   border: 1px solid var(--font-color);
   padding: 3px 5px;
   border-radius: 3px;
+  line-height: 25px;
 }
 
 .room-issue a:hover,
@@ -395,10 +396,12 @@ plus-btn
     -webkit-line-clamp: 5;
   }
   .room-input-box {
+    height: 40px;
     width: 95%;
     margin: 25px auto;
   }
   .comment-box-position {
+    height: 40px;
     margin: 0;
   }
   .comment_box_set {
@@ -416,6 +419,11 @@ plus-btn
   }
   .opinion-room {
     width: 100%;
-    margin: 20px 0;
+    margin: 30px 0;
+  }
+  .opinion-btn {
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
   }
 }
