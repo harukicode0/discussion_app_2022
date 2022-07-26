@@ -1,7 +1,7 @@
 footer {
   width: 100vw;
   height: var(--footer-height);
-  background-color: var(--base-color);
+  background-color: var(--main-color);
 }
 
 .footer-contents {
@@ -39,4 +39,16 @@ footer {
 
 .footer-link:hover::after {
   transform: scale(1, 1);
+}
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  footer {
+    height: 30px;
+  }
+  .footer-link {
+    font-size: 16px;
+    line-height: 30px;
+  }
 }
