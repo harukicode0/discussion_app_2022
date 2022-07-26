@@ -32,7 +32,15 @@
   text-align: center;
   color: var(--font-color);
   background-color: var(--main-color);
-  border-radius: 3px;
+  border-radius: 5px;
+  word-break: break-all;
+}
+
+.room-title span {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 /************************************
@@ -409,4 +417,20 @@ plus-btn
 
 .issue-title a:hover {
   filter: brightness(60%);
+}
+
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  .room-header {
+    width: 95%;
+  }
+  .room-title {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .room-title span {
+    -webkit-line-clamp: 5;
+  }
 }
