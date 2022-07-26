@@ -66,29 +66,19 @@
 .room-info-dropdown-btn {
   font-size: 18px;
   display: flex;
-  padding: 5px 10px;
+  padding: 5px 5px;
   justify-content: center;
   align-items: center;
   color: var(--font-color);
   cursor: pointer;
   position: relative;
+  background-color: var(--main-color);
+  box-shadow: 0px 1px 2px var(--font-color);
 }
 
-.room-info-dropdown-btn::after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: var(--font-color);
-  bottom: 0px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform 0.5s;
-}
-
-.room-info-dropdown-btn:hover::after {
-  transform: scale(1, 1);
+.room-info-dropdown-btn:hover {
+  transition: 0.5s;
+  box-shadow: 0px 2px 4px var(--font-color);
 }
 
 .room-info {
@@ -126,6 +116,7 @@
 
 .room-ronten {
   font-size: 18px;
+  margin-left: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,27 +124,17 @@
   color: var(--font-color);
   cursor: pointer;
   position: relative;
+  box-shadow: 0px 1px 2px var(--font-color);
+  background-color: var(--main-color);
 }
 
 .room-ronten.room-ronten-set {
   background-color: var(--main-color);
 }
 
-.room-ronten::after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: var(--font-color);
-  bottom: 0px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform 0.5s;
-}
-
-.room-ronten:hover::after {
-  transform: scale(1, 1);
+.room-ronten:hover {
+  box-shadow: 0px 2px 4px var(--font-color);
+  transition: 0.5s;
 }
 
 .comment-yazirusi {
@@ -217,9 +198,6 @@ plus-btn
 .room-issues-right {
   background-color: var(--main-color);
   display: none;
-  /* スライド横スクロール自動化のための記述 */
-  /* overflow-x: auto; */
-  /* white-space: nowrap; */
 }
 
 .room-issues-right.room-issues-right-set {
@@ -230,23 +208,7 @@ plus-btn
 .room-scroll {
   display: flex;
   flex-wrap: wrap;
-  /* ショートハンドで記述
-  animation: scrollAnime 40s linear infinite 20s; */
 }
-
-/* .room-scroll:hover {
-  ホバー時にアニメーションを止める
-  animation-play-state: paused;
-} */
-
-/* @keyframes scrollAnime {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-} */
 
 .room-issue {
   margin: 7px;
