@@ -180,6 +180,7 @@
     background-color: var(--main-color);
     top: var(--top-header-height);
     right: 0;
+    z-index: 1;
   }
   .lists-right-buger-set {
     display: block;

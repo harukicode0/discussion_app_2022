@@ -84,6 +84,7 @@
 .room-info {
   display: none;
   position: absolute;
+  z-index: 1;
   align-items: center;
   padding: 5px;
   font-size: 18px;
