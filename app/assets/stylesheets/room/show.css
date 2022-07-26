@@ -371,6 +371,11 @@ plus-btn
   padding: 5px;
   margin: 35px auto 10px;
   text-align: center;
+  word-break: break-all;
+}
+
+.issue-title a {
+  color: var(--font-color);
 }
 
 .issue-title a {

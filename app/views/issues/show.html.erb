@@ -8,11 +8,13 @@
       <%= @room.deadline < Time.now ? "終了:" : "タイトル："%><%=link_to @room.title,room_path(@issue.room)%>
     </div>
     <div class="room-title">
+      <span>
       <% if current_user == @room.owner || current_user == @issue.owner%>
         <%= link_to '(編集)', edit_room_issue_path(@room,@issue),class:"room-title-edit-btn"%>
         <%= link_to '(削除)', room_issue_path(@room,@issue), method: :DELETE,class:"room-title-edit-btn room-title-destroy-btn"%>
       <%end%>
       論点：<%=@issue.issue_title%>
+      </span>
     </div>
     
     <div class="room-title-bottom">
