@@ -154,8 +154,10 @@ plus-btn
   display: flex;
   margin-left: 10px;
   position: relative;
+  background-color: var(--main-color);
 }
 .room-issue-plus a {
+  color: var(--font-color);
   font-size: 18px;
   padding: 10px;
   text-decoration: none;
@@ -229,7 +231,63 @@ plus-btn
   color: var(--main-color);
   transition: 0.3s;
 }
+/************************************
+ コメント投稿部分  
+ ***********************************/
 
+.room-input-box {
+  width: 60%;
+  height: var(--btn-height);
+  background-color: var(--base-color);
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-box-position {
+  height: var(--btn-height);
+  width: 70%;
+  margin: 0 20px;
+  position: relative;
+}
+
+.comment_box {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 5px 0 0 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  outline: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* クリックしたコメント投稿欄を拡張する */
+.comment_box_set {
+  border: 1px solid var(--font-color);
+  height: 300px;
+}
+
+.comment_bottom_r {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  width: 10%;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--font-color);
+  color: var(--main-color);
+}
+
+.room-input-box-disabled {
+  border: 1px solid var(--font-color);
+}
 /************************************
  コメント表示部分  
  ***********************************/
@@ -300,65 +358,6 @@ plus-btn
   border-left: 2px solid var(--disagree-color);
   border-right: 2px solid var(--disagree-color);
 }
-
-/************************************
- コメント投稿部分  
- ***********************************/
-
-.room-input-box {
-  width: 60%;
-  height: var(--btn-height);
-  background-color: var(--base-color);
-  margin: 50px auto;
-  display: flex;
-  justify-content: center;
-}
-
-.comment-box-position {
-  height: var(--btn-height);
-  width: 70%;
-  margin: 0 20px;
-  position: relative;
-}
-
-.comment_box {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  border: none;
-  padding: 5px 0 0 10px;
-  border-radius: 5px;
-  font-size: 18px;
-  outline: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: 0.4s;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-/* クリックしたコメント投稿欄を拡張する */
-.comment_box_set {
-  border: 1px solid var(--font-color);
-  height: 300px;
-}
-
-.comment_bottom_r {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 10px;
-  width: 10%;
-  font-size: 20px;
-  border-radius: 5px;
-  border: none;
-  background-color: var(--font-color);
-  color: var(--main-color);
-}
-
-.room-input-box-disabled {
-  border: 1px solid var(--font-color);
-}
-
 /************************************
  issueについて部分  
  ***********************************/
@@ -407,5 +406,16 @@ plus-btn
   }
   .comment_bottom_r {
     width: 30%;
+  }
+  .comments-room {
+    display: block;
+  }
+  .comments-room {
+    width: 95%;
+    height: 400px;
+  }
+  .opinion-room {
+    width: 100%;
+    margin: 20px 0;
   }
 }
