@@ -16,9 +16,9 @@
 <div class="content">
   <div class="content-end">終了</div>
   <div class="content-top">
-    <div class="content-title">
-      <a href="<%= room_path(room)%>"><%= room.title%></a>
-    </div>
+    <a href="<%= room_path(room)%>" class="content-title">
+      <div><%= room.title%></div>
+    </a>
 
     <%# 時間表示 %>
     <div class="content-info">

@@ -121,6 +121,7 @@ title
 }
 
 .content-title {
+  display: block;
   border-radius: 5px;
   box-sizing: border-box;
   width: 75%;
@@ -128,10 +129,10 @@ title
   padding: 20px;
   background-color: var(--main-color);
   overflow-wrap: break-word;
+  text-decoration: none;
 }
 
-.content-title a {
-  text-decoration: none;
+.content-title div {
   font-size: 28px;
   line-height: calc((var(--content-height) - 40px) / 2);
   letter-spacing: 1px;
@@ -231,7 +232,7 @@ title
     width: 100%;
     padding: 5px;
   }
-  .content-title a {
+  .content-title div {
     font-size: 20px;
     line-height: 30px;
     -webkit-line-clamp: 4;
