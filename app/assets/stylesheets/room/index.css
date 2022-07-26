@@ -16,22 +16,31 @@ sort部分
 }
 
 .sort-top {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--font-color);
-  margin: 0 0 10px 5px;
-  text-decoration: underline;
+  background-color: var(--main-color);
+  border: 1px solid var(--deep-disagree-color);
+  border-radius: 20px;
+  padding: 7px 10px;
+  margin: 0 0 10px 10px;
+  display: inline-block;
 }
 
 .sort-lists {
-  display: flex;
   align-items: center;
   list-style: none;
   font-size: 14px;
+  display: none;
+}
+
+.sort-lists-set {
+  transition: 1s;
+  display: flex;
 }
 
 .sort-btn {
-  margin: 0 15px 0 5px;
+  margin: 0 15px 0 10px;
   display: block;
   border: 1px solid var(--deep-disagree-color);
   background-color: var(--main-color);
@@ -43,7 +52,8 @@ sort部分
   color: var(--font-color);
 }
 
-.sort-btn:hover {
+.sort-btn:hover,
+.sort-top:hover {
   background-color: var(--deep-disagree-color);
   color: var(--main-color);
   transition: 0.5s;
@@ -53,7 +63,6 @@ sort部分
   background-color: var(--deep-disagree-color);
   color: var(--main-color);
 }
-
 /*******************************************
 コンテンツの表示
  ********************************************/
@@ -74,7 +83,8 @@ sort部分
 
 .content-end {
   display: none;
-  font-size: 36px;
+  font-size: 45px;
+  color: var(--deep-agree-color);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -111,28 +121,27 @@ title
 }
 
 .content-title {
-  border-radius: 5px;
   display: block;
-  text-decoration: none;
+  border-radius: 5px;
   box-sizing: border-box;
   width: 75%;
   height: 100%;
   padding: 20px;
-  letter-spacing: 1.5px;
-  color: var(--font-color);
-  font-size: 36px;
-  line-height: calc((var(--content-height) - 40px) / 2);
   background-color: var(--main-color);
+  overflow-wrap: break-word;
+  text-decoration: none;
 }
 
-.content-title p {
-  /* ２行表示の３点リーダー */
+.content-title div {
+  font-size: 28px;
+  line-height: calc((var(--content-height) - 40px) / 2);
+  letter-spacing: 1px;
+  color: var(--font-color);
   display: -webkit-box;
+  overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
 }
-
 /*******************************************
 コンテンツの右側
  ********************************************/
@@ -194,4 +203,51 @@ title
 
 .room-authority-edit-btn a:hover {
   color: var(--agree-color);
+}
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  .sort {
+    padding: 30px 0 30px;
+  }
+  .parts {
+    width: 100%;
+  }
+  .sort-lists-set {
+    display: block;
+  }
+  .sort-btn {
+    margin: 5px 0 0 10px;
+  }
+  .content {
+    height: calc(var(--content-height) * 2);
+  }
+  .content-end {
+    font-size: 36px;
+    /* position: absolute; */
+    top: 30%;
+    /* left: 50%; */
+  }
+  .content-top {
+    height: 50%;
+    width: 100%;
+    display: block;
+  }
+  .content-title {
+    width: 100%;
+    padding: 5px;
+  }
+  .content-title div {
+    font-size: 20px;
+    line-height: 30px;
+    -webkit-line-clamp: 4;
+  }
+  .content-info {
+    background-color: none;
+    height: auto;
+    width: 100%;
+    border-left: none;
+    border-top: 1px dashed var(--font-color);
+  }
 }

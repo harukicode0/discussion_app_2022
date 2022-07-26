@@ -32,7 +32,14 @@
   text-align: center;
   color: var(--font-color);
   background-color: var(--main-color);
-  border-radius: 3px;
+  word-break: break-all;
+}
+
+.room-title span {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 /************************************
@@ -58,41 +65,33 @@
 .room-info-dropdown-btn {
   font-size: 18px;
   display: flex;
-  padding: 5px 10px;
+  padding: 5px 5px;
   justify-content: center;
   align-items: center;
   color: var(--font-color);
   cursor: pointer;
+  border-radius: 20px;
   position: relative;
+  background-color: var(--main-color);
+  box-shadow: 0px 1px 2px var(--font-color);
 }
 
-.room-info-dropdown-btn::after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: var(--font-color);
-  bottom: 0px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform 0.5s;
-}
-
-.room-info-dropdown-btn:hover::after {
-  transform: scale(1, 1);
+.room-info-dropdown-btn:hover {
+  transition: 0.5s;
+  box-shadow: 0px 2px 4px var(--font-color);
 }
 
 .room-info {
   display: none;
   position: absolute;
+  z-index: 1;
   align-items: center;
   padding: 5px;
   font-size: 18px;
   line-height: 25px;
   list-style: none;
   background-color: var(--main-color);
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
 .room-info-set {
@@ -118,6 +117,7 @@
 
 .room-ronten {
   font-size: 18px;
+  margin-left: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,27 +125,18 @@
   color: var(--font-color);
   cursor: pointer;
   position: relative;
+  border-radius: 20px;
+  box-shadow: 0px 1px 2px var(--font-color);
+  background-color: var(--main-color);
 }
 
 .room-ronten.room-ronten-set {
   background-color: var(--main-color);
 }
 
-.room-ronten::after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: var(--font-color);
-  bottom: 0px;
-  transform: scale(0, 1);
-  transform-origin: left top;
-  transition: transform 0.5s;
-}
-
-.room-ronten:hover::after {
-  transform: scale(1, 1);
+.room-ronten:hover {
+  box-shadow: 0px 2px 4px var(--font-color);
+  transition: 0.5s;
 }
 
 .comment-yazirusi {
@@ -167,12 +158,14 @@ plus-btn
   position: relative;
 }
 .room-issue-plus a {
+  color: var(--font-color);
   font-size: 18px;
   padding: 10px;
   text-decoration: none;
   border: 1px solid var(--font-color);
+  background-color: var(--main-color);
   padding: 3px 5px;
-  border-radius: 3px;
+  border-radius: 20px;
 }
 
 .issue-add-explain {
@@ -209,9 +202,6 @@ plus-btn
 .room-issues-right {
   background-color: var(--main-color);
   display: none;
-  /* スライド横スクロール自動化のための記述 */
-  /* overflow-x: auto; */
-  /* white-space: nowrap; */
 }
 
 .room-issues-right.room-issues-right-set {
@@ -222,23 +212,8 @@ plus-btn
 .room-scroll {
   display: flex;
   flex-wrap: wrap;
-  /* ショートハンドで記述
-  animation: scrollAnime 40s linear infinite 20s; */
+  border-radius: 5px;
 }
-
-/* .room-scroll:hover {
-  ホバー時にアニメーションを止める
-  animation-play-state: paused;
-} */
-
-/* @keyframes scrollAnime {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-} */
 
 .room-issue {
   margin: 7px;
@@ -251,6 +226,7 @@ plus-btn
   border: 1px solid var(--font-color);
   padding: 3px 5px;
   border-radius: 3px;
+  line-height: 25px;
 }
 
 .room-issue a:hover,
@@ -259,7 +235,67 @@ plus-btn
   color: var(--main-color);
   transition: 0.3s;
 }
+/************************************
+ コメント投稿部分  
+ ***********************************/
 
+.room-input-box {
+  width: 60%;
+  height: var(--btn-height);
+  background-color: var(--base-color);
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-box-position {
+  height: var(--btn-height);
+  width: 70%;
+  margin: 0 20px;
+  position: relative;
+}
+
+.comment_box {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 15px 0 0 20px;
+  border-radius: 30px;
+  font-size: 18px;
+  outline: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.comment_box::placeholder {
+  opacity: 0.3;
+}
+
+/* クリックしたコメント投稿欄を拡張する */
+.comment_box_set {
+  border: 1px solid var(--font-color);
+  height: 300px;
+}
+
+.comment_bottom_r {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  width: 10%;
+  font-size: 20px;
+  border-radius: 40px;
+  border: none;
+  background-color: var(--font-color);
+  color: var(--main-color);
+}
+
+.room-input-box-disabled {
+  border: 1px solid var(--font-color);
+}
 /************************************
  コメント表示部分  
  ***********************************/
@@ -330,65 +366,6 @@ plus-btn
   border-left: 2px solid var(--disagree-color);
   border-right: 2px solid var(--disagree-color);
 }
-
-/************************************
- コメント投稿部分  
- ***********************************/
-
-.room-input-box {
-  width: 60%;
-  height: var(--btn-height);
-  background-color: var(--base-color);
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.comment-box-position {
-  height: var(--btn-height);
-  width: 70%;
-  margin: 0 20px;
-  position: relative;
-}
-
-.comment_box {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  border: none;
-  padding: 5px 0 0 10px;
-  border-radius: 5px;
-  font-size: 18px;
-  outline: none;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-/* クリックしたコメント投稿欄を拡張する */
-.comment_box_set {
-  border: 1px solid var(--font-color);
-  height: 300px;
-}
-
-.comment_bottom_r {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 10px;
-  width: 10%;
-  font-size: 20px;
-  border-radius: 5px;
-  border: none;
-  background-color: var(--font-color);
-  color: var(--main-color);
-}
-
-.room-input-box-disabled {
-  border: 1px solid var(--font-color);
-}
-
 /************************************
  issueについて部分  
  ***********************************/
@@ -401,6 +378,11 @@ plus-btn
   padding: 5px;
   margin: 35px auto 10px;
   text-align: center;
+  word-break: break-all;
+}
+
+.issue-title a {
+  color: var(--font-color);
 }
 
 .issue-title a {
@@ -409,4 +391,60 @@ plus-btn
 
 .issue-title a:hover {
   filter: brightness(60%);
+}
+
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  .room-header {
+    width: 100%;
+  }
+  .room-title {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .room-title span {
+    -webkit-line-clamp: 5;
+  }
+  .room-title-bottom {
+    box-sizing: border-box;
+    width: 95%;
+    margin: 10px auto 0;
+  }
+  .comment_box {
+    padding: 7px 0 0 15px;
+  }
+  .room-input-box {
+    height: 40px;
+    width: 95%;
+    margin: 25px auto;
+  }
+  .comment-box-position {
+    height: 40px;
+    margin: 0;
+  }
+  .comment_box_set {
+    height: 150px;
+  }
+  .comment_bottom_r {
+    width: 30%;
+    margin-left: 10px;
+  }
+  .comments-room {
+    display: block;
+  }
+  .comments-room {
+    width: 100%;
+    height: 400px;
+  }
+  .opinion-room {
+    width: 100%;
+    margin: 30px 0;
+  }
+  .opinion-btn {
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
+  }
 }

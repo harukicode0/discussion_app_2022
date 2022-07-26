@@ -28,20 +28,18 @@
   line-height: var(--top-header-height);
   font-size: calc(var(--top-header-height) - 16px);
   margin: 0 35px 0 30px;
-  color: var(--font-color);
   text-decoration: none;
 }
 
 .top-logo:hover {
   filter: brightness(80%);
 }
-
 /************************************
  検索ボックス
  ***********************************/
 .search-form,
 .is-fixed {
-  margin-left: 20px;
+  margin-right: 20px;
   position: relative;
 }
 
@@ -140,4 +138,60 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/******************************
+ レスポンシブ対応 
+******************************/
+.lists-right-buger {
+  display: none;
+  line-height: var(--top-header-height);
+  font-size: 16px;
+  text-align: center;
+  color: var(--main-color);
+  background-color: var(--second-main-color);
+  letter-spacing: 0.2px;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  .top-logo {
+    font-size: 16px;
+    margin-left: 2px;
+    padding: none;
+  }
+  .search-form {
+    margin: 0;
+  }
+  .input-box {
+    margin: none;
+    font-size: 14px;
+  }
+  .search-button {
+    font-size: 14px;
+  }
+  .lists-right-buger {
+    display: block;
+  }
+  .lists-right {
+    display: none;
+    position: absolute;
+    background-color: var(--main-color);
+    top: var(--top-header-height);
+    right: 0;
+    z-index: 1;
+  }
+  .lists-right-buger-set {
+    display: block;
+  }
+  .buttom {
+    margin: 0;
+    font-size: 14px;
+    line-height: 100%;
+    line-height: 30px;
+    border: 1px solid var(--deep-disagree-color);
+    text-align: center;
+    width: 120px;
+  }
 }

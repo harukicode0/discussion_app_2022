@@ -16,12 +16,11 @@
         </div>
       </div>
       <div class="mypage-user-profile">
-        <p>profile</p>
-        <%=@user.profile != nil ? @user.profile : "プロフィールは編集画面にて入力できます。"%>
+        <%=@user.profile != nil ? @user.profile : ""%>
       </div>
       <div class="mypage-info">
         <div class="follow-info">
-          <%= link_to "#{@user.followings.count}フォロー", followings_user_path(@user) %>  <br/>
+          <%= link_to "#{@user.followings.count}フォロー", followings_user_path(@user) %><br/>
           <%= link_to "#{@user.followers.count}フォロワー", followers_user_path(@user) %> 
         </div>
         <% if user_signed_in? && @user != current_user %>

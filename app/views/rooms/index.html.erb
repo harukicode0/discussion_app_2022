@@ -4,8 +4,8 @@
   <div class="parts">
     <%# ソート機能 %>
     <div class="sort">
-     <div class="sort-top">並び替え条件</div>
-      <ul class="sort-lists">
+     <div class="sort-top">並び替え条件<span class="sort-sankaku">▼</span></div>
+      <ul class="sort-lists" >
         <li>
           <%= search_form_for Room.ransack(params[:q]), url: sort_participants_rooms_path do |f| %>
             <%= f.hidden_field :title, value: @value%>

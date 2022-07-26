@@ -7,7 +7,7 @@
   font-size: 36px;
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid var(--disagree-color);
+  border-bottom: 1px solid var(--font-color);
 }
 
 /*****************************************
@@ -19,7 +19,7 @@
   align-items: center;
   margin: 10px auto 0;
   padding: 10px;
-  border-bottom: 1px solid var(--disagree-color);
+  border-bottom: 1px solid var(--font-color);
 }
 
 /*****************************************
@@ -65,4 +65,12 @@ follow-btn
 .follow-follow-btn:hover {
   background-color: var(--font-color);
   color: var(--base-color);
+}
+/******************************
+ レスポンシブ対応 
+******************************/
+@media (max-width: 500px) {
+  .follow-contents {
+    width: 100%;
+  }
 }

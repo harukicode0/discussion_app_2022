@@ -17,7 +17,7 @@
   <div class="content-end">終了</div>
   <div class="content-top">
     <a href="<%= room_path(room)%>" class="content-title">
-        <p><%= room.title%></p>
+      <div><%= room.title%></div>
     </a>
 
     <%# 時間表示 %>
@@ -40,7 +40,7 @@
           YES：<%if @yes != 0 || @no != 0%><%=@y_percent%>%<%else%>none<%end%>
         </span>
         <span class="nutral">
-        ||
+        vs
         </span>
         <span class="disagree">
           NO：<%if @no != 0 || @yes != 0%><%=100 - @y_percent%>%<%else%>none<%end%>

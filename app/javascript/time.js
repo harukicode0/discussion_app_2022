@@ -1,3 +1,5 @@
+const e = require("turbolinks");
+
 function countdown() {
   const now = new Date(); //今の時間
   const deadlines = document.getElementsByClassName("deadline"); //deadlineを取得
@@ -25,6 +27,9 @@ function countdown() {
       let child = document.getElementById("day" + differ_id);
       child.textContent = String("終了");
       let end_line_parent = child.closest(".content");
+      // 斜線を引く場合
+      // let target_line = end_line_parent.querySelector(".content-title");
+      // target_line.classList.add("content-end-line-set");
       let end_word_parent = end_line_parent.querySelector(".content-end");
       end_line_parent.classList.add("content-end-line-set");
       end_word_parent.style.display = "block";
