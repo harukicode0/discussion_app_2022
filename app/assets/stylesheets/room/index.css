@@ -219,6 +219,7 @@ title
   }
   .sort-btn {
     margin: 5px 0 0 10px;
+    height: 40px;
   }
   .content {
     height: calc(var(--content-height) * 2);
