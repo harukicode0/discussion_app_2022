@@ -8,7 +8,7 @@ class Room < ApplicationRecord
   has_many :issues, dependent: :destroy
 
   # validate
-  validates :title, presence: true
+  validates :title, presence: true, length: {minimum:3, maximum:200}
   # カスタムメソッド
   validate :deadline_date_cannot_be
 

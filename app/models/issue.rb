@@ -3,5 +3,5 @@ class Issue < ApplicationRecord
   has_many :issue_comments, dependent: :destroy
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
-  validates :issue_title, presence: true
+  validates :issue_title, presence: true, length: {minimum:3, maximum:200}
 end

@@ -5,7 +5,7 @@ class RoomTagUserForm
     :id, :title,:days, :owner_id, :deadline, :user_id, :room_id, :tag_name, :created_at, :updated_at, :tag_id)
 
   with_options presence: true do
-    validates :title ,presence: {message: "タイトルは必ず入力してください"}
+    validates :title ,presence: {message: "タイトルは必ず入力してください"}, length: {minimum:3, maximum:200}
   end
   validate :deadline_date_cannot_be
 
