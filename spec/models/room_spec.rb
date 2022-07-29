@@ -19,6 +19,16 @@ RSpec.describe Room, type: :model do
         @room.valid?
         expect(@room.errors.full_messages).to include("Titleを入力してください")
       end
+      it "titleが2文字では作成できない" do
+        @room.title = 'ab'
+        @room.valid?
+        expect(@room.errors.full_messages).to include("Titleは3文字以上で入力してください")
+      end
+      it "titleが201文字では作成できない" do
+        @room.title = Faker::String.random(length: 201) 
+        @room.valid?
+        expect(@room.errors.full_messages).to include("Titleは200文字以内で入力してください")
+      end
       it 'owner_idが空では作成できない' do
         @room.owner_id = ''
         @room.valid?

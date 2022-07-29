@@ -18,6 +18,16 @@ RSpec.describe Issue, type: :model do
         @issue.valid?
         expect(@issue.errors.full_messages).to include("Issue titleを入力してください")
       end
+      it "titleが2文字では作成できない" do
+        @issue.issue_title = 'ab'
+        @issue.valid?
+        expect(@issue.errors.full_messages).to include("Issue titleは3文字以上で入力してください")
+      end
+      it "titleが201文字では作成できない" do
+        @issue.issue_title = Faker::String.random(length: 201) 
+        @issue.valid?
+        expect(@issue.errors.full_messages).to include("Issue titleは200文字以内で入力してください")
+      end
       it "roomが紐づいていないと作成できない" do
         @issue.room = nil
         @issue.valid?
