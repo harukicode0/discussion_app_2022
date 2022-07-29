@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :room
   has_many :likes,dependent: :destroy
+  has_many :comment_replies, dependent: :destroy
 
   with_options presence: true do
     validates :text
