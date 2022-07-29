@@ -157,8 +157,8 @@
 
 @media (max-width: 500px) {
   .top-logo {
-    font-size: 16px;
-    margin-left: 2px;
+    font-size: 14px;
+    margin: 0 5px 0 2px;
     padding: none;
   }
   .search-form {
@@ -167,6 +167,7 @@
   .input-box {
     margin: none;
     font-size: 14px;
+    padding: 5px 0 4px 0;
   }
   .search-button {
     font-size: 14px;

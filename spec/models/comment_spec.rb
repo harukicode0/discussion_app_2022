@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   before do
     @comment = FactoryBot.build(:comment)
+    sleep 0.2
   end
 
   describe 'コメント投稿' do
@@ -17,6 +18,11 @@ RSpec.describe Comment, type: :model do
         @comment.text = ''
         @comment.valid?
         expect(@comment.errors.full_messages).to include("Textを入力してください")
+      end
+      it 'textが2001文字では保存できない' do
+        @comment.text = Faker::String.random(length: 2001) 
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Textは2000文字以内で入力してください")
       end
       it 'standing_position_idが空では保存できない' do
         @comment.standing_position_id = ''

@@ -6,7 +6,7 @@ class IssueComment < ApplicationRecord
   has_many :issue_likes, dependent: :destroy
 
   with_options presence: true do
-    validates :text
+    validates :text, length: {minimum:1, maximum:2000}
     validates :standing_position_id,  numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 2}
   end
 
