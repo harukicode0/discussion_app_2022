@@ -1,6 +1,5 @@
 <header class='top-page-header'>
   <ul class="lists-left">
-  
     <li><%= link_to 'YES or NO', "/" ,class:"top-logo"%> </li>
      <li>
       <%= search_form_for Room.ransack(params[:q]), url: root_path, class: "search-form" do |f| %>
