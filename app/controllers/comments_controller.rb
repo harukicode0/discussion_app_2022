@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   before_action :find_comments, only: [:edit,:update,:destroy]
   before_action :find_room_for_comment, only: [:destroy]
   before_action :count_down_timer, only: [:create,:edit,:update,:destroy]
+  def show
+    @comment = Comment.find(params[:id])
+    @comment_reply = CommentReply.new
+  end
 
   def create
     @comment = Comment.new
