@@ -19,6 +19,11 @@ RSpec.describe IssueComment, type: :model do
         @issue_comment.valid?
         expect(@issue_comment.errors.full_messages).to include("Textを入力してください")
       end
+      it 'textが2001文字では保存できない' do
+        @issue_comment.text = Faker::String.random(length: 2001) 
+        @issue_comment.valid?
+        expect(@issue_comment.errors.full_messages).to include("Textは2000文字以内で入力してください")
+      end
       it 'standing_position_idが空では保存できない' do
         @issue_comment.standing_position_id = ''
         @issue_comment.valid?
