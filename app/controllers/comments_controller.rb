@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
     @room = @comment.room
-    @comment_reply = CommentReply.new
     @comment_replyies = CommentReply.where(comment_id: @comment.id)
+    @comment_reply = CommentReply.new
   end
 
   def create
