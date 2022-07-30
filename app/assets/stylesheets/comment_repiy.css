@@ -1,0 +1,66 @@
+.reply-contents {
+  width: 100vw;
+  background-color: var(--base-color);
+}
+
+.reply-container {
+  width: 40%;
+  margin: 30px auto;
+}
+
+.reply-top {
+  background-color: var(--main-color);
+  font-size: 24px;
+}
+
+/**************************** 
+reply-submit 
+****************************/
+.reply-submit {
+  width: 100%;
+}
+.reply-input-box {
+  width: 100%;
+  height: var(--btn-height);
+  background-color: var(--base-color);
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+}
+.reply_box {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 15px 0 0 20px;
+  border-radius: 30px;
+  font-size: 18px;
+  outline: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.reply_box::placeholder {
+  opacity: 0.3;
+}
+
+.reply-submit-btn {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  width: 20%;
+  font-size: 20px;
+  border-radius: 40px;
+  border: none;
+  background-color: var(--font-color);
+  color: var(--main-color);
+}
+
+.reply-tips {
+  border-bottom: 1px solid black;
+  padding-bottom: 30px;
+  font-size: 24px;
+}

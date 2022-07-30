@@ -1,20 +1,21 @@
 <%= render 'shared/header' %>
 <div class="reply-contents">
   <div class="reply-container">
-    <div class="reply-title">
+    <div class="reply-top">
         <%= render 'shared/comment',{comment:@comment,value:@comment.standing_position_id} %>
     </div>
     <div class="reply-submit">
       <%= form_with(model:[@room, @comment, @comment_reply], local: true,id:"comment-form") do |f|%>
-      <div class="room-input-box">
+      <div class="reply-input-box">
           <div class="comment-box-position">
             <%= f.text_area :text, placeholder:"リプライを入力" ,class:"comment_box",id:"comment_box"%>
           </div>
-          <%= f.submit 'post', class:"comment_bottom_r",id:"comment_bottom_r"%>
+          <%= f.submit 'post', class:"reply-submit-btn",id:"comment_bottom_r"%>
       </div>
       <%end%>
     </div>
     <div class="reply-text">
+      <div class="reply-tips">リプライ詳細</div>
       <% if !@comment_replies.nil?%>
         <%= render partial: "shared/comment_reply", collection: @comment_replies %>
       <%end%>
