@@ -1,0 +1,25 @@
+<%= render 'shared/header' %>
+<div class="reply-contents">
+  <div class="reply-container">
+    <div class="reply-title">
+      <h1><%= @comment.text%></h1>
+    </div>
+    <div class="reply-text">
+      <% if !@comment_replies.nil?%>
+        <% @comment_replies.each do |comment_reply|%>
+          <%= comment_reply.text%>
+        <%end%>
+      <%end%>
+    <div>
+    <div class="reply-submit">
+      <%= form_with(model:[@room, @comment, @comment_reply], local: true,id:"comment-form") do |f|%>
+      <div class="room-input-box">
+          <div class="comment-box-position">
+            <%= f.text_area :text, placeholder:"リプライを入力" ,class:"comment_box",id:"comment_box"%>
+          </div>
+          <%= f.submit 'post', class:"comment_bottom_r",id:"comment_bottom_r"%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
