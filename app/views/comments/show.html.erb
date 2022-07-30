@@ -4,13 +4,6 @@
     <div class="reply-title">
       <h1><%= @comment.text%></h1>
     </div>
-    <div class="reply-text">
-      <% if !@comment_replies.nil?%>
-        <% @comment_replies.each do |comment_reply|%>
-          <%= comment_reply.text%>
-        <%end%>
-      <%end%>
-    <div>
     <div class="reply-submit">
       <%= form_with(model:[@room, @comment, @comment_reply], local: true,id:"comment-form") do |f|%>
       <div class="room-input-box">
@@ -21,5 +14,10 @@
       </div>
       <%end%>
     </div>
+    <div class="reply-text">
+      <% if !@comment_replies.nil?%>
+        <%= render partial: "shared/comment_reply", collection: @comment_replies %>
+      <%end%>
+    <div>
   </div>
 </div>

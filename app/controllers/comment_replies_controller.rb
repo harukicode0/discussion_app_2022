@@ -18,10 +18,8 @@ class CommentRepliesController < ApplicationController
   def update
     @object = Object.find(params[:id])
       if @object.update_attributes(params[:object])
-        flash[:success] = "Object was successfully updated"
         redirect_to @object
       else
-        flash[:error] = "Something went wrong"
         render 'edit'
       end
   end
