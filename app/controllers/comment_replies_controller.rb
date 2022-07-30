@@ -1,14 +1,12 @@
 class CommentRepliesController < ApplicationController
-   def create
-    
-    binding.pry
-    
-    @comment_reply = CommentReply.new(params[:object])
+  def create
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
+    @comment_reply = CommentReply.new(comment_reply_params)
     if @comment_reply.save
-      redirect_to 'comment/show'
+      redirect_to room_comment_path(@room,@comment)
     else
-      @comment = Comment.find(params[:comment_id])
-      @room = @comment.room
+      @comment_replyies = CommentReply.where(comment_id: @comment.id)
       render 'comments/show'
     end
   end
@@ -37,5 +35,11 @@ class CommentRepliesController < ApplicationController
       flash[:error] = 'Something went wrong'
       redirect_to objects_url
     end
+  end
+
+  private
+
+  def comment_reply_params
+    params.require(:comment_reply).permit(:text).merge(user_id: current_user.id, comment_id: params[:comment_id])
   end
 end
