@@ -2,7 +2,7 @@
 <div class="reply-contents">
   <div class="reply-container">
     <div class="reply-title">
-      <h1><%= @comment.text%></h1>
+        <%= render 'shared/comment',{comment:@comment,value:@comment.standing_position_id} %>
     </div>
     <div class="reply-submit">
       <%= form_with(model:[@room, @comment, @comment_reply], local: true,id:"comment-form") do |f|%>
