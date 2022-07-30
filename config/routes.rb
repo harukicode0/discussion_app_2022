@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     resources :issues do
       resources :issue_comments, only: [:show, :create, :update, :edit, :destroy] do
         resources :issue_likes, only: [:create, :destroy]
-        resources :comment_replys
+        # resources :comment_replys
       end
     end
-    resources :comments, only: [:create,:edit,:update, :destroy] do
+    resources :comments, only: [:show,:create,:edit,:update, :destroy] do
       resources :likes, only: [:create, :destroy]
+      resources :comment_replies, only: [:create,:edit,:update, :destroy]
     end
 
     member do
