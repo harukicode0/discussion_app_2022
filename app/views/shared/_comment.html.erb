@@ -37,7 +37,12 @@
           <%else%>
             <%= image_tag'heart.png'%><span class="comment-heart  comment-heart-gray"><%=comment.count_like(comment)%></span>
           <%end%>
-          <%= link_to 'reply', room_comment_path(@room,comment)%>
+          <span class="comment-reply-link">
+            <%= link_to 'reply', room_comment_path(@room,comment)%>
+          </span>
+          <span class="comment-reply-count">
+            <%=comment.count_reply(comment)%>件
+          </span>
         </div>
     
         <%if current_user == comment.user%>

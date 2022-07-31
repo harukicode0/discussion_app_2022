@@ -18,4 +18,8 @@ class Comment < ApplicationRecord
   def count_like(comment)
     Like.where(comment_id:comment.id).count
   end
+
+  def count_reply(comment)
+    CommentReply.where(comment_id: comment.id).count
+  end
 end

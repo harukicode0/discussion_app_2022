@@ -5,6 +5,9 @@
   border-bottom: 1px solid black;
 }
 
+.comment-right {
+  width: 100%;
+}
 /**********************************
  icon部分 
  **********************************/
@@ -76,12 +79,29 @@
 .comment-heart-gray {
   color: rgb(198, 198, 198);
 }
+/**********************************
+ reply
+ **********************************/
+.comment-reply-link a {
+  margin-left: 10px;
+  color: rgb(198, 198, 198);
+  opacity: 0.9;
+}
+.comment-reply-count {
+  color: rgb(198, 198, 198);
+  opacity: 0.9;
+  font-size: 16px;
+}
 
+.comment-reply-link a:hover {
+  color: var(--deep-agree-color);
+}
 /**********************************
  編集削除部分 
  **********************************/
 .comment-footer-author {
   font-size: 14px;
+  text-align: right;
 }
 
 .comment-footer-author a {
