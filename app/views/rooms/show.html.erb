@@ -52,24 +52,25 @@
     </div>
     
   </div>
-  
-  <% if user_signed_in? && @position.present?%>
-      <%= form_with(model:[@room, @comment], local: true,id:"comment-form") do |f|%>
-      <div class="room-input-box">
-          <div class="comment-box-position">
-            <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box",id:"comment_box"%>
-          </div>
-          <%= f.submit 'post', class:"comment_bottom_r",id:"comment_bottom_r"%>
-      </div>
+  <%if @room.deadline > Time.now%>
+    <% if user_signed_in? && @position.present?%>
+        <%= form_with(model:[@room, @comment], local: true,id:"comment-form") do |f|%>
+        <div class="room-input-box">
+            <div class="comment-box-position">
+              <%= f.text_area :text, placeholder:"コメントを入力" ,class:"comment_box",id:"comment_box"%>
+            </div>
+            <%= f.submit 'post', class:"comment_bottom_r",id:"comment_bottom_r"%>
+        </div>
+        <%end%>
+      <%elsif user_signed_in? %>
+        <div class="room-input-box room-input-box-disabled">
+          <p>ポジションを取って、この議論に参加しよう！</p>
+        </div>
+      <%else%>
+        <div class="room-input-box room-input-box-disabled">
+          ログインしてポジションを取るとコメントできます
+        </div>
       <%end%>
-    <%elsif user_signed_in? %>
-      <div class="room-input-box room-input-box-disabled">
-        <p>ポジションを取って、この議論に参加しよう！</p>
-      </div>
-    <%else%>
-      <div class="room-input-box room-input-box-disabled">
-        ログインしてポジションを取るとコメントできます
-      </div>
     <%end%>
 
   <div class= "comments-room">
@@ -85,8 +86,6 @@
         <%end%>
       </div>
     </div>
-
-
     <div class="disagree-room opinion-room">
       <%= form_with url: standing_position_room_path(@room), local: true do |f|%>
         <%= f.hidden_field :standing_position, value:@disagree%><%# #2は反対を示す %>
@@ -100,6 +99,4 @@
       </div>
     </div>
   </div>
-
-    
 </div>
