@@ -30,9 +30,9 @@ class IssueRepliesController < ApplicationController
   end
   
   def destroy
-    @comment_reply = CommentReply.find(params[:id])
-    @comment_reply.destroy
-    redirect_to room_comment_path(@room,@comment)
+    @issue_reply = IssueReply.find(params[:id])
+    @issue_reply.destroy
+    redirect_to room_issue_issue_comment_path(@room,@issue,@issue_comment)
   end
 
   private

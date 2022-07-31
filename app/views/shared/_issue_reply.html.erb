@@ -25,7 +25,7 @@
         <%if current_user == issue_reply.user%>
           <div class="comment-footer-author">
             <%= link_to "編集", edit_room_issue_issue_comment_issue_reply_path(@room,@issue,@issue_comment,issue_reply),class:'comment-edit-btn'%>
-            <%#= link_to "削除", room_comment_comment_reply_path(@room,@comment,comment_reply),method: :delete,class:'comment-destroy-btn'%>
+            <%= link_to "削除", room_issue_issue_comment_issue_reply_path(@room,@issue,@issue_comment,issue_reply),method: :delete,class:'comment-destroy-btn'%>
           </div>
         <%end%>
       </div>
