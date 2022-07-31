@@ -75,7 +75,13 @@
 /*********************************
  使い方
 *********************************/
-
+.how-to-use div {
+  margin-top: 20px;
+}
+.how-to-use-image {
+  width: 80%;
+  border: 1px solid var(--base-color);
+}
 /*********************************
  リンク
 *********************************/
@@ -94,6 +100,9 @@
  レスポンシブ
 *********************************/
 @media (max-width: 500px) {
+  .explanation {
+    margin: 0;
+  }
   .explanation-section {
     width: 100%;
   }
