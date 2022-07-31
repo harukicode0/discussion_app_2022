@@ -34,14 +34,11 @@ class CommentRepliesController < ApplicationController
   end
   
   def destroy
-    @object = Object.find(params[:id])
-    if @object.destroy
-      flash[:success] = 'Object was successfully deleted.'
-      redirect_to objects_url
-    else
-      flash[:error] = 'Something went wrong'
-      redirect_to objects_url
-    end
+    @comment_reply = CommentReply.find(params[:id])
+    @comment_reply.destroy
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
+    redirect_to room_comment_path(@room,@comment)
   end
 
   private
