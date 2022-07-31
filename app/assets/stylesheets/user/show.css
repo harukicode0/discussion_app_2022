@@ -194,9 +194,33 @@ edit
   border: 1px solid rgba(38, 155, 255, 0.5);
 }
 
-/* .my-discussion > div:last-child {
-  border-bottom: 1px solid rgba(38, 155, 255, 0.5);
-} */
+/*****************************************
+コメント表示
+******************************************/
+.mypage-comments {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.mypage-comments-top-link a {
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+.mypage-comments-bottom-link {
+  text-align: right;
+}
+.mypage-comments-bottom-link a {
+  color: var(--font-color);
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.mypage-comments-top-link a:hover,
+.mypage-comments-bottom-link a:hover {
+  color: var(--deep-disagree-color);
+}
+
 /******************************
  レスポンシブ対応 
 ******************************/
