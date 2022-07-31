@@ -1,6 +1,6 @@
 class CommentRepliesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @comment = Comment.find(params[:comment_id])
     @room = @comment.room
@@ -14,16 +14,23 @@ class CommentRepliesController < ApplicationController
   end
 
   def edit
-    # @ = .find()
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
+    @comment_replies = CommentReply.where(comment_id: @comment.id).includes(:user)
+    @comment_reply = CommentReply.find(params[:id])
+    render 'comments/show'
   end
 
   def update
-    @object = Object.find(params[:id])
-      if @object.update_attributes(params[:object])
-        redirect_to @object
-      else
-        render 'edit'
-      end
+    @comment_reply = CommentReply.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
+    if @comment_reply.update(comment_reply_params)
+      redirect_to room_comment_path(@room,@comment)
+    else
+      @comment_replies = CommentReply.where(comment_id: @comment.id).includes(:user)
+      render 'comments/show'
+    end
   end
   
   def destroy
