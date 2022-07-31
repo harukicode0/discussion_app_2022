@@ -43,7 +43,7 @@ reply-submit
   display: flex;
   justify-content: center;
 }
-.reply_box {
+/* .reply_box {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -61,7 +61,7 @@ reply-submit
 
 .reply_box::placeholder {
   opacity: 0.3;
-}
+} */
 
 .reply-submit-btn {
   box-sizing: border-box;
@@ -78,4 +78,28 @@ reply-submit
 .reply-tips {
   border-bottom: 1px solid black;
   margin-top: 90px;
+}
+
+/****************************
+ レスポンシブ 
+ ****************************/
+@media (max-width: 500px) {
+  .reply-container {
+    width: 100%;
+  }
+  .reply-container-title {
+    font-size: 20px;
+  }
+  .reply-submit {
+    box-sizing: border-box;
+    padding: 0 5px;
+  }
+  .reply-submit-btn {
+    width: 30%;
+    margin-left: 10px;
+    height: 40px;
+  }
+  .reply-tips {
+    margin: 0;
+  }
 }
