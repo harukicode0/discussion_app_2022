@@ -32,7 +32,7 @@
       </div>
       <%# 参加人数の表示 %>
       <div class="content-participant content-bottom-list">
-        参加人数：<%= room.users.count%>人
+        参加人数：<%= room.users.count%>
       </div>
 
       <div class="agree-number">
@@ -51,15 +51,15 @@
       <div class=" content-bottom-list">
         <% unless room.owner == nil%>
           <% if room.owner == current_user%>
-            <%= link_to "作成者様：自分自身", user_path(current_user),class:"content-owner" %>
+            <%= link_to "作成者：自分自身", user_path(current_user),class:"content-owner" %>
           <%else%>
-            <%= link_to "作成者様：#{room.owner.nickname}", user_path(room.owner.id),class:"content-owner" %>
+            <%= link_to "作成者：#{room.owner.nickname}", user_path(room.owner.id),class:"content-owner" %>
             <%if user_signed_in? && room.owner.is_followed_by?(current_user)%>
                 (followed)
             <%end%>
           <%end%>
         <%else%>
-          作成者様：失踪
+          作成者：失踪
         <%end%>
       </div>
 

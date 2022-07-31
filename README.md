@@ -194,12 +194,12 @@ belongs_to: Comment
 
 ## Reply
 
-| column  | type    | Options                       |
-| ------- | ------- | ----------------------------- |
-| id      | integer | null: false                   |
-| text    | text    | null: false                   |
-| comment | integer | null: false,foreign_key: true |
-| user    | integer | null: false,foreign_key: true |
+| column  | type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| id      | integer    | null: false                   |
+| text    | text       | null: false                   |
+| comment | references | null: false,foreign_key: true |
+| user    | references | null: false,foreign_key: true |
 
 ### Association
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_175848) do
+ActiveRecord::Schema.define(version: 2022_07_31_004740) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2022_07_08_175848) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "comment_replies", charset: "utf8", force: :cascade do |t|
+    t.string "text"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_replies_on_comment_id"
+    t.index ["user_id"], name: "index_comment_replies_on_user_id"
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
@@ -69,6 +79,16 @@ ActiveRecord::Schema.define(version: 2022_07_08_175848) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["issue_comment_id"], name: "index_issue_likes_on_issue_comment_id"
     t.index ["user_id"], name: "index_issue_likes_on_user_id"
+  end
+
+  create_table "issue_replies", charset: "utf8", force: :cascade do |t|
+    t.string "text"
+    t.bigint "issue_comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_comment_id"], name: "index_issue_replies_on_issue_comment_id"
+    t.index ["user_id"], name: "index_issue_replies_on_user_id"
   end
 
   create_table "issues", charset: "utf8", force: :cascade do |t|
@@ -158,12 +178,16 @@ ActiveRecord::Schema.define(version: 2022_07_08_175848) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comment_replies", "comments"
+  add_foreign_key "comment_replies", "users"
   add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
   add_foreign_key "issue_comments", "issues"
   add_foreign_key "issue_comments", "users"
   add_foreign_key "issue_likes", "issue_comments"
   add_foreign_key "issue_likes", "users"
+  add_foreign_key "issue_replies", "issue_comments"
+  add_foreign_key "issue_replies", "users"
   add_foreign_key "issues", "rooms"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"

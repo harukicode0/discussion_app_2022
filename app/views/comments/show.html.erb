@@ -1,0 +1,38 @@
+<%= render 'shared/header' %>
+<div class="reply-contents">
+  <div class="reply-container">
+    <div class="reply-container-title">
+      リプライ詳細
+    </div>
+    <div class="room-title">
+      <span>
+        <%if @room.deadline < Time.now%>
+          終了:<%=@room.title%>
+        <%else%>
+          <%= link_to "タイトル：#{@room.title}", room_path(@room),class:"reply-title"%>
+        <%end%>
+      </span>
+    </div>
+    <div class="reply-top">
+        <%= render 'shared/comment',{comment:@comment,value:@comment.standing_position_id} %>
+    </div>
+    <% if user_signed_in?%>
+    <div class="reply-submit">
+      <%= form_with(model:[@room, @comment, @comment_reply], local: true,id:"comment-form") do |f|%>
+      <div class="reply-input-box">
+            <div class="comment-box-position">
+              <%= f.text_area :text, placeholder:"リプライを入力" ,class:"comment_box",id:"comment_box"%>
+            </div>
+            <%= f.submit 'post', class:"reply-submit-btn",id:"comment_bottom_r"%>
+        </div>
+      <%end%>
+    </div>
+    <%end%>
+    <div class="reply-text">
+      <div class="reply-tips"></div>
+      <% if !@comment_replies.nil?%>
+        <%= render partial: "shared/comment_reply", collection: @comment_replies %>
+      <%end%>
+    <div>
+  </div>
+</div>

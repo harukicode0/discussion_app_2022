@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   root to: "rooms#index"
   resources :rooms do
     resources :issues do
-      resources :issue_comments, only: [:create, :update, :edit, :destroy] do
+      resources :issue_comments, only: [:show, :create, :update, :edit, :destroy] do
         resources :issue_likes, only: [:create, :destroy]
+        resources :issue_replies, only: [:create,:edit,:update, :destroy]
       end
     end
-    resources :comments, only: [:create,:edit,:update, :destroy] do
+    resources :comments, only: [:show,:create,:edit,:update, :destroy] do
       resources :likes, only: [:create, :destroy]
+      resources :comment_replies, only: [:create,:edit,:update, :destroy]
     end
 
     member do

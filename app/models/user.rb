@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :issue_likes, dependent: :destroy
   has_one_attached :image, dependent: :destroy
   has_many :issues
+  has_many :comment_replies, dependent: :destroy
 
   #フォロ機能のアソシエーション
   has_many :relationships, foreign_key: :following_id

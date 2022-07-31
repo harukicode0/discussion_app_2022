@@ -3,7 +3,15 @@ class IssueCommentsController < ApplicationController
   before_action :find_issue_comments, only: [:edit,:update,:destroy]
   before_action :find_issue_for_issue_comment, only: [:destroy,:edit,:update]
   before_action :count_down_timer, only: [:create,:edit,:update,:destroy]
-
+  
+  def show
+    @issue_comment = IssueComment.find(params[:id])
+    @issue = @issue_comment.issue
+    @room = @issue.room
+    @issue_replies = IssueReply.where(issue_comment_id: @issue_comment.id).includes(:user)
+    @issue_reply = IssueReply.new
+  end
+  
   def create
     @issue_comment = IssueComment.new
     @issue = Issue.find(params[:issue_id])
