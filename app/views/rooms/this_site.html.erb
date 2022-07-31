@@ -1,15 +1,8 @@
 <%= render 'shared/header' %>
 <div class="explanation">
   <div class="explanation-section">
-    <div class="explanation-about section section-blue">
-      <h1>どのようなサイト？</h1>
-      <p>気軽に討論するためのプラットフォームです</p>
-      <p>ここでは、皆さんが自由に議題を決め、ルームを作ることができます</p>
-      <p>皆さんはルームに参加し、各議題に対してコメントすることができます</p>
-      <p>コメントするには賛成・反対のポジションを取ることによって、ルーム内でコメントできるようになります</p>
-    </div>
-    <div class="demand section section-red">
-      <h1>どういった時に、このサイトが役立つ？</h1>
+    <div class="demand section section-blue">
+      <h1>こういったお悩みありませんか？</h1>
       <ul class="demand-lists">
         <li>
           <h2>Case1</h2>
@@ -28,13 +21,38 @@
         </li>
       </ul>
     </div>
+    <div class="explanation-about section section-red">
+      <h1>このサイトで解決できるかもしれません</h1>
+      <p>ここは、</p>
+      <p>気軽にディスカッションするためのプラットフォームです</p>
+      <p>皆さんが自由に議題を決め、ルームを作ることができます</p>
+      <p>皆さんはルームに参加し、<br>各議題に対してコメントすることができます</p>
+      <p>ただし、コメントするためには、<br>賛成・反対のポジションを取る必要があります。</p>
+    </div>
     <div class="how-to-use section section-blue">
       <h1>使い方は？</h1>
-        <div>①ユーザー登録</div>
-        <div>②議題設定、ルーム作成</div>
-        <div>③賛成・反対のポジションをとってコメント</div>
-        <div>④論点を管理</div>
-        <div>⑤残り時間が０になるとコメント不可</div>
+        <div>①右上メニューから新規ユーザー登録</div>
+          <%= image_tag('this_site/1.png',class:"how-to-use-image")%>
+        <div>②ログイン後、右上のメニューよりルーム作成</div>
+        <%= image_tag('this_site/2.png',class:"how-to-use-image")%>
+        <div>③タイトル、開催期間を指定し、作成ボタンをタップ</div>
+        <%= image_tag('this_site/3.png',class:"how-to-use-image")%>
+        <div>④ルーム作成後、YES(またはNO)のポジションをゲット</div>
+        <%= image_tag('this_site/4.png',class:"how-to-use-image")%>
+        <div>⑤ポジションをとれたことを確認できたらコメント入力！</div>
+        <%= image_tag('this_site/5.png',class:"how-to-use-image")%>
+        <div>⑥＋ボタンをタップして、論点（議題に関係している別視点から話し合うべき事のこと）を追加</div>
+        <%= image_tag('this_site/6.png',class:"how-to-use-image")%>
+        <div>⑦論点の追加画面</div>
+        <%= image_tag('this_site/7.png',class:"how-to-use-image")%>
+        <div>⑧論点追加後の画面、ここでもポジションを取ってコメントしよう</div>
+        <%= image_tag('this_site/8.png',class:"how-to-use-image")%>
+        <div>⑨今回はNOのポジションでコメント</div>
+        <%= image_tag('this_site/9.png',class:"how-to-use-image")%>
+        <div>⑩最終的にはこのようなイメージとなります</div>
+        <%= image_tag('this_site/10.png',class:"how-to-use-image")%>
+        <div>11,残り時間が０になるとコメント不可になるので注意</div>
+        <%= image_tag('this_site/11.png',class:"how-to-use-image")%>
     </div>
     <div class="send-to-registra section-red">
       <% if user_signed_in?%>

@@ -62,8 +62,8 @@
         </div>
       </div>
   </div>
-
-  <% if user_signed_in? && @position.present?%>
+  <%if @room.deadline > Time.now%>
+    <% if user_signed_in? && @position.present?%>
       <%= form_with(model:[@room, @issue, @issue_comment], local: true,id:"comment-form") do |f|%>
       <div class="room-input-box">
           <div class="comment-box-position">
@@ -81,6 +81,7 @@
         ログインしてポジションを取るとコメントできます
       </div>
     <%end%>
+  <%end%>
   
   <div class= "comments-room">
     <div class="agree-room opinion-room">
