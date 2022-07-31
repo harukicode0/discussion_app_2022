@@ -51,18 +51,36 @@
             <div class="mypage-top-a">
               <%= link_to "参加している議論一覧", your_joined_discussions_user_path(@user),class:"mypage-top-link",id:"mypage-top-a2"%>
             </div>
+            <div class="mypage-top-a">
+              <%= link_to "投稿したコメント一覧",  comment_issue_comment_index_user_path(@user),class:"mypage-top-link",id:"mypage-top-a2"%>
+            </div>
           </div>
 
         <div class="mypage-content">
           <div class="my-discussion">
-              <%= render partial: "shared/room", collection: @rooms %>
+              <%if !@rooms.nil?%>
+                <%= render partial: "shared/room", collection: @rooms %>
+              <%else !@comments.nil? || !@issue_comments.nil?%>
+                <% @comments.each do |comment| %>
+                  <div class="mypage-comments">
+                    <div class="mypage-comments-top-link">
+                      <%=link_to comment.text, room_comment_path(comment.room, comment)%>
+                    </div>
+                    <div class="mypage-comments-bottom-link">
+                      <%=link_to "タイトル：#{comment.room.title[1..15]}...にて", room_path(comment.room)%>
+                    </div>
+                  </div>
+                <%end%>
+              <%end%>
           </div>
         </div>
       </div>
 
       <div class="mypage-pagenation ">
+        <%if !@rooms.nil?%>
           <%= paginate @rooms %>
-        </div>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>
