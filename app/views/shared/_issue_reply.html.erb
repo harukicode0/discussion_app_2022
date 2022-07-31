@@ -1,0 +1,33 @@
+  <div class="comment">
+    <div class="comment-user-image-wrap">
+        <%if issue_reply.user.image.attached?%>
+          <%=link_to image_tag(issue_reply.user.image.variant(resize: '50x50',gravity: "center", crop:"40x40+0+0").processed),user_path(issue_reply.user.id), class:"comment-user-image"%>
+        <%else%>
+          <%= link_to image_tag('hito.png'),user_path(issue_reply.user.id), class:"comment-user-image"%>
+        <%end%>
+    </div>
+
+    <div class="comment-right">
+      <div class="comment-header">
+          <div class="comment-user-name">
+          <%=link_to issue_reply.user.nickname, user_path(issue_reply.user.id)%>
+          </div>
+          <div class="comment-time">
+          <%= issue_reply.updated_at%>
+          </div>
+      </div>
+
+      <div class="comment-body">
+        <%= issue_reply.text%>
+      </div>
+
+      <div class="comment-footer">
+        <%if current_user == issue_reply.user%>
+          <div class="comment-footer-author">
+            <%#= link_to "編集", edit_room_comment_comment_reply_path(@room,@comment,comment_reply),class:'comment-edit-btn'%>
+            <%#= link_to "削除", room_comment_comment_reply_path(@room,@comment,comment_reply),method: :delete,class:'comment-destroy-btn'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>

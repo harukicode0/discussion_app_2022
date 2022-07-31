@@ -27,7 +27,7 @@
     <div class="reply-text">
       <div class="reply-tips"></div>
       <% if !@comment_replies.nil?%>
-        <%#= render partial: "shared/comment_reply", collection: @issue_replies %>
+        <%= render partial: "shared/issue_reply", collection: @issue_replies %>
       <%end%>
     <div>
   </div>
