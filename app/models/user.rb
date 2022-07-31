@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :rooms ,through: :user_rooms
   has_many :comments,dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :issue_comments, dependent: :destroy
   has_many :issue_likes, dependent: :destroy
   has_one_attached :image, dependent: :destroy
   has_many :issues
