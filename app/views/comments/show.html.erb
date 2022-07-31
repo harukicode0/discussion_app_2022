@@ -6,7 +6,11 @@
     </div>
     <div class="room-title">
       <span>
-        <%= @room.deadline < Time.now ? "終了:#{@room.title}" :"タイトル：#{@room.title}"%>
+        <%if @room.deadline < Time.now%>
+          終了:<%=@room.title%>
+        <%else%>
+          <%= link_to "タイトル：#{@room.title}", room_path(@room),class:"reply-title"%>
+        <%end%>
       </span>
     </div>
     <div class="reply-top">
