@@ -84,12 +84,12 @@
  **********************************/
 .comment-reply-link a {
   margin-left: 10px;
-  color: var(--font-color);
-  opacity: 0.6;
+  color: rgb(198, 198, 198);
+  opacity: 0.9;
 }
 .comment-reply-count {
-  color: var(--font-color);
-  opacity: 0.6;
+  color: rgb(198, 198, 198);
+  opacity: 0.9;
   font-size: 16px;
 }
 
