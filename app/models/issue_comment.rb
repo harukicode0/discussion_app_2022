@@ -17,4 +17,8 @@ class IssueComment < ApplicationRecord
   def count_issue_like(comment)
     IssueLike.where(issue_comment_id:comment.id).count
   end
+
+  def count_issue_reply(comment)
+    IssueReply.where(issue_comment_id:comment.id).count
+  end
 end
