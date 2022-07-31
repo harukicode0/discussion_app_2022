@@ -6,7 +6,7 @@
     </div>
     <div class="room-title">
       <span>
-        <%= @room.deadline < Time.now ? "終了:#{@issue.issue_title}" :"タイトル：#{@issue.issue_title}"%>
+        <%= @room.deadline < Time.now ? "終了:#{@issue.issue_title}" :"論点：#{@issue.issue_title}"%>
       </span>
     </div>
     <div class="reply-top">
@@ -26,7 +26,7 @@
     <%end%>
     <div class="reply-text">
       <div class="reply-tips"></div>
-      <% if !@comment_replies.nil?%>
+      <% if !@issue_replies.nil?%>
         <%= render partial: "shared/issue_reply", collection: @issue_replies %>
       <%end%>
     <div>
