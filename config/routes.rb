@@ -32,8 +32,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resource :relationships, only: [:create, :destroy]
-    get :followings, on: :member
-    get :followers, on: :member
-    get :your_joined_discussions, on: :member
+    member do
+      get :followings
+      get :followers
+      get :your_joined_discussions
+      get :comment_issue_comment_index
+    end
   end
 end

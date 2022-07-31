@@ -177,7 +177,7 @@ edit
   background-color: var(--main-color);
   text-decoration: underline;
   text-decoration-color: var(--disagree-color);
-  text-underline-offset: 10px;
+  text-underline-offset: 5px;
 }
 
 /*****************************************
@@ -194,9 +194,43 @@ edit
   border: 1px solid rgba(38, 155, 255, 0.5);
 }
 
-/* .my-discussion > div:last-child {
-  border-bottom: 1px solid rgba(38, 155, 255, 0.5);
-} */
+/*****************************************
+コメント表示
+******************************************/
+.mypage-comments {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.mypage-comments-top-link {
+  overflow-wrap: break-word;
+}
+
+.mypage-comments-top-link a {
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+.mypage-comments-time {
+  font-size: 10px;
+  color: var(--font-color);
+  opacity: 0.5;
+}
+.mypage-comments-bottom-link {
+  text-align: right;
+}
+.mypage-comments-bottom-link a {
+  color: var(--font-color);
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.mypage-comments-top-link a:hover,
+.mypage-comments-bottom-link a:hover {
+  color: var(--deep-disagree-color);
+}
+
 /******************************
  レスポンシブ対応 
 ******************************/
@@ -249,7 +283,14 @@ edit
     width: 50%;
   }
   .mypage-top-a a {
+    line-height: 23px;
     font-size: 14px;
     padding: 20px;
+  }
+  .mypage-comments-top-link a {
+    font-size: 16px;
+  }
+  .mypage-comments-bottom-link a {
+    font-size: 14px;
   }
 }
