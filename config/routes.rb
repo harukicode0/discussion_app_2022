@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :issues do
       resources :issue_comments, only: [:show, :create, :update, :edit, :destroy] do
         resources :issue_likes, only: [:create, :destroy]
-        # resources :comment_replys
+        resources :issue_replys, only: [:create,:edit,:update, :destroy]
       end
     end
     resources :comments, only: [:show,:create,:edit,:update, :destroy] do
