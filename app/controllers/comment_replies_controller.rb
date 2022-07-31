@@ -1,6 +1,7 @@
 class CommentRepliesController < ApplicationController
   before_action :authenticate_user!
   before_action :prepara_comment_and_room_for_reply, only: [:edit, :update, :destroy, :create]
+  before_action :count_down_timer
 
   def create
     @comment_reply = CommentReply.new(comment_reply_params)
