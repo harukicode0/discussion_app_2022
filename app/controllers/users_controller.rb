@@ -20,11 +20,7 @@ class UsersController < ApplicationController
   end
 
   def  comment_issue_comment_index
-    @comments = @user.comments
-    @issue_comments = @user.issue_comments
-    
-    # binding.pry
-    
+    @comments = @user.comments.order(created_at: "DESC") + @user.issue_comments.order(created_at: "DESC")    
     render 'show'
   end
 
