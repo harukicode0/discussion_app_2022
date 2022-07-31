@@ -20,12 +20,12 @@ class IssueRepliesController < ApplicationController
   end
 
   def update
-    @comment_reply = CommentReply.find(params[:id])
-    if @comment_reply.update(comment_reply_params)
-      redirect_to room_comment_path(@room,@comment)
+    @issue_reply = IssueReply.find(params[:id])
+    if @issue_reply.update(issue_reply_params)
+      redirect_to room_issue_issue_comment_path(@room,@issue,@issue_comment)
     else
-      @comment_replies = CommentReply.where(comment_id: @comment.id).includes(:user)
-      render 'comments/show'
+      @issue_replies = IssueReply.where(issue_comment_id: @issue_comment.id).includes(:user)
+      render 'issue_comments/show'
     end
   end
   
