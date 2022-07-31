@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :followers, :followings, :your_joined_discussions]
+  before_action :set_user, only: [:show, :followers, :followings, :your_joined_discussions, :comment_issue_comment_index]
   before_action :get_user_rooms, only: [:show, :your_joined_discussions]
   
   def show
@@ -16,6 +16,15 @@ class UsersController < ApplicationController
 
   def your_joined_discussions
     @rooms = Room.joins(:user_rooms).where(user_rooms:{user_id:@user.id}).where.not(owner_id:@user.id).order(created_at: "DESC").page(params[:page]).per(15)
+    render 'show'
+  end
+
+  def  comment_issue_comment_index
+    @comments = @user.comments
+    @issue_comments = @user.issue_comments
+    
+    # binding.pry
+    
     render 'show'
   end
 
