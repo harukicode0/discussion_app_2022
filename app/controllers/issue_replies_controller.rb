@@ -14,9 +14,9 @@ class IssueRepliesController < ApplicationController
   end
 
   def edit
-    @comment_replies = CommentReply.where(comment_id: @comment.id).includes(:user)
-    @comment_reply = CommentReply.find(params[:id])
-    render 'comments/show'
+    @issue_replies = IssueReply.where(issue_comment_id: @issue_comment.id).includes(:user)
+    @issue_reply = IssueReply.find(params[:id])
+    render 'issue_comments/show'
   end
 
   def update
