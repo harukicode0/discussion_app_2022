@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_160441) do
+ActiveRecord::Schema.define(version: 2022_07_31_004740) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2022_07_29_160441) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["issue_comment_id"], name: "index_issue_likes_on_issue_comment_id"
     t.index ["user_id"], name: "index_issue_likes_on_user_id"
+  end
+
+  create_table "issue_replies", charset: "utf8", force: :cascade do |t|
+    t.string "text"
+    t.bigint "issue_comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_comment_id"], name: "index_issue_replies_on_issue_comment_id"
+    t.index ["user_id"], name: "index_issue_replies_on_user_id"
   end
 
   create_table "issues", charset: "utf8", force: :cascade do |t|
@@ -176,6 +186,8 @@ ActiveRecord::Schema.define(version: 2022_07_29_160441) do
   add_foreign_key "issue_comments", "users"
   add_foreign_key "issue_likes", "issue_comments"
   add_foreign_key "issue_likes", "users"
+  add_foreign_key "issue_replies", "issue_comments"
+  add_foreign_key "issue_replies", "users"
   add_foreign_key "issues", "rooms"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
