@@ -60,16 +60,33 @@
           <div class="my-discussion">
               <%if !@rooms.nil?%>
                 <%= render partial: "shared/room", collection: @rooms %>
-              <%else !@comments.nil? || !@issue_comments.nil?%>
+              <%elsif !@comments.nil? || !@issue_comments.nil?%>
                 <% @comments.each do |comment| %>
-                  <div class="mypage-comments">
-                    <div class="mypage-comments-top-link">
-                      <%=link_to comment.text, room_comment_path(comment.room, comment)%>
+                  <%if comment.has_attribute?(:room_id)%>
+                    <div class="mypage-comments">
+                      <div class="mypage-comments-top-link">
+                        <%=link_to comment.text, room_comment_path(comment.room, comment)%>
+                      </div>
+                      <div class="mypage-comments-bottom-link">
+                        <span class="mypage-comments-time">
+                          <%= comment.created_at%>
+                        </span>
+                        <%=link_to "　タイトル：#{comment.room.title[1..15]}...にて", room_path(comment.room)%>
+                      </div>
                     </div>
-                    <div class="mypage-comments-bottom-link">
-                      <%=link_to "タイトル：#{comment.room.title[1..15]}...にて", room_path(comment.room)%>
+                  <%else%>
+                    <div class="mypage-comments">
+                      <div class="mypage-comments-top-link">
+                        <%=link_to comment.text, room_issue_issue_comment_path(comment.issue.room, comment.issue, comment) %>
+                      </div>
+                      <div class="mypage-comments-bottom-link">
+                        <span class="mypage-comments-time">
+                          <%= comment.created_at%>
+                        </span>
+                        <%=link_to "論点：#{comment.issue.issue_title[1..15]}...にて", room_issue_path(comment.issue.room, comment.issue) %>
+                      </div>
                     </div>
-                  </div>
+                  <%end%>
                 <%end%>
               <%end%>
           </div>
@@ -79,6 +96,8 @@
       <div class="mypage-pagenation ">
         <%if !@rooms.nil?%>
           <%= paginate @rooms %>
+        <%elsif !@comments.nil? || !@issue_comments.nil?%>
+          <%#= paginate @comments %>
         <%end%>
       </div>
     </div>
