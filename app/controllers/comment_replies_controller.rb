@@ -1,9 +1,8 @@
 class CommentRepliesController < ApplicationController
   before_action :authenticate_user!
+  before_action :prepara_comment_and_room_for_reply, only: [:edit, :update, :destroy, :create]
 
   def create
-    @comment = Comment.find(params[:comment_id])
-    @room = @comment.room
     @comment_reply = CommentReply.new(comment_reply_params)
     if @comment_reply.save
       redirect_to room_comment_path(@room,@comment)
@@ -14,8 +13,6 @@ class CommentRepliesController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:comment_id])
-    @room = @comment.room
     @comment_replies = CommentReply.where(comment_id: @comment.id).includes(:user)
     @comment_reply = CommentReply.find(params[:id])
     render 'comments/show'
@@ -23,8 +20,6 @@ class CommentRepliesController < ApplicationController
 
   def update
     @comment_reply = CommentReply.find(params[:id])
-    @comment = Comment.find(params[:comment_id])
-    @room = @comment.room
     if @comment_reply.update(comment_reply_params)
       redirect_to room_comment_path(@room,@comment)
     else
@@ -36,8 +31,6 @@ class CommentRepliesController < ApplicationController
   def destroy
     @comment_reply = CommentReply.find(params[:id])
     @comment_reply.destroy
-    @comment = Comment.find(params[:comment_id])
-    @room = @comment.room
     redirect_to room_comment_path(@room,@comment)
   end
 
@@ -45,5 +38,10 @@ class CommentRepliesController < ApplicationController
 
   def comment_reply_params
     params.require(:comment_reply).permit(:text).merge(user_id: current_user.id, comment_id: params[:comment_id])
+  end
+
+  def prepara_comment_and_room_for_reply
+    @comment = Comment.find(params[:comment_id])
+    @room = @comment.room
   end
 end
