@@ -71,7 +71,7 @@
                         <span class="mypage-comments-time">
                           <%= comment.created_at%>
                         </span>
-                        <%=link_to "　タイトル：#{comment.room.title[1..15]}...にて", room_path(comment.room)%>
+                        <%=link_to "　タイトル：#{comment.room.title[0..15]}...にて", room_path(comment.room)%>
                       </div>
                     </div>
                   <%else%>
@@ -83,7 +83,7 @@
                         <span class="mypage-comments-time">
                           <%= comment.created_at%>
                         </span>
-                        <%=link_to "論点：#{comment.issue.issue_title[1..15]}...にて", room_issue_path(comment.issue.room, comment.issue) %>
+                        <%=link_to "論点：#{comment.issue.issue_title[0..15]}...にて", room_issue_path(comment.issue.room, comment.issue) %>
                       </div>
                     </div>
                   <%end%>
