@@ -10,31 +10,14 @@ Yes or no
 
 https://discussion-app-2022.herokuapp.com/
 
-# ID/Pass
+# 説明文
 
-なし
+Qiita 参照
+https://qiita.com/harukioo/items/d8ee0a0f325837f23fef
 
-# 利用方法
+# 制作者 Twitter
 
-このアプリケーションの利用方法を記載。説明が長い場合は、箇条書きでリスト化すること。
-
-# アプリケーションを作成した背景
-
-このアプリケーションを通じて、どのような人の、どのような課題を解決しようとしているのかを記載。
-
-# 洗い出した要件 スプレッドシートのリンク
-
-https://docs.google.com/spreadsheets/d/1QWWHghbWRo9-XWM-wmdshIZS6ENBy0UuUI6zbIkFiLk/edit#gid=982722306
-
-# 実装した機能についての画像や GIF およびその説明※ 実装した機能について、それぞれどのような特徴があるのかを列挙する形で記載。画像は Gyazo で、GIF は GyazoGIF で撮影すること。
-
-# 実装予定の機能 洗い出した要件の中から、今後実装予定の機能がある場合は、その機能を記載。
-
-# データベース設計 ER 図を添付。
-
-# 画面遷移図 画面遷移図を添付。
-
-# 開発環境 使用した言語・サービスを記載。
+https://twitter.com/harukipow225
 
 # テーブル設計
 
